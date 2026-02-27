@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mission 300 — Clean Cooking for Africa</title>
+  <title>Mission 300 — Clean Cooking for Africa | SEforALL</title>
   <meta name="description" content="Accelerating clean cooking access for 300 million people across Africa by 2030. Explore data, investment, and progress across 30 nations.">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Navigation -->
@@ -16,10 +16,13 @@
     <div class="nav-container">
       <a href="#hero" class="nav-logo">
         <svg class="logo-icon" viewBox="0 0 40 40" width="36" height="36">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="#59AF32" stroke-width="2.5"/>
-          <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#59AF32" font-family="Open Sans, sans-serif">M</text>
+          <circle cx="20" cy="20" r="19" fill="none" stroke="#FFB800" stroke-width="2.5"/>
+          <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#FFB800" font-family="Barlow Condensed, sans-serif">M</text>
         </svg>
-        <span class="logo-text">Mission <strong>300</strong></span>
+        <div>
+          <span class="logo-text">Mission <strong>300</strong></span>
+          <span class="logo-org">Sustainable Energy for All</span>
+        </div>
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#overview">Overview</a></li>
@@ -38,7 +41,7 @@
   <!-- Hero Section -->
   <section id="hero">
     <div class="hero-bg">
-      <div class="hero-pattern"></div>
+      <div class="hero-photo"></div>
       <div class="hero-gradient"></div>
     </div>
     <div class="hero-content">
@@ -53,7 +56,7 @@
           <div class="hero-stat-ring">
             <svg viewBox="0 0 80 80">
               <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#59AF32" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="0"/>
+              <circle cx="40" cy="40" r="36" fill="none" stroke="#FFB800" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="0"/>
             </svg>
             <span class="hero-stat-number" data-count="30">0</span>
           </div>
@@ -63,7 +66,7 @@
           <div class="hero-stat-ring">
             <svg viewBox="0 0 80 80">
               <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#F5A623" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="75"/>
+              <circle cx="40" cy="40" r="36" fill="none" stroke="#9BBE1D" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="75"/>
             </svg>
             <span class="hero-stat-number">$<span data-count="6.6">0</span>B</span>
           </div>
@@ -73,7 +76,7 @@
           <div class="hero-stat-ring">
             <svg viewBox="0 0 80 80">
               <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#00B2FF" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="93"/>
+              <circle cx="40" cy="40" r="36" fill="none" stroke="#065A89" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="93"/>
             </svg>
             <span class="hero-stat-number"><span data-count="59">0</span>%</span>
           </div>
@@ -136,6 +139,17 @@
       </div>
     </div>
   </section>
+
+  <!-- Photo Banner — The Challenge -->
+  <div class="photo-banner">
+    <img src="photos/challenge-smoke.jpg" alt="Traditional cooking with biomass fuels causing household air pollution" loading="lazy">
+    <div class="photo-banner-overlay">
+      <div class="photo-banner-text">
+        <h2>The Reality on the Ground</h2>
+        <p>Nearly 4 million premature deaths occur annually from household air pollution caused by traditional cooking methods across sub-Saharan Africa.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Country Profiles Section -->
   <section id="map" class="section section-alt">
@@ -211,6 +225,17 @@
     </div>
   </section>
 
+  <!-- Photo Banner — Clean Cooking Solution -->
+  <div class="photo-banner">
+    <img src="photos/solution-cooking.jpg" alt="Woman using clean cooking solution in Togo" loading="lazy">
+    <div class="photo-banner-overlay">
+      <div class="photo-banner-text">
+        <h2>Clean Solutions, Better Lives</h2>
+        <p>Modern clean cooking technologies are transforming households — improving health, saving time, and reducing environmental damage.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Investment Section -->
   <section id="investment" class="section section-alt">
     <div class="container">
@@ -272,6 +297,17 @@
     </div>
   </section>
 
+  <!-- Photo Banner — Technology & Empowerment -->
+  <div class="photo-banner">
+    <img src="photos/woman-engineer.jpg" alt="African woman engineer working on energy systems" loading="lazy">
+    <div class="photo-banner-overlay">
+      <div class="photo-banner-text">
+        <h2>Powering Progress Through Innovation</h2>
+        <p>Local expertise and technology are driving the clean cooking transition across the continent.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Technology Section -->
   <section id="technology" class="section section-alt">
     <div class="container">
@@ -282,6 +318,21 @@
       </div>
 
       <div class="tech-grid" id="techGrid"></div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-bg">
+      <img src="photos/school-girls.jpg" alt="African school girls smiling" loading="lazy">
+      <div class="cta-bg-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content">
+        <h2>Building a Cleaner Future Together</h2>
+        <p>The transition to clean cooking will improve health outcomes, reduce emissions, and create economic opportunity for millions across Africa.</p>
+        <a href="#overview" class="btn btn-primary">Explore the Data</a>
+      </div>
     </div>
   </section>
 
@@ -303,12 +354,12 @@
           <div class="footer-brand">
             <a href="#hero" class="footer-logo">
               <svg viewBox="0 0 40 40" width="32" height="32">
-                <circle cx="20" cy="20" r="19" fill="none" stroke="#59AF32" stroke-width="2"/>
-                <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#59AF32" font-family="Open Sans, sans-serif">M</text>
+                <circle cx="20" cy="20" r="19" fill="none" stroke="#FFB800" stroke-width="2"/>
+                <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#FFB800" font-family="Barlow Condensed, sans-serif">M</text>
               </svg>
               <span>Mission <strong>300</strong></span>
             </a>
-            <p>Accelerating clean cooking access for 300 million people across Africa by 2030.</p>
+            <p>Accelerating clean cooking access for 300 million people across Africa by 2030. An initiative by Sustainable Energy for All (SEforALL).</p>
           </div>
           <div class="footer-nav">
             <h4>Explore</h4>
@@ -335,7 +386,7 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>Mission 300 Clean Cooking Analysis</p>
+        <p>Mission 300 Clean Cooking Analysis — Sustainable Energy for All (SEforALL)</p>
       </div>
     </div>
   </footer>

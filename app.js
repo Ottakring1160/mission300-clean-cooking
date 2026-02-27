@@ -336,7 +336,7 @@ function renderModal(data, container) {
     <div class="modal-stats">
       <div class="modal-stat">
         <div class="modal-stat-label">Current Access</div>
-        <div class="modal-stat-value" style="color: var(--gold)">${val(data.currentAccess, '%')}</div>
+        <div class="modal-stat-value" style="color: var(--yellow-dark)">${val(data.currentAccess, '%')}</div>
       </div>
       <div class="modal-stat">
         <div class="modal-stat-label">2030 Target</div>
@@ -352,7 +352,7 @@ function renderModal(data, container) {
       </div>
       <div class="modal-stat">
         <div class="modal-stat-label">Total Investment</div>
-        <div class="modal-stat-value" style="color: var(--blue)">${money(data.totalInvestment)}</div>
+        <div class="modal-stat-value" style="color: var(--navy)">${money(data.totalInvestment)}</div>
       </div>
       <div class="modal-stat">
         <div class="modal-stat-label">Target Growth Rate</div>

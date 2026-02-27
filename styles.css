@@ -1,26 +1,36 @@
 /* ============================================
    Mission 300 — Clean Cooking for Africa
-   Design System v2 — Aligned with mission300africa.org
+   Design System v3 — SEforALL Brand
    ============================================ */
 
 :root {
-  /* Mission 300 Brand Colors */
-  --green: #59AF32;
-  --green-light: #6EC844;
-  --green-dark: #3D8B1A;
-  --green-bg: rgba(89, 175, 50, 0.08);
-  --green-bg-strong: rgba(89, 175, 50, 0.15);
+  /* SEforALL Primary Colors */
+  --yellow: #FFB800;
+  --yellow-light: #FFCC40;
+  --yellow-dark: #E0A200;
+  --yellow-bg: rgba(255, 184, 0, 0.10);
+  --yellow-bg-strong: rgba(255, 184, 0, 0.18);
 
-  --gold: #F5A623;
-  --gold-light: #FFB94D;
-  --gold-bg: rgba(245, 166, 35, 0.1);
+  --navy: #065A89;
+  --navy-light: #0A7AB8;
+  --navy-bg: rgba(6, 90, 137, 0.08);
+  --navy-bg-strong: rgba(6, 90, 137, 0.15);
 
-  --blue: #00B2FF;
-  --blue-light: #33C4FF;
-  --blue-bg: rgba(0, 178, 255, 0.1);
+  --dark-navy: #022437;
+  --dark-navy-bg: rgba(2, 36, 55, 0.06);
 
-  --red: #E74C3C;
-  --red-bg: rgba(231, 76, 60, 0.1);
+  /* SEforALL Secondary Colors */
+  --green: #9BBE1D;
+  --green-dark: #7A9816;
+  --green-bg: rgba(155, 190, 29, 0.10);
+
+  --purple: #5A3A8E;
+  --purple-bg: rgba(90, 58, 142, 0.10);
+
+  --red: #DD2E2B;
+  --red-bg: rgba(221, 46, 43, 0.08);
+
+  --light-blue: #F0F7FA;
 
   /* Neutrals */
   --white: #FFFFFF;
@@ -35,19 +45,19 @@
   --gray-700: #3E4C59;
   --gray-800: #323F4B;
   --gray-900: #1F2933;
-  --dark: #131A22;
+  --dark: #0D1B24;
 
-  /* Typography */
-  --font-sans: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
+  /* Typography — SEforALL Brand Fonts */
+  --font-sans: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
 
   /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
-  --shadow-xl: 0 16px 48px rgba(0,0,0,0.12);
-  --shadow-card: 0 0 10px 2px rgba(189, 195, 199, 0.34);
+  --shadow-xs: 0 1px 2px rgba(2, 36, 55, 0.05);
+  --shadow-sm: 0 2px 8px rgba(2, 36, 55, 0.06);
+  --shadow-md: 0 4px 16px rgba(2, 36, 55, 0.08);
+  --shadow-lg: 0 8px 32px rgba(2, 36, 55, 0.10);
+  --shadow-xl: 0 16px 48px rgba(2, 36, 55, 0.12);
+  --shadow-card: 0 0 10px 2px rgba(6, 90, 137, 0.12);
 
   /* Spacing */
   --radius-sm: 8px;
@@ -75,7 +85,7 @@ html {
 body {
   font-family: var(--font-sans);
   background: var(--white);
-  color: var(--gray-800);
+  color: var(--dark-navy);
   line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -105,26 +115,26 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .btn-primary {
-  background: var(--green);
-  color: var(--white);
-  box-shadow: 0 4px 16px rgba(89, 175, 50, 0.3);
+  background: var(--yellow);
+  color: var(--dark-navy);
+  box-shadow: 0 4px 16px rgba(255, 184, 0, 0.35);
 }
 
 .btn-primary:hover {
-  background: var(--green-dark);
+  background: var(--yellow-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(89, 175, 50, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 184, 0, 0.45);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--white);
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255,255,255,0.35);
 }
 
 .btn-outline:hover {
   background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.6);
+  border-color: rgba(255,255,255,0.65);
 }
 
 /* ========== NAVIGATION ========== */
@@ -139,7 +149,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 #navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-sm);
@@ -148,15 +158,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 #navbar.scrolled .nav-logo .logo-text,
 #navbar.scrolled .nav-links a {
-  color: var(--gray-800);
+  color: var(--dark-navy);
 }
 
 #navbar.scrolled .nav-links a:hover {
-  color: var(--green);
+  color: var(--navy);
 }
 
 #navbar.scrolled .nav-toggle span {
-  background: var(--gray-800);
+  background: var(--dark-navy);
 }
 
 .nav-container {
@@ -175,14 +185,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .logo-text {
-  font-size: 1.05rem;
-  font-weight: 400;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--white);
   transition: color var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .logo-text strong {
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--yellow);
+}
+
+.logo-org {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.5);
+  display: block;
+  margin-top: -2px;
+}
+
+#navbar.scrolled .logo-org {
+  color: var(--gray-400);
+}
+
+#navbar.scrolled .logo-text strong {
+  color: var(--yellow);
 }
 
 .nav-links {
@@ -200,7 +232,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .nav-links a:hover {
-  color: var(--green-light);
+  color: var(--yellow);
 }
 
 .nav-toggle {
@@ -227,7 +259,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  background: var(--dark);
+  background: var(--dark-navy);
 }
 
 .hero-bg {
@@ -236,42 +268,39 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   z-index: 0;
 }
 
-.hero-pattern {
+.hero-photo {
   position: absolute;
   inset: 0;
-  opacity: 0.03;
-  background-image:
-    radial-gradient(circle at 1px 1px, white 1px, transparent 0);
-  background-size: 40px 40px;
+  background: url('photos/hero-engineers.jpg') center center / cover no-repeat;
+  opacity: 0.25;
 }
 
 .hero-gradient {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 45%, rgba(89, 175, 50, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0, 178, 255, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 40% at 85% 20%, rgba(245, 166, 35, 0.06) 0%, transparent 50%);
+    linear-gradient(180deg, rgba(2, 36, 55, 0.6) 0%, rgba(2, 36, 55, 0.3) 40%, rgba(6, 90, 137, 0.4) 100%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 184, 0, 0.06) 0%, transparent 60%);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
   padding: 0 24px;
-  max-width: 860px;
+  max-width: 880px;
 }
 
 .hero-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: rgba(89, 175, 50, 0.12);
-  border: 1px solid rgba(89, 175, 50, 0.25);
+  background: rgba(255, 184, 0, 0.15);
+  border: 1px solid rgba(255, 184, 0, 0.3);
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--green-light);
+  color: var(--yellow);
   margin-bottom: 28px;
 }
 
@@ -282,16 +311,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-title-line {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(2.8rem, 7vw, 5rem);
-  font-weight: 900;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 700;
   color: var(--white);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 .hero-title-line em {
   font-style: normal;
-  color: var(--green);
+  color: var(--yellow);
 }
 
 .hero-subtitle {
@@ -392,13 +422,106 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   50% { opacity: 1; transform: scaleY(1); }
 }
 
+/* ========== PHOTO BANNER ========== */
+.photo-banner {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+}
+
+.photo-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(2, 36, 55, 0.75) 0%, rgba(6, 90, 137, 0.55) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-banner-text {
+  text-align: center;
+  color: var(--white);
+  padding: 0 24px;
+  max-width: 700px;
+}
+
+.photo-banner-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+
+.photo-banner-text p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+/* ========== CTA SECTION ========== */
+.cta-section {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(2, 36, 55, 0.85), rgba(6, 90, 137, 0.75));
+}
+
+.cta-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.cta-content p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
+  line-height: 1.8;
+}
+
 /* ========== SECTIONS ========== */
 .section {
   padding: 100px 0;
 }
 
 .section-alt {
-  background: var(--gray-50);
+  background: var(--light-blue);
 }
 
 .section-header {
@@ -412,8 +535,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--green);
-  background: var(--green-bg);
+  color: var(--navy);
+  background: var(--navy-bg);
   padding: 6px 16px;
   border-radius: var(--radius-pill);
   margin-bottom: 16px;
@@ -422,11 +545,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 800;
-  color: var(--gray-900);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--dark-navy);
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
   line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .section-intro {
@@ -438,7 +562,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .section-intro strong {
-  color: var(--gray-800);
+  color: var(--dark-navy);
   font-weight: 700;
 }
 
@@ -468,14 +592,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .overview-card:hover {
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--green);
+  border-color: var(--navy);
 }
 
 .overview-card-number {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: var(--green);
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -483,7 +608,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .overview-card h3 {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--dark-navy);
   margin-bottom: 8px;
 }
 
@@ -503,15 +628,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .overview-card-bar-fill {
   height: 100%;
-  background: var(--green);
+  background: var(--navy);
   border-radius: 2px;
   width: 0;
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .overview-card-bar.danger .overview-card-bar-fill { background: var(--red); }
-.overview-card-bar.warning .overview-card-bar-fill { background: var(--gold); }
-.overview-card-bar.info .overview-card-bar-fill { background: var(--blue); }
+.overview-card-bar.warning .overview-card-bar-fill { background: var(--yellow); }
+.overview-card-bar.info .overview-card-bar-fill { background: var(--green); }
 
 /* ========== FLAGS ========== */
 .flag-img {
@@ -581,7 +706,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .active-filters-summary strong {
-  color: var(--green);
+  color: var(--navy);
   font-weight: 700;
 }
 
@@ -600,14 +725,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .filter-btn:hover {
-  color: var(--green);
-  border-color: var(--green);
+  color: var(--navy);
+  border-color: var(--navy);
 }
 
 .filter-btn.active {
-  background: var(--green);
+  background: var(--navy);
   color: var(--white);
-  border-color: var(--green);
+  border-color: var(--navy);
 }
 
 .filter-count {
@@ -637,8 +762,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .search-bar:focus-within {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px var(--green-bg);
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px var(--navy-bg);
 }
 
 .search-bar svg {
@@ -653,7 +778,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: none;
   outline: none;
   font-size: 0.9rem;
-  color: var(--gray-800);
+  color: var(--dark-navy);
   background: transparent;
   font-family: var(--font-sans);
 }
@@ -691,7 +816,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .country-card:hover {
   box-shadow: var(--shadow-card);
   transform: translateY(-4px);
-  border-color: var(--green);
+  border-color: var(--navy);
 }
 
 .country-card::after {
@@ -701,7 +826,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--green);
+  background: var(--yellow);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition);
@@ -721,7 +846,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .country-card-header h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--dark-navy);
 }
 
 .cohort-badge {
@@ -734,13 +859,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .cohort-badge.c1 {
-  background: var(--green-bg-strong);
-  color: var(--green-dark);
+  background: var(--navy-bg-strong);
+  color: var(--navy);
 }
 
 .cohort-badge.c2 {
-  background: var(--blue-bg);
-  color: #0088CC;
+  background: var(--yellow-bg-strong);
+  color: var(--yellow-dark);
 }
 
 .country-card-meta {
@@ -754,7 +879,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 600;
   padding: 3px 8px;
   border-radius: var(--radius-pill);
-  background: var(--gray-50);
+  background: var(--light-blue);
   color: var(--gray-400);
   letter-spacing: 0.02em;
 }
@@ -781,10 +906,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: -0.02em;
 }
 
-.card-stat-value.current { color: var(--gold); }
+.card-stat-value.current { color: var(--yellow-dark); }
 .card-stat-value.target { color: var(--green); }
 .card-stat-value.gap { color: var(--red); }
-.card-stat-value.invest { color: var(--blue); }
+.card-stat-value.invest { color: var(--navy); }
 
 .country-card-bar {
   height: 6px;
@@ -797,7 +922,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .country-card-bar-current {
   height: 100%;
-  background: var(--gold);
+  background: var(--yellow);
   border-radius: 3px;
   position: absolute;
   left: 0;
@@ -843,7 +968,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .chart-header h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--dark-navy);
 }
 
 .chart-legend {
@@ -866,10 +991,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 2px;
 }
 
-.legend-dot.current { background: var(--gold); }
+.legend-dot.current { background: var(--yellow); }
 .legend-dot.target { background: var(--green); }
 .legend-dot.gap { background: var(--gray-200); }
-.legend-dot.public { background: var(--blue); }
+.legend-dot.public { background: var(--navy); }
 .legend-dot.private { background: var(--green); }
 
 .bar-chart {
@@ -902,7 +1027,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .bar-track {
   height: 28px;
-  background: var(--gray-50);
+  background: var(--light-blue);
   border-radius: 6px;
   position: relative;
   overflow: hidden;
@@ -925,7 +1050,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   left: 0;
   top: 4px;
   height: 20px;
-  background: var(--gold);
+  background: var(--yellow);
   border-radius: 4px;
   transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 2;
@@ -966,11 +1091,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .invest-total {
-  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  background: linear-gradient(135deg, var(--navy), var(--dark-navy));
 }
 
 .invest-total .invest-card-inner {
-  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  background: linear-gradient(135deg, var(--navy), var(--dark-navy));
 }
 
 .invest-total .invest-label,
@@ -980,7 +1105,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .invest-public {
-  background: linear-gradient(135deg, var(--blue), #0088CC);
+  background: linear-gradient(135deg, var(--navy), #044A6F);
 }
 
 .invest-public .invest-card-inner {
@@ -988,7 +1113,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .invest-private {
-  background: linear-gradient(135deg, var(--green), #2D8C00);
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
 }
 
 .invest-private .invest-card-inner {
@@ -1007,10 +1132,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .invest-value {
   display: block;
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--gray-900);
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dark-navy);
   line-height: 1.2;
 }
 
@@ -1037,7 +1163,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: width 1.5s ease;
 }
 
-.invest-public .invest-pct-fill { background: var(--blue); }
+.invest-public .invest-pct-fill { background: var(--navy); }
 .invest-private .invest-pct-fill { background: var(--green); }
 
 .invest-pct {
@@ -1063,7 +1189,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .invest-bar-track {
   height: 22px;
-  background: var(--gray-50);
+  background: var(--light-blue);
   border-radius: 4px;
   position: relative;
   overflow: hidden;
@@ -1072,7 +1198,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .invest-bar-public {
   height: 100%;
-  background: var(--blue);
+  background: var(--navy);
   transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0.75;
 }
@@ -1139,7 +1265,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .barrier-card h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--dark-navy);
   margin-bottom: 8px;
 }
 
@@ -1158,12 +1284,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   color: var(--gray-400);
   padding: 4px 12px;
-  background: var(--gray-50);
+  background: var(--light-blue);
   border-radius: var(--radius-pill);
 }
 
 .barrier-count span {
-  color: var(--green);
+  color: var(--navy);
 }
 
 /* ========== TECHNOLOGY ========== */
@@ -1211,7 +1337,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .tech-card h3 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--dark-navy);
 }
 
 .tech-card > p {
@@ -1232,7 +1358,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 600;
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: var(--gray-50);
+  background: var(--light-blue);
   color: var(--gray-600);
   border: 1px solid var(--gray-100);
   transition: all var(--transition);
@@ -1242,9 +1368,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .tech-country-tag:hover {
-  background: var(--green-bg);
-  border-color: var(--green);
-  color: var(--green-dark);
+  background: var(--navy-bg);
+  border-color: var(--navy);
+  color: var(--navy);
 }
 
 .tech-country-count {
@@ -1255,14 +1381,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .tech-country-count span {
-  color: var(--green);
+  color: var(--navy);
 }
 
 /* ========== MODAL ========== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(2, 36, 55, 0.5);
   backdrop-filter: blur(8px);
   z-index: 2000;
   display: flex;
@@ -1306,7 +1432,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   justify-content: center;
   color: var(--gray-400);
-  background: var(--gray-50);
+  background: var(--light-blue);
   border-radius: 50%;
   z-index: 10;
   transition: all 0.15s ease;
@@ -1318,7 +1444,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .modal-close:hover {
-  color: var(--gray-800);
+  color: var(--dark-navy);
   background: var(--gray-100);
 }
 
@@ -1333,10 +1459,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .modal-header h2 {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 800;
-  color: var(--gray-900);
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: var(--dark-navy);
+  letter-spacing: -0.01em;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .modal-meta {
@@ -1350,7 +1477,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   padding: 4px 12px;
   border-radius: var(--radius-pill);
-  background: var(--gray-50);
+  background: var(--light-blue);
   color: var(--gray-500);
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -1364,7 +1491,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .modal-stat {
-  background: var(--gray-50);
+  background: var(--light-blue);
   border-radius: var(--radius-sm);
   padding: 16px;
 }
@@ -1381,7 +1508,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .modal-stat-value {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--gray-900);
+  color: var(--dark-navy);
 }
 
 .modal-section {
@@ -1407,7 +1534,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ========== FOOTER ========== */
 .footer-top {
-  background: var(--gray-900);
+  background: var(--dark-navy);
   padding: 64px 0 48px;
 }
 
@@ -1425,11 +1552,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .footer-logo span {
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-.footer-logo strong { font-weight: 800; }
+.footer-logo strong { font-weight: 700; color: var(--yellow); }
 
 .footer-brand p {
   font-size: 0.85rem;
@@ -1460,7 +1591,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: color var(--transition);
 }
 
-.footer-nav a:hover { color: var(--green); }
+.footer-nav a:hover { color: var(--yellow); }
 
 .footer-source p {
   font-size: 0.85rem;
@@ -1469,7 +1600,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .footer-bottom {
-  background: var(--dark);
+  background: #011A2A;
   padding: 20px 0;
   text-align: center;
 }
@@ -1493,7 +1624,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ========== SCROLLBAR ========== */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--gray-50); }
+::-webkit-scrollbar-track { background: var(--light-blue); }
 ::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--gray-300); }
 
@@ -1502,6 +1633,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .overview-grid { grid-template-columns: repeat(2, 1fr); }
   .barriers-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-banner { height: 280px; }
 }
 
 @media (max-width: 768px) {
@@ -1520,7 +1652,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
 
   #navbar:not(.scrolled) .nav-links {
-    background: var(--dark);
+    background: var(--dark-navy);
   }
 
   .nav-links.open { display: flex; }
@@ -1561,6 +1693,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 
   .hero-actions { flex-direction: column; align-items: center; }
+
+  .photo-banner { height: 240px; }
+  .photo-banner-text h2 { font-size: 1.5rem; }
+
+  .cta-section { padding: 72px 0; }
 }
 
 @media (max-width: 480px) {
@@ -1568,4 +1705,5 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .invest-value { font-size: 1.75rem; }
   .hero-stats { gap: 16px; }
   .hero-stat-ring { width: 56px; height: 56px; }
+  .photo-banner { height: 200px; }
 }
