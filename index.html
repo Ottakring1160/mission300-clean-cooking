@@ -146,16 +146,43 @@
         <p class="section-intro">Filter and explore each country's clean cooking compact — from current access rates to 2030 targets and investment commitments.</p>
       </div>
 
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All Countries <span class="filter-count">30</span></button>
-        <button class="filter-btn" data-filter="Cohort 1">Cohort 1 <span class="filter-count">12</span></button>
-        <button class="filter-btn" data-filter="Cohort 2">Cohort 2 <span class="filter-count">18</span></button>
+      <div class="filters-section">
+        <div class="filter-group">
+          <span class="filter-group-label">Cohort</span>
+          <div class="filter-bar" id="cohortFilters">
+            <button class="filter-btn active" data-filter="all" data-type="cohort">All <span class="filter-count">30</span></button>
+            <button class="filter-btn" data-filter="Cohort 1" data-type="cohort">Cohort 1 <span class="filter-count">12</span></button>
+            <button class="filter-btn" data-filter="Cohort 2" data-type="cohort">Cohort 2 <span class="filter-count">18</span></button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group-label">Region</span>
+          <div class="filter-bar" id="regionFilters">
+            <button class="filter-btn active" data-filter="all" data-type="region">All Regions</button>
+            <button class="filter-btn" data-filter="West Africa" data-type="region">West Africa <span class="filter-count">11</span></button>
+            <button class="filter-btn" data-filter="East Africa" data-type="region">East Africa <span class="filter-count">8</span></button>
+            <button class="filter-btn" data-filter="Central Africa" data-type="region">Central Africa <span class="filter-count">6</span></button>
+            <button class="filter-btn" data-filter="Southern Africa" data-type="region">Southern Africa <span class="filter-count">5</span></button>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-group-label">Language</span>
+          <div class="filter-bar" id="languageFilters">
+            <button class="filter-btn active" data-filter="all" data-type="language">All</button>
+            <button class="filter-btn" data-filter="French" data-type="language">French <span class="filter-count">15</span></button>
+            <button class="filter-btn" data-filter="English" data-type="language">English <span class="filter-count">15</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="search-bar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" id="countrySearch" placeholder="Search countries...">
       </div>
+
+      <div class="active-filters-summary" id="filterSummary"></div>
 
       <div class="country-grid" id="countryGrid"></div>
     </div>

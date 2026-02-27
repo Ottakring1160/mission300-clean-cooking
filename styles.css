@@ -513,20 +513,84 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .overview-card-bar.warning .overview-card-bar-fill { background: var(--gold); }
 .overview-card-bar.info .overview-card-bar-fill { background: var(--blue); }
 
+/* ========== FLAGS ========== */
+.flag-img {
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  flex-shrink: 0;
+}
+
+.flag-img-sm {
+  width: 22px;
+  height: 16px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.flag-img-lg {
+  width: 36px;
+  height: 26px;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
 /* ========== FILTER & SEARCH ========== */
+.filters-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  min-width: 65px;
+  text-align: right;
+}
+
 .filter-bar {
   display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+}
+
+.active-filters-summary {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  min-height: 24px;
+  margin-bottom: 8px;
+}
+
+.active-filters-summary strong {
+  color: var(--green);
+  font-weight: 700;
 }
 
 .filter-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  font-size: 0.85rem;
+  gap: 6px;
+  padding: 7px 16px;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--gray-500);
   border: 1.5px solid var(--gray-200);
@@ -679,6 +743,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: #0088CC;
 }
 
+.country-card-meta {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.card-meta-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--gray-50);
+  color: var(--gray-400);
+  letter-spacing: 0.02em;
+}
+
 .country-card-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -814,6 +894,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
 .bar-track {
@@ -1152,6 +1236,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--gray-600);
   border: 1px solid var(--gray-100);
   transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .tech-country-tag:hover {

@@ -1,7 +1,13 @@
 /* ============================================
    Mission 300 — Clean Cooking for Africa
-   Application Logic v2
+   Application Logic v3
    ============================================ */
+
+const FLAG_CDN = 'https://flagcdn.com/w40/';
+
+function flagUrl(iso) {
+  return `${FLAG_CDN}${iso}.png`;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
@@ -93,10 +99,17 @@ function renderCountryCards() {
     const targetWidth = c.target2030 != null ? Math.min(c.target2030, 100) : 0;
 
     return `
-      <div class="country-card" data-cohort="${c.cohort}" data-country="${c.country}" style="transition-delay: ${Math.min(i * 30, 300)}ms">
+      <div class="country-card" data-cohort="${c.cohort}" data-country="${c.country}" data-region="${c.region}" data-language="${c.language}" style="transition-delay: ${Math.min(i * 30, 300)}ms">
         <div class="country-card-header">
-          <h3>${c.country}</h3>
+          <div style="display:flex;align-items:center;gap:10px">
+            <img class="flag-img" src="${flagUrl(c.iso)}" alt="${c.country} flag" loading="lazy">
+            <h3>${c.country}</h3>
+          </div>
           <span class="cohort-badge ${cohortClass}">${c.cohort}</span>
+        </div>
+        <div class="country-card-meta">
+          <span class="card-meta-tag">${c.region}</span>
+          <span class="card-meta-tag">${c.language}</span>
         </div>
         <div class="country-card-stats">
           <div class="card-stat">
@@ -135,7 +148,7 @@ function renderAccessChart() {
 
   chart.innerHTML = sorted.map(c => `
     <div class="bar-row">
-      <span class="bar-label">${c.country}</span>
+      <span class="bar-label"><img class="flag-img-sm" src="${flagUrl(c.iso)}" alt="" loading="lazy"> ${c.country}</span>
       <div class="bar-track">
         <div class="bar-fill-target" data-width="${c.target2030}"></div>
         <div class="bar-fill-current" data-width="${c.currentAccess}"></div>
@@ -160,7 +173,7 @@ function renderInvestmentChart() {
 
     return `
       <div class="invest-row">
-        <span class="bar-label">${c.country}</span>
+        <span class="bar-label"><img class="flag-img-sm" src="${flagUrl(c.iso)}" alt="" loading="lazy"> ${c.country}</span>
         <div class="invest-bar-track">
           <div class="invest-bar-public" data-width="${pubWidth}"></div>
           <div class="invest-bar-private" data-width="${privWidth}"></div>
@@ -195,42 +208,79 @@ function renderTechCards() {
       </div>
       <p>${t.description}</p>
       <div class="tech-countries">
-        ${t.countries.map(c => `<span class="tech-country-tag">${c}</span>`).join('')}
+        ${t.countries.map(name => {
+          const c = countries.find(x => x.country === name);
+          const iso = c ? c.iso : '';
+          return `<span class="tech-country-tag">${iso ? `<img class="flag-img-sm" src="${flagUrl(iso)}" alt="" loading="lazy"> ` : ''}${name}</span>`;
+        }).join('')}
       </div>
       <div class="tech-country-count"><span>${t.countries.length}</span> countries</div>
     </div>
   `).join('');
 }
 
-/* ========== Filters ========== */
-function initFilters() {
-  const buttons = document.querySelectorAll('.filter-btn');
+/* ========== Multi-Filters ========== */
+const activeFilters = {
+  cohort: 'all',
+  region: 'all',
+  language: 'all'
+};
 
-  buttons.forEach(btn => {
+function initFilters() {
+  document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+      const type = btn.dataset.type;
+      const value = btn.dataset.filter;
+
+      // Update active state within the same filter group
+      btn.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      activeFilters[type] = value;
       applyFilters();
     });
   });
 }
 
 function applyFilters() {
-  const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
   const searchTerm = document.getElementById('countrySearch').value.toLowerCase();
   const cards = document.querySelectorAll('.country-card');
+  let visibleCount = 0;
 
   cards.forEach(card => {
-    const matchesCohort = activeFilter === 'all' || card.dataset.cohort === activeFilter;
+    const matchesCohort = activeFilters.cohort === 'all' || card.dataset.cohort === activeFilters.cohort;
+    const matchesRegion = activeFilters.region === 'all' || card.dataset.region === activeFilters.region;
+    const matchesLanguage = activeFilters.language === 'all' || card.dataset.language === activeFilters.language;
     const matchesSearch = searchTerm === '' || card.dataset.country.toLowerCase().includes(searchTerm);
-    card.style.display = (matchesCohort && matchesSearch) ? '' : 'none';
+
+    const visible = matchesCohort && matchesRegion && matchesLanguage && matchesSearch;
+    card.style.display = visible ? '' : 'none';
+    if (visible) visibleCount++;
   });
+
+  updateFilterSummary(visibleCount);
+}
+
+function updateFilterSummary(count) {
+  const summary = document.getElementById('filterSummary');
+  const parts = [];
+  if (activeFilters.cohort !== 'all') parts.push(activeFilters.cohort);
+  if (activeFilters.region !== 'all') parts.push(activeFilters.region);
+  if (activeFilters.language !== 'all') parts.push(activeFilters.language);
+
+  const searchTerm = document.getElementById('countrySearch').value.trim();
+  if (searchTerm) parts.push(`"${searchTerm}"`);
+
+  if (parts.length === 0) {
+    summary.innerHTML = '';
+  } else {
+    summary.innerHTML = `Showing <strong>${count}</strong> ${count === 1 ? 'country' : 'countries'} matching: ${parts.join(' + ')}`;
+  }
 }
 
 /* ========== Search ========== */
 function initSearch() {
-  const input = document.getElementById('countrySearch');
-  input.addEventListener('input', applyFilters);
+  document.getElementById('countrySearch').addEventListener('input', applyFilters);
 }
 
 /* ========== Modal ========== */
@@ -271,9 +321,13 @@ function renderModal(data, container) {
 
   container.innerHTML = `
     <div class="modal-header">
-      <h2>${data.country}</h2>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+        <img class="flag-img-lg" src="${flagUrl(data.iso)}" alt="${data.country} flag">
+        <h2>${data.country}</h2>
+      </div>
       <div class="modal-meta">
         <span class="modal-tag">${data.cohort}</span>
+        <span class="modal-tag">${data.region}</span>
         <span class="modal-tag">${data.language}</span>
         ${data.targetYear ? `<span class="modal-tag">Target: ${data.targetYear}</span>` : ''}
       </div>
@@ -338,7 +392,6 @@ function initScrollAnimations() {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
 
-        // Animate bars
         entry.target.querySelectorAll('[data-width]').forEach(bar => {
           setTimeout(() => {
             bar.style.width = bar.dataset.width + '%';
@@ -351,12 +404,10 @@ function initScrollAnimations() {
     rootMargin: '0px 0px -30px 0px'
   });
 
-  // Observe cards and animated elements
   document.querySelectorAll('.overview-card, .country-card, .barrier-card, .tech-card, [data-aos]').forEach(el => {
     observer.observe(el);
   });
 
-  // Bar chart animations
   const barObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

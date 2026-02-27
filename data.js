@@ -1,6 +1,6 @@
 const countries = [
   {
-    country: "Chad", cohort: "Cohort 1", language: "French",
+    country: "Chad", iso: "td", cohort: "Cohort 1", language: "French", region: "Central Africa",
     currentAccess: 6, target2030: 46, targetYear: 2030, gap: 40,
     biomassDep: 90, currentGrowth: null, targetGrowth: 5, accelFactor: null,
     totalInvestment: 656, publicFinance: 627, privateFinance: 29, privateShare: 4.4,
@@ -9,7 +9,7 @@ const countries = [
     barriers: "Low LPG supply; no small-volume bottles for low-income HHs; AEDE non-operational; 20-year gap with no domestic energy projects; fuelwood-driven deforestation"
   },
   {
-    country: "Côte d'Ivoire", cohort: "Cohort 1", language: "French",
+    country: "Côte d'Ivoire", iso: "ci", cohort: "Cohort 1", language: "French", region: "West Africa",
     currentAccess: 20, target2030: 50, targetYear: 2030, gap: 30,
     biomassDep: 70, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -18,7 +18,7 @@ const countries = [
     barriers: "High biomass dependency; limited LPG infrastructure in rural areas; affordability barriers; charcoal/firewood supply chains entrenched; limited data"
   },
   {
-    country: "DRC", cohort: "Cohort 1", language: "French",
+    country: "DRC", iso: "cd", cohort: "Cohort 1", language: "French", region: "Central Africa",
     currentAccess: 1, target2030: 30, targetYear: 2030, gap: 29,
     biomassDep: 95, currentGrowth: 1, targetGrowth: 5, accelFactor: 5,
     totalInvestment: 600, publicFinance: 500, privateFinance: 100, privateShare: 16.7,
@@ -27,7 +27,7 @@ const countries = [
     barriers: "Low LPG supply; charcoal market entrenched; irregular electricity; no waste collection (biogas); low household income; overlapping jurisdictions"
   },
   {
-    country: "Liberia", cohort: "Cohort 1", language: "English",
+    country: "Liberia", iso: "lr", cohort: "Cohort 1", language: "English", region: "West Africa",
     currentAccess: 0.8, target2030: null, targetYear: null, gap: null,
     biomassDep: null, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: 15, publicFinance: 10, privateFinance: 5, privateShare: 33.3,
@@ -36,7 +36,7 @@ const countries = [
     barriers: "Negligible baseline (0.8%); no established data; severe affordability gap; 14,000 dispersed settlements; weak private sector"
   },
   {
-    country: "Madagascar", cohort: "Cohort 1", language: "French",
+    country: "Madagascar", iso: "mg", cohort: "Cohort 1", language: "French", region: "East Africa",
     currentAccess: 14, target2030: 50, targetYear: 2030, gap: 36,
     biomassDep: 86, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: 290, publicFinance: null, privateFinance: 290, privateShare: 100,
@@ -45,7 +45,7 @@ const countries = [
     barriers: "Affordability crisis (75% of HHs); <1% clean cooking; weak manufacturing; JIRAMA $400M debt; regulatory gaps"
   },
   {
-    country: "Malawi", cohort: "Cohort 1", language: "English",
+    country: "Malawi", iso: "mw", cohort: "Cohort 1", language: "English", region: "Southern Africa",
     currentAccess: 2, target2030: 75, targetYear: 2030, gap: 73,
     biomassDep: 98, currentGrowth: null, targetGrowth: 7.21, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -54,7 +54,7 @@ const countries = [
     barriers: "Affordability (high upfront costs); low willingness to pay (rural); forest degradation (37% loss since 1990); gender disparities"
   },
   {
-    country: "Nigeria", cohort: "Cohort 1", language: "English",
+    country: "Nigeria", iso: "ng", cohort: "Cohort 1", language: "English", region: "West Africa",
     currentAccess: 26, target2030: 100, targetYear: 2030, gap: 74,
     biomassDep: null, currentGrowth: 22, targetGrowth: 25, accelFactor: 1.14,
     totalInvestment: 1200, publicFinance: 1200, privateFinance: null, privateShare: null,
@@ -63,7 +63,7 @@ const countries = [
     barriers: "Slow historical growth; electric cooking stalled; geographic data limited to 7 states; large population deficit (174M)"
   },
   {
-    country: "Senegal", cohort: "Cohort 1", language: "French",
+    country: "Senegal", iso: "sn", cohort: "Cohort 1", language: "French", region: "West Africa",
     currentAccess: 32, target2030: null, targetYear: 2030, gap: null,
     biomassDep: 64, currentGrowth: 3.1, targetGrowth: 11.3, accelFactor: 3.65,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -72,7 +72,7 @@ const countries = [
     barriers: "No MTF survey conducted yet; quality standards gap; no price regulation for butane; improved stove supply constraints"
   },
   {
-    country: "Tanzania", cohort: "Cohort 1", language: "English",
+    country: "Tanzania", iso: "tz", cohort: "Cohort 1", language: "English", region: "East Africa",
     currentAccess: 6.9, target2030: 80, targetYear: 2034, gap: 73.1,
     biomassDep: 89, currentGrowth: 11.9, targetGrowth: 21, accelFactor: 1.76,
     totalInvestment: 800, publicFinance: 400, privateFinance: 400, privateShare: 50,
@@ -81,7 +81,7 @@ const countries = [
     barriers: "Low market adoption; fragmented market; financing barriers; utility financial sustainability; regulatory gaps; demographic pressures"
   },
   {
-    country: "Zambia", cohort: "Cohort 1", language: "English",
+    country: "Zambia", iso: "zm", cohort: "Cohort 1", language: "English", region: "Southern Africa",
     currentAccess: 8.9, target2030: 40, targetYear: 2030, gap: 31.1,
     biomassDep: 83.6, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -90,7 +90,7 @@ const countries = [
     barriers: "Limited financing access; inadequate regulatory frameworks; affordability barriers; weak public awareness; limited rural credit"
   },
   {
-    country: "Mauritania", cohort: "Cohort 1", language: "French",
+    country: "Mauritania", iso: "mr", cohort: "Cohort 1", language: "French", region: "West Africa",
     currentAccess: 54, target2030: 100, targetYear: 2030, gap: 46,
     biomassDep: null, currentGrowth: 4, targetGrowth: 12, accelFactor: 3,
     totalInvestment: 205, publicFinance: 205, privateFinance: 0, privateShare: 0,
@@ -99,7 +99,7 @@ const countries = [
     barriers: "Low population density; limited institutional framework; electric cooking integration complexity; 100% public financing reliance"
   },
   {
-    country: "Niger", cohort: "Cohort 1", language: "French",
+    country: "Niger", iso: "ne", cohort: "Cohort 1", language: "French", region: "West Africa",
     currentAccess: 6, target2030: 12, targetYear: 2030, gap: 6,
     biomassDep: 94, currentGrowth: 1, targetGrowth: 1, accelFactor: 1,
     totalInvestment: 32, publicFinance: null, privateFinance: null, privateShare: null,
@@ -108,7 +108,7 @@ const countries = [
     barriers: "Severe deforestation pressure; limited adoption outside urban; lack of statistics; geographic/security constraints; very modest 1% annual growth target"
   },
   {
-    country: "Benin", cohort: "Cohort 2", language: "French",
+    country: "Benin", iso: "bj", cohort: "Cohort 2", language: "French", region: "West Africa",
     currentAccess: 10.5, target2030: 50, targetYear: 2030, gap: 39.5,
     biomassDep: 60, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -117,7 +117,7 @@ const countries = [
     barriers: "Data/monitoring gap; institutional fragmentation; weak LPG rural distribution; insufficient private sector incentives"
   },
   {
-    country: "Botswana", cohort: "Cohort 2", language: "English",
+    country: "Botswana", iso: "bw", cohort: "Cohort 2", language: "English", region: "Southern Africa",
     currentAccess: 66.6, target2030: 90, targetYear: 2030, gap: 23.4,
     biomassDep: 33.9, currentGrowth: 2.4, targetGrowth: 5, accelFactor: 2.08,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -126,7 +126,7 @@ const countries = [
     barriers: "No dedicated strategy; limited commercial viability; highest electricity tariffs in Africa; 63.3pp urban-rural gap; no local manufacturing"
   },
   {
-    country: "Burundi", cohort: "Cohort 2", language: "French",
+    country: "Burundi", iso: "bi", cohort: "Cohort 2", language: "French", region: "East Africa",
     currentAccess: 0.1, target2030: 40, targetYear: 2030, gap: 39.9,
     biomassDep: 95, currentGrowth: 0.1, targetGrowth: 5, accelFactor: 50,
     totalInvestment: 350, publicFinance: 210, privateFinance: 140, privateShare: 40,
@@ -135,7 +135,7 @@ const countries = [
     barriers: "No established market; limited currency access for imports; deep cultural preference for biomass; only 25.9% electricity access"
   },
   {
-    country: "Cameroon", cohort: "Cohort 2", language: "French",
+    country: "Cameroon", iso: "cm", cohort: "Cohort 2", language: "French", region: "Central Africa",
     currentAccess: 23.4, target2030: 40, targetYear: 2030, gap: 16.6,
     biomassDep: 80, currentGrowth: null, targetGrowth: 12.5, accelFactor: null,
     totalInvestment: 114, publicFinance: 84, privateFinance: 30, privateShare: 26.3,
@@ -144,7 +144,7 @@ const countries = [
     barriers: "10 strategic/policy gaps; high costs; limited HH capacity; distribution infrastructure gaps; electricity reliability"
   },
   {
-    country: "Comoros", cohort: "Cohort 2", language: "French",
+    country: "Comoros", iso: "km", cohort: "Cohort 2", language: "French", region: "East Africa",
     currentAccess: 0.5, target2030: 30, targetYear: 2030, gap: 29.5,
     biomassDep: 99.5, currentGrowth: 0.1, targetGrowth: 6, accelFactor: 60,
     totalInvestment: 11.2, publicFinance: 3.36, privateFinance: 7.84, privateShare: 70,
@@ -153,7 +153,7 @@ const countries = [
     barriers: "75% cite affordability as main barrier; entrenched biomass use; limited industrial capacity; island supply chain complexity"
   },
   {
-    country: "Congo (Republic)", cohort: "Cohort 2", language: "French",
+    country: "Congo (Republic)", iso: "cg", cohort: "Cohort 2", language: "French", region: "Central Africa",
     currentAccess: 39.6, target2030: 81, targetYear: 2030, gap: 41.4,
     biomassDep: null, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: 50, publicFinance: 25, privateFinance: 25, privateShare: 50,
@@ -162,7 +162,7 @@ const countries = [
     barriers: "No clean cooking strategy exists; no market; electricity utility financial crisis; tariffs unchanged 30+ years; rural electrification 1.01%"
   },
   {
-    country: "Ethiopia", cohort: "Cohort 2", language: "English",
+    country: "Ethiopia", iso: "et", cohort: "Cohort 2", language: "English", region: "East Africa",
     currentAccess: 8, target2030: 57.7, targetYear: 2030, gap: 49.7,
     biomassDep: 92, currentGrowth: null, targetGrowth: 9.95, accelFactor: null,
     totalInvestment: 600, publicFinance: 600, privateFinance: null, privateShare: null,
@@ -171,7 +171,7 @@ const countries = [
     barriers: "25+ barriers: market fragmentation, supply chain gaps, financing gaps, institutional challenges, awareness barriers"
   },
   {
-    country: "Gambia", cohort: "Cohort 2", language: "English",
+    country: "Gambia", iso: "gm", cohort: "Cohort 2", language: "English", region: "West Africa",
     currentAccess: 25, target2030: 50, targetYear: 2030, gap: 25,
     biomassDep: 75, currentGrowth: null, targetGrowth: 4.17, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -180,7 +180,7 @@ const countries = [
     barriers: "Affordability barriers; nascent market; rural-urban disparities; data gaps; import dependence"
   },
   {
-    country: "Ghana", cohort: "Cohort 2", language: "English",
+    country: "Ghana", iso: "gh", cohort: "Cohort 2", language: "English", region: "West Africa",
     currentAccess: 36.9, target2030: 50, targetYear: 2030, gap: 13.1,
     biomassDep: 60, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: 760, publicFinance: 200, privateFinance: 560, privateShare: 73.7,
@@ -189,7 +189,7 @@ const countries = [
     barriers: "Urban-rural disparity; affordability of LPG rural; $650M funding gap; limited LPG rural distribution"
   },
   {
-    country: "Guinea", cohort: "Cohort 2", language: "French",
+    country: "Guinea", iso: "gn", cohort: "Cohort 2", language: "French", region: "West Africa",
     currentAccess: 12, target2030: 35, targetYear: 2030, gap: 23,
     biomassDep: 98, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -198,7 +198,7 @@ const countries = [
     barriers: "Low penetration; affordability; limited supply chains; regulatory gaps; EDG financial challenges"
   },
   {
-    country: "Kenya", cohort: "Cohort 2", language: "English",
+    country: "Kenya", iso: "ke", cohort: "Cohort 2", language: "English", region: "East Africa",
     currentAccess: 34.4, target2030: 100, targetYear: 2030, gap: 65.6,
     biomassDep: 69, currentGrowth: null, targetGrowth: null, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -207,7 +207,7 @@ const countries = [
     barriers: "Policy gaps; affordability; cultural practices; weak supply chains; low adoption; limited government funding"
   },
   {
-    country: "Lesotho", cohort: "Cohort 2", language: "English",
+    country: "Lesotho", iso: "ls", cohort: "Cohort 2", language: "English", region: "Southern Africa",
     currentAccess: 45.2, target2030: 75, targetYear: 2030, gap: 29.8,
     biomassDep: 62, currentGrowth: null, targetGrowth: 0.48, accelFactor: null,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -216,7 +216,7 @@ const countries = [
     barriers: "Limited private sector investment; inadequate fiscal incentives; affordability barriers; rugged terrain/dispersed population"
   },
   {
-    country: "Mozambique", cohort: "Cohort 2", language: "English",
+    country: "Mozambique", iso: "mz", cohort: "Cohort 2", language: "English", region: "East Africa",
     currentAccess: 17, target2030: 54, targetYear: 2030, gap: 37,
     biomassDep: 83, currentGrowth: null, targetGrowth: null, accelFactor: 8,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -225,7 +225,7 @@ const countries = [
     barriers: "50+ barriers: financing fragmentation, weak regulatory coordination, infrastructure gaps, affordability, gender disparities"
   },
   {
-    country: "Namibia", cohort: "Cohort 2", language: "English",
+    country: "Namibia", iso: "na", cohort: "Cohort 2", language: "English", region: "Southern Africa",
     currentAccess: 48.5, target2030: 61, targetYear: 2030, gap: 12.5,
     biomassDep: 51.5, currentGrowth: 0.9, targetGrowth: 3.6, accelFactor: 4,
     totalInvestment: null, publicFinance: null, privateFinance: null, privateShare: null,
@@ -234,7 +234,7 @@ const countries = [
     barriers: "Policy gaps; limited commercial viability; highest electricity tariffs; 63.3pp urban-rural gap; no local manufacturing"
   },
   {
-    country: "São Tomé and Príncipe", cohort: "Cohort 2", language: "English",
+    country: "São Tomé and Príncipe", iso: "st", cohort: "Cohort 2", language: "English", region: "Central Africa",
     currentAccess: 62, target2030: 75, targetYear: 2030, gap: 13,
     biomassDep: 80.3, currentGrowth: null, targetGrowth: 2.17, accelFactor: null,
     totalInvestment: 30, publicFinance: 8, privateFinance: 23, privateShare: 76.7,
@@ -243,7 +243,7 @@ const countries = [
     barriers: "Supply chain gaps; standards gaps; affordability; entrenched kerosene use; awareness gaps; limited private sector"
   },
   {
-    country: "Sierra Leone", cohort: "Cohort 2", language: "English",
+    country: "Sierra Leone", iso: "sl", cohort: "Cohort 2", language: "English", region: "West Africa",
     currentAccess: 1.5, target2030: 25, targetYear: 2030, gap: 23.5,
     biomassDep: 90, currentGrowth: null, targetGrowth: 3.9, accelFactor: null,
     totalInvestment: 100, publicFinance: null, privateFinance: null, privateShare: null,
@@ -252,7 +252,7 @@ const countries = [
     barriers: "LPG canister cost barrier; supply chain constraints; limited market; insufficient financing; behavioral barriers"
   },
   {
-    country: "Togo", cohort: "Cohort 2", language: "French",
+    country: "Togo", iso: "tg", cohort: "Cohort 2", language: "French", region: "West Africa",
     currentAccess: 14, target2030: 80, targetYear: 2030, gap: 66,
     biomassDep: 87, currentGrowth: null, targetGrowth: 11, accelFactor: null,
     totalInvestment: 32.7, publicFinance: 19, privateFinance: 18, privateShare: 55,
@@ -261,7 +261,7 @@ const countries = [
     barriers: "High upfront costs; limited affordable financing; weak distribution infrastructure; low awareness; behavioral barriers"
   },
   {
-    country: "Zimbabwe", cohort: "Cohort 2", language: "English",
+    country: "Zimbabwe", iso: "zw", cohort: "Cohort 2", language: "English", region: "Southern Africa",
     currentAccess: 38.6, target2030: 70, targetYear: 2030, gap: 31.4,
     biomassDep: 61, currentGrowth: null, targetGrowth: 6.28, accelFactor: null,
     totalInvestment: 791.5, publicFinance: 237.5, privateFinance: 554, privateShare: 70,
@@ -271,7 +271,6 @@ const countries = [
   }
 ];
 
-// Barrier categories for the barriers section
 const barrierCategories = [
   {
     title: "Affordability",
@@ -311,25 +310,24 @@ const barrierCategories = [
   }
 ];
 
-// Technology categories
 const techCategories = [
   {
     title: "LPG / Natural Gas",
     description: "The most widely targeted technology across Mission 300 countries, particularly for urban areas.",
     countries: ["Nigeria", "Chad", "Ghana", "Côte d'Ivoire", "Cameroon", "Mauritania", "Congo (Republic)", "Kenya", "Lesotho", "Benin", "Gambia", "Mozambique", "Zimbabwe", "Sierra Leone", "São Tomé and Príncipe", "Comoros", "Botswana", "Namibia"],
-    color: "#F59E0B"
+    color: "#F5A623"
   },
   {
     title: "Improved Cookstoves",
     description: "Advanced biomass stoves serving as a transitional technology, especially in rural areas with high wood dependency.",
     countries: ["Malawi", "Senegal", "Tanzania", "Togo", "Sierra Leone", "Chad", "Niger", "Cameroon", "Benin", "Madagascar", "Ethiopia", "Lesotho", "Botswana", "Côte d'Ivoire"],
-    color: "#10B981"
+    color: "#59AF32"
   },
   {
     title: "Electric Cooking",
     description: "Leveraging grid expansion and electrification programs, with growing interest in induction and solar-electric solutions.",
     countries: ["Zambia", "Burundi", "Congo (Republic)", "Ethiopia", "Kenya", "Botswana", "Namibia", "Madagascar", "Tanzania", "DRC"],
-    color: "#3B82F6"
+    color: "#00B2FF"
   },
   {
     title: "Biogas / Bioethanol",
