@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Guide — Mission 300 Clean Cooking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Mulish:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --yellow: #FFB800;
+      --yellow-light: #FFCC40;
+      --yellow-bg: rgba(255,184,0,0.08);
+      --navy: #065A89;
+      --navy-bg: rgba(6,90,137,0.06);
+      --dark-navy: #022437;
+      --green: #9BBE1D;
+      --green-bg: rgba(155,190,29,0.08);
+      --red: #DD2E2B;
+      --red-bg: rgba(221,46,43,0.06);
+      --light-blue: #F0F7FA;
+      --white: #FFFFFF;
+      --gray-50: #F4F6F8;
+      --gray-100: #E4E7EB;
+      --gray-200: #CBD2D9;
+      --gray-300: #9AA5B4;
+      --gray-400: #7B8794;
+      --gray-500: #616E7C;
+      --gray-600: #52606D;
+      --gray-800: #323F4B;
+      --font-body: 'Mulish', sans-serif;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --sidebar-w: 280px;
+      --transition: 0.25s ease;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 32px; }
+    body { font-family: var(--font-body); background: var(--gray-50); color: var(--dark-navy); line-height:1.7; }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-bar { position:fixed; top:0; left:0; height:3px; background:var(--yellow); z-index:999; transition: width 0.15s linear; }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { position:fixed; top:0; left:0; width:var(--sidebar-w); height:100vh; background:var(--dark-navy); padding:24px 0; overflow-y:auto; z-index:100; display:flex; flex-direction:column; }
+    .sidebar-header { padding:0 20px 20px; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .sidebar-logo { display:flex; align-items:center; gap:10px; margin-bottom:12px; text-decoration:none; }
+    .sidebar-logo svg { flex-shrink:0; }
+    .sidebar-logo span { font-family:var(--font-display); font-size:1.05rem; font-weight:600; color:var(--white); text-transform:uppercase; letter-spacing:0.03em; }
+    .sidebar-logo strong { color:var(--yellow); }
+    .sidebar-badge { display:inline-block; font-size:0.6rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; background:var(--navy); color:var(--white); padding:3px 10px; border-radius:99px; }
+    .sidebar-search { margin:16px 16px 0; position:relative; }
+    .sidebar-search input { width:100%; padding:8px 12px 8px 34px; border:1px solid rgba(255,255,255,0.1); border-radius:8px; background:rgba(255,255,255,0.05); color:var(--white); font-family:var(--font-body); font-size:0.8rem; outline:none; transition:border-color var(--transition); }
+    .sidebar-search input::placeholder { color:rgba(255,255,255,0.3); }
+    .sidebar-search input:focus { border-color:var(--yellow); }
+    .sidebar-search svg { position:absolute; left:10px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:rgba(255,255,255,0.3); }
+
+    .sidebar-nav { flex:1; overflow-y:auto; padding:12px 0; }
+    .sidebar-nav a { display:flex; align-items:center; gap:10px; padding:9px 20px; font-size:0.82rem; font-weight:500; color:rgba(255,255,255,0.55); text-decoration:none; transition:all var(--transition); border-left:3px solid transparent; }
+    .sidebar-nav a:hover { color:rgba(255,255,255,0.85); background:rgba(255,255,255,0.03); }
+    .sidebar-nav a.active { color:var(--yellow); border-left-color:var(--yellow); background:rgba(255,184,0,0.06); font-weight:700; }
+    .sidebar-nav .nav-num { font-size:0.65rem; font-weight:700; background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.4); width:20px; height:20px; border-radius:5px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .sidebar-nav a.active .nav-num { background:rgba(255,184,0,0.15); color:var(--yellow); }
+    .sidebar-nav a.hidden { display:none; }
+
+    .sidebar-back { padding:16px 20px; border-top:1px solid rgba(255,255,255,0.08); }
+    .sidebar-back a { font-size:0.8rem; color:rgba(255,255,255,0.45); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color var(--transition); }
+    .sidebar-back a:hover { color:var(--yellow); }
+
+    /* ===== MAIN ===== */
+    .main { margin-left:var(--sidebar-w); min-height:100vh; }
+    .main-header { background:var(--white); border-bottom:1px solid var(--gray-100); padding:48px 48px 40px; }
+    .main-header h1 { font-family:var(--font-display); font-size:2.5rem; font-weight:700; color:var(--dark-navy); text-transform:uppercase; margin-bottom:8px; }
+    .main-header p { font-size:1.05rem; color:var(--gray-500); max-width:640px; }
+    .main-content { padding:32px 48px 80px; max-width:920px; }
+
+    /* ===== SECTIONS ===== */
+    .guide-section { margin-bottom:48px; }
+    .guide-section.hidden { display:none; }
+    .section-anchor { display:block; position:relative; top:-32px; visibility:hidden; }
+    .section-card { background:var(--white); border:1px solid var(--gray-100); border-radius:16px; padding:36px; box-shadow:0 1px 4px rgba(2,36,55,0.04); }
+    .section-num { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--navy); background:var(--navy-bg); padding:4px 12px; border-radius:99px; display:inline-block; margin-bottom:12px; }
+    .section-card h2 { font-family:var(--font-display); font-size:1.7rem; font-weight:700; color:var(--dark-navy); text-transform:uppercase; margin-bottom:12px; }
+    .section-card > p { color:var(--gray-500); margin-bottom:20px; font-size:0.95rem; }
+    .section-card h3 { font-size:1rem; font-weight:700; color:var(--dark-navy); margin:24px 0 10px; }
+    .section-card h4 { font-size:0.85rem; font-weight:700; color:var(--navy); margin:20px 0 8px; text-transform:uppercase; letter-spacing:0.04em; }
+    .section-card p, .section-card li { font-size:0.9rem; color:var(--gray-600); line-height:1.75; }
+    .section-card ul, .section-card ol { padding-left:20px; margin-bottom:16px; }
+    .section-card li { margin-bottom:6px; }
+    .section-card strong { color:var(--dark-navy); }
+
+    /* ===== TABLES ===== */
+    .table-wrap { overflow-x:auto; margin:16px 0; border-radius:10px; border:1px solid var(--gray-100); }
+    table { width:100%; border-collapse:collapse; font-size:0.82rem; }
+    th { background:var(--light-blue); color:var(--dark-navy); font-weight:700; text-align:left; padding:10px 14px; white-space:nowrap; border-bottom:2px solid var(--gray-100); }
+    td { padding:9px 14px; border-bottom:1px solid var(--gray-100); color:var(--gray-600); }
+    tr:last-child td { border-bottom:none; }
+    tr:hover td { background:rgba(6,90,137,0.02); }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block { position:relative; margin:14px 0; border-radius:10px; overflow:hidden; border:1px solid var(--gray-100); }
+    .code-block-header { display:flex; align-items:center; justify-content:space-between; padding:8px 14px; background:var(--dark-navy); }
+    .code-block-lang { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.4); }
+    .code-copy { font-size:0.65rem; font-weight:700; color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border:none; padding:4px 10px; border-radius:5px; cursor:pointer; font-family:var(--font-body); transition:all var(--transition); }
+    .code-copy:hover { background:rgba(255,255,255,0.15); color:var(--white); }
+    .code-copy.copied { background:var(--green); color:var(--white); }
+    pre { background:#0B1E2D; padding:16px; overflow-x:auto; margin:0; }
+    pre code { font-family:var(--font-mono); font-size:0.78rem; color:#C5D1DC; line-height:1.65; white-space:pre; }
+    .hl-key { color:#FFB800; }
+    .hl-str { color:#9BBE1D; }
+    .hl-num { color:#5BC0EB; }
+    .hl-comment { color:#546E7A; font-style:italic; }
+    .hl-cmd { color:#FFB800; }
+
+    /* ===== TABS ===== */
+    .tabs { margin:16px 0; }
+    .tab-btns { display:flex; gap:4px; padding:4px; background:var(--gray-50); border-radius:10px; border:1px solid var(--gray-100); width:fit-content; }
+    .tab-btn { font-size:0.78rem; font-weight:600; padding:6px 16px; border:none; border-radius:7px; background:transparent; color:var(--gray-400); cursor:pointer; font-family:var(--font-body); transition:all var(--transition); }
+    .tab-btn.active { background:var(--white); color:var(--dark-navy); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+
+    /* ===== ACCORDION ===== */
+    .accordion { margin:14px 0; border:1px solid var(--gray-100); border-radius:10px; overflow:hidden; }
+    .accordion-item { border-bottom:1px solid var(--gray-100); }
+    .accordion-item:last-child { border-bottom:none; }
+    .accordion-trigger { width:100%; text-align:left; padding:14px 18px; font-size:0.88rem; font-weight:600; color:var(--dark-navy); background:var(--white); cursor:pointer; display:flex; align-items:center; justify-content:space-between; transition:background var(--transition); font-family:var(--font-body); border:none; }
+    .accordion-trigger:hover { background:var(--light-blue); }
+    .accordion-trigger .arrow { width:18px; height:18px; transition:transform var(--transition); color:var(--gray-300); }
+    .accordion-trigger.open .arrow { transform:rotate(180deg); color:var(--navy); }
+    .accordion-body { display:none; padding:0 18px 16px; font-size:0.85rem; color:var(--gray-600); line-height:1.7; }
+    .accordion-body.open { display:block; }
+
+    /* ===== CHECKLIST ===== */
+    .checklist { margin:16px 0; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; padding:10px 14px; border-radius:8px; transition:background var(--transition); cursor:pointer; }
+    .check-item:hover { background:var(--light-blue); }
+    .check-item input { display:none; }
+    .check-box { width:20px; height:20px; border:2px solid var(--gray-200); border-radius:5px; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all var(--transition); margin-top:2px; }
+    .check-item.checked .check-box { background:var(--navy); border-color:var(--navy); }
+    .check-box svg { width:12px; height:12px; color:var(--white); opacity:0; transition:opacity var(--transition); }
+    .check-item.checked .check-box svg { opacity:1; }
+    .check-label { font-size:0.88rem; color:var(--gray-600); transition:color var(--transition); }
+    .check-item.checked .check-label { color:var(--gray-300); text-decoration:line-through; }
+    .check-progress { display:flex; align-items:center; gap:10px; margin-top:10px; font-size:0.75rem; font-weight:700; color:var(--gray-400); }
+    .check-progress-bar { flex:1; height:4px; background:var(--gray-100); border-radius:2px; overflow:hidden; }
+    .check-progress-fill { height:100%; background:var(--navy); border-radius:2px; transition:width var(--transition); }
+
+    /* ===== FILE MAP ===== */
+    .file-map { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:16px 0; }
+    .file-map-item { padding:16px; border-radius:10px; border:1px solid var(--gray-100); background:var(--white); cursor:default; transition:all var(--transition); }
+    .file-map-item:hover { border-color:var(--navy); box-shadow:0 4px 12px rgba(6,90,137,0.08); }
+    .file-map-icon { font-size:1.5rem; margin-bottom:8px; }
+    .file-map-name { font-family:var(--font-mono); font-size:0.82rem; font-weight:500; color:var(--dark-navy); margin-bottom:4px; }
+    .file-map-desc { font-size:0.75rem; color:var(--gray-400); line-height:1.5; }
+    .file-map-when { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--navy); margin-top:8px; padding-top:8px; border-top:1px solid var(--gray-100); }
+
+    /* ===== COLOR SWATCHES ===== */
+    .swatch-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin:16px 0; }
+    .swatch { border-radius:10px; overflow:hidden; border:1px solid var(--gray-100); cursor:pointer; transition:all var(--transition); }
+    .swatch:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    .swatch-color { height:56px; }
+    .swatch-info { padding:10px; background:var(--white); }
+    .swatch-name { font-size:0.72rem; font-weight:700; color:var(--dark-navy); }
+    .swatch-hex { font-family:var(--font-mono); font-size:0.7rem; color:var(--gray-400); }
+    .swatch.copied .swatch-hex { color:var(--navy); font-weight:700; }
+
+    /* ===== TIP BOX ===== */
+    .tip { padding:14px 18px; border-radius:10px; margin:16px 0; font-size:0.85rem; display:flex; gap:10px; align-items:flex-start; }
+    .tip-icon { flex-shrink:0; width:20px; height:20px; margin-top:2px; }
+    .tip.info { background:var(--navy-bg); border-left:3px solid var(--navy); color:var(--navy); }
+    .tip.warn { background:var(--yellow-bg); border-left:3px solid var(--yellow); color:var(--dark-navy); }
+    .tip.danger { background:var(--red-bg); border-left:3px solid var(--red); color:var(--red); }
+
+    /* ===== BACK TO TOP ===== */
+    .back-top { position:fixed; bottom:24px; right:24px; width:42px; height:42px; border-radius:50%; background:var(--navy); color:var(--white); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(6,90,137,0.25); opacity:0; pointer-events:none; transition:all var(--transition); z-index:50; }
+    .back-top.visible { opacity:1; pointer-events:auto; }
+    .back-top:hover { background:var(--dark-navy); transform:translateY(-2px); }
+    .back-top svg { width:18px; height:18px; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:1024px) {
+      .sidebar { transform:translateX(-100%); transition:transform var(--transition); }
+      .sidebar.open { transform:translateX(0); }
+      .main { margin-left:0; }
+      .main-header, .main-content { padding-left:24px; padding-right:24px; }
+      .mobile-toggle { display:flex !important; }
+      .file-map { grid-template-columns:1fr; }
+    }
+    @media(max-width:640px) {
+      .main-header h1 { font-size:1.8rem; }
+      .swatch-grid { grid-template-columns:repeat(2,1fr); }
+    }
+
+    .mobile-toggle { display:none; position:fixed; top:12px; left:12px; z-index:101; width:40px; height:40px; border-radius:10px; background:var(--dark-navy); color:var(--white); border:none; cursor:pointer; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+    .mobile-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4); z-index:99; }
+    .mobile-overlay.open { display:block; }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<button class="mobile-toggle" id="mobileToggle" aria-label="Toggle sidebar">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="index.html" class="sidebar-logo">
+      <svg viewBox="0 0 32 32" width="28" height="28"><circle cx="16" cy="16" r="15" fill="none" stroke="#FFB800" stroke-width="2"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="800" fill="#FFB800" font-family="Barlow Condensed">M</text></svg>
+      <span>Mission <strong>300</strong></span>
+    </a>
+    <span class="sidebar-badge">User Guide</span>
+    <div class="sidebar-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="sidebarSearch" placeholder="Search guide...">
+    </div>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <a href="#overview"><span class="nav-num">1</span> Overview</a>
+    <a href="#using"><span class="nav-num">2</span> Using the Website</a>
+    <a href="#files"><span class="nav-num">3</span> File Structure</a>
+    <a href="#update-data"><span class="nav-num">4</span> Update Country Data</a>
+    <a href="#add-country"><span class="nav-num">5</span> Add a New Country</a>
+    <a href="#barriers-tech"><span class="nav-num">6</span> Barriers & Tech</a>
+    <a href="#photos"><span class="nav-num">7</span> Change Photos</a>
+    <a href="#branding"><span class="nav-num">8</span> Change Branding</a>
+    <a href="#new-filter"><span class="nav-num">9</span> Add a Filter</a>
+    <a href="#deploy"><span class="nav-num">10</span> Deploy Updates</a>
+    <a href="#design-system"><span class="nav-num">11</span> Design System</a>
+    <a href="#troubleshooting"><span class="nav-num">12</span> Troubleshooting</a>
+  </nav>
+  <div class="sidebar-back">
+    <a href="index.html">&larr; Back to Website</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="main-header">
+    <h1>User Guide</h1>
+    <p>Everything you need to know to use, update, and maintain the Mission 300 Clean Cooking website.</p>
+  </div>
+
+  <div class="main-content">
+
+    <!-- 1. OVERVIEW -->
+    <div class="guide-section" data-section="overview">
+      <span class="section-anchor" id="overview"></span>
+      <div class="section-card">
+        <span class="section-num">Section 1</span>
+        <h2>Overview</h2>
+        <p>The Mission 300 website is a single-page data visualization site for the <strong>Sustainable Energy for All (SEforALL)</strong> initiative. It presents clean cooking analysis data for 30 African countries sourced from National Energy Compact documents.</p>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>Interactive country profiles with flags, multi-dimensional filters, and search</li>
+          <li>Gap analysis chart — current access vs. 2030 targets</li>
+          <li>Investment breakdown — public vs. private financing</li>
+          <li>Barrier and technology pathway analysis cards</li>
+          <li>Detailed country modal with full statistics</li>
+          <li>Responsive design — desktop, tablet, and mobile</li>
+        </ul>
+
+        <h3>Tech Stack</h3>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Layer</th><th>Technology</th></tr>
+            <tr><td>Frontend</td><td>Vanilla HTML / CSS / JavaScript (no framework)</td></tr>
+            <tr><td>Fonts</td><td>Google Fonts — Barlow Condensed + Mulish</td></tr>
+            <tr><td>Flags</td><td>flagcdn.com CDN</td></tr>
+            <tr><td>Hosting</td><td>GitHub Pages</td></tr>
+          </table>
+        </div>
+        <div class="tip info">
+          <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
+          <span>No build tools are required. Edit the files directly and push to GitHub to deploy.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. USING THE WEBSITE -->
+    <div class="guide-section" data-section="using">
+      <span class="section-anchor" id="using"></span>
+      <div class="section-card">
+        <span class="section-num">Section 2</span>
+        <h2>Using the Website</h2>
+        <p>A guide for end-users navigating the live site.</p>
+
+        <h3>Navigation</h3>
+        <ul>
+          <li>Use the <strong>top navigation bar</strong> to jump to any section: Overview, Countries, Data, Investment, Challenges, Technology</li>
+          <li>On mobile, tap the <strong>hamburger menu</strong> (three lines) to open navigation</li>
+        </ul>
+
+        <h3>Filtering Countries</h3>
+        <p>The Countries section has three filter groups that combine with AND logic:</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Filter</th><th>Options</th></tr>
+            <tr><td>Cohort</td><td>All (30), Cohort 1 (12), Cohort 2 (18)</td></tr>
+            <tr><td>Region</td><td>All, West Africa (11), East Africa (8), Central Africa (6), Southern Africa (5)</td></tr>
+            <tr><td>Language</td><td>All, French (15), English (15)</td></tr>
+          </table>
+        </div>
+        <p>Click any filter button (turns navy blue when active). A summary shows: <em>"Showing <strong>X</strong> countries matching: [filters]"</em>. Use the search bar to further filter by name.</p>
+
+        <h3>Viewing Country Details</h3>
+        <p>Click any <strong>country card</strong> to open a modal with full statistics, technology focus, strategy status, and key barriers. Close with the X button, clicking outside, or pressing <strong>Escape</strong>.</p>
+
+        <h3>Reading Charts</h3>
+        <ul>
+          <li><strong>Gap Analysis:</strong> Yellow bars = current access, faded green = 2030 target. The gap shows how far each country needs to go.</li>
+          <li><strong>Investment:</strong> Navy = public finance, green = private finance. Bar length shows relative amounts.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 3. FILE STRUCTURE -->
+    <div class="guide-section" data-section="files">
+      <span class="section-anchor" id="files"></span>
+      <div class="section-card">
+        <span class="section-num">Section 3</span>
+        <h2>File Structure</h2>
+        <p>The project is a flat directory of static files. Here's what each file does and when to edit it.</p>
+
+        <div class="file-map">
+          <div class="file-map-item">
+            <div class="file-map-icon">📊</div>
+            <div class="file-map-name">data.js</div>
+            <div class="file-map-desc">All 30 countries, 6 barrier categories, and 5 technology pathways</div>
+            <div class="file-map-when">Edit when: data changes</div>
+          </div>
+          <div class="file-map-item">
+            <div class="file-map-icon">🏗️</div>
+            <div class="file-map-name">index.html</div>
+            <div class="file-map-desc">Page structure, static text, filter buttons, section content</div>
+            <div class="file-map-when">Edit when: adding sections or filters</div>
+          </div>
+          <div class="file-map-item">
+            <div class="file-map-icon">🎨</div>
+            <div class="file-map-name">styles.css</div>
+            <div class="file-map-desc">Colors, fonts, layout, responsive design. All SEforALL brand tokens.</div>
+            <div class="file-map-when">Edit when: changing design/branding</div>
+          </div>
+          <div class="file-map-item">
+            <div class="file-map-icon">⚙️</div>
+            <div class="file-map-name">app.js</div>
+            <div class="file-map-desc">Rendering, filtering, modals, charts, and scroll animations</div>
+            <div class="file-map-when">Edit when: changing interactions</div>
+          </div>
+          <div class="file-map-item">
+            <div class="file-map-icon">📷</div>
+            <div class="file-map-name">photos/</div>
+            <div class="file-map-desc">5 images: hero, 3 banners, CTA section</div>
+            <div class="file-map-when">Edit when: swapping images</div>
+          </div>
+          <div class="file-map-item">
+            <div class="file-map-icon">📖</div>
+            <div class="file-map-name">guide.html</div>
+            <div class="file-map-desc">This interactive user guide (standalone)</div>
+            <div class="file-map-when">Edit when: updating documentation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. UPDATE COUNTRY DATA -->
+    <div class="guide-section" data-section="update-data">
+      <span class="section-anchor" id="update-data"></span>
+      <div class="section-card">
+        <span class="section-num">Section 4</span>
+        <h2>Update Country Data</h2>
+        <p>The most common maintenance task. All country data lives in <strong>data.js</strong>.</p>
+
+        <h3>Step-by-Step</h3>
+        <div class="checklist" data-key="update-data">
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Open <code>data.js</code> in a text editor</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Find the country in the <code>countries</code> array</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Change the field value(s)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Check if aggregate totals need updating in <code>index.html</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Save, commit, and push</span></label>
+          <div class="check-progress"><div class="check-progress-bar"><div class="check-progress-fill" style="width:0%"></div></div><span class="check-pct">0 / 5</span></div>
+        </div>
+
+        <h3>Example</h3>
+        <div class="tabs">
+          <div class="tab-btns"><button class="tab-btn active" data-tab="before">Before</button><button class="tab-btn" data-tab="after">After</button></div>
+          <div class="tab-panel active" data-tab="before">
+            <div class="code-block"><div class="code-block-header"><span class="code-block-lang">data.js</span><button class="code-copy">Copy</button></div><pre><code>{ <span class="hl-key">country</span>: <span class="hl-str">"Chad"</span>, <span class="hl-key">currentAccess</span>: <span class="hl-num">6</span>, ... }</code></pre></div>
+          </div>
+          <div class="tab-panel" data-tab="after">
+            <div class="code-block"><div class="code-block-header"><span class="code-block-lang">data.js</span><button class="code-copy">Copy</button></div><pre><code>{ <span class="hl-key">country</span>: <span class="hl-str">"Chad"</span>, <span class="hl-key">currentAccess</span>: <span class="hl-num">8</span>, ... }</code></pre></div>
+          </div>
+        </div>
+
+        <div class="tip warn">
+          <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+          <span>If you change investment amounts, remember to update the aggregate totals in <code>index.html</code> (hero stat, overview cards, investment section).</span>
+        </div>
+
+        <h3>Country Data Fields</h3>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Field</th><th>Type</th><th>Example</th><th>Notes</th></tr>
+            <tr><td><code>country</code></td><td>string</td><td>"Chad"</td><td>Unique display name</td></tr>
+            <tr><td><code>iso</code></td><td>string</td><td>"td"</td><td>Lowercase 2-letter ISO code for flag</td></tr>
+            <tr><td><code>cohort</code></td><td>string</td><td>"Cohort 1"</td><td>"Cohort 1" or "Cohort 2"</td></tr>
+            <tr><td><code>language</code></td><td>string</td><td>"French"</td><td>"French" or "English"</td></tr>
+            <tr><td><code>region</code></td><td>string</td><td>"Central Africa"</td><td>Must match a filter button</td></tr>
+            <tr><td><code>currentAccess</code></td><td>number</td><td>6</td><td>Percentage 0-100</td></tr>
+            <tr><td><code>target2030</code></td><td>num/null</td><td>46</td><td>null shows "TBD"</td></tr>
+            <tr><td><code>totalInvestment</code></td><td>num/null</td><td>656</td><td>USD millions</td></tr>
+            <tr><td><code>publicFinance</code></td><td>num/null</td><td>627</td><td>USD millions</td></tr>
+            <tr><td><code>privateFinance</code></td><td>num/null</td><td>29</td><td>USD millions</td></tr>
+            <tr><td><code>techFocus</code></td><td>string</td><td>"LPG with..."</td><td>Free text</td></tr>
+            <tr><td><code>barriers</code></td><td>string</td><td>"Low LPG..."</td><td>Free text</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ADD NEW COUNTRY -->
+    <div class="guide-section" data-section="add-country">
+      <span class="section-anchor" id="add-country"></span>
+      <div class="section-card">
+        <span class="section-num">Section 5</span>
+        <h2>Add a New Country</h2>
+        <p>Follow this checklist when adding a country to the dataset.</p>
+
+        <div class="checklist" data-key="add-country">
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Add country object to <code>countries</code> array in <code>data.js</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Look up the 2-letter ISO code at flagcdn.com (lowercase)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Update filter count badges in <code>index.html</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Update hero stat (<code>data-count="30"</code> &rarr; new total)</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Add country to relevant <code>techCategories</code> arrays in <code>data.js</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Recalculate and update aggregate totals in <code>index.html</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Test locally, commit, and push</span></label>
+          <div class="check-progress"><div class="check-progress-bar"><div class="check-progress-fill" style="width:0%"></div></div><span class="check-pct">0 / 7</span></div>
+        </div>
+
+        <h3>Country Template</h3>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">data.js</span><button class="code-copy">Copy</button></div><pre><code>{
+  <span class="hl-key">country</span>: <span class="hl-str">"New Country Name"</span>,
+  <span class="hl-key">iso</span>: <span class="hl-str">"xx"</span>,              <span class="hl-comment">// 2-letter ISO, lowercase</span>
+  <span class="hl-key">cohort</span>: <span class="hl-str">"Cohort 2"</span>,
+  <span class="hl-key">language</span>: <span class="hl-str">"English"</span>,
+  <span class="hl-key">region</span>: <span class="hl-str">"East Africa"</span>,
+  <span class="hl-key">currentAccess</span>: <span class="hl-num">10</span>,
+  <span class="hl-key">target2030</span>: <span class="hl-num">50</span>,
+  <span class="hl-key">targetYear</span>: <span class="hl-num">2030</span>,
+  <span class="hl-key">gap</span>: <span class="hl-num">40</span>,
+  <span class="hl-key">biomassDep</span>: <span class="hl-num">85</span>,
+  <span class="hl-key">currentGrowth</span>: <span class="hl-num">null</span>,
+  <span class="hl-key">targetGrowth</span>: <span class="hl-num">4</span>,
+  <span class="hl-key">accelFactor</span>: <span class="hl-num">null</span>,
+  <span class="hl-key">totalInvestment</span>: <span class="hl-num">200</span>,
+  <span class="hl-key">publicFinance</span>: <span class="hl-num">150</span>,
+  <span class="hl-key">privateFinance</span>: <span class="hl-num">50</span>,
+  <span class="hl-key">privateShare</span>: <span class="hl-num">25</span>,
+  <span class="hl-key">strategyStatus</span>: <span class="hl-str">"Strategy under development"</span>,
+  <span class="hl-key">techFocus</span>: <span class="hl-str">"LPG and improved cookstoves"</span>,
+  <span class="hl-key">barriers</span>: <span class="hl-str">"Limited infrastructure"</span>
+},</code></pre></div>
+      </div>
+    </div>
+
+    <!-- 6. BARRIERS & TECH -->
+    <div class="guide-section" data-section="barriers-tech">
+      <span class="section-anchor" id="barriers-tech"></span>
+      <div class="section-card">
+        <span class="section-num">Section 6</span>
+        <h2>Barriers & Technology Categories</h2>
+        <p>Both are defined in <code>data.js</code> and rendered automatically.</p>
+        <h3>Update a Barrier Count</h3>
+        <p>Find the barrier in <code>barrierCategories</code> and change its <code>count</code> value.</p>
+        <h3>Add a Technology Category</h3>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">data.js</span><button class="code-copy">Copy</button></div><pre><code>{
+  <span class="hl-key">title</span>: <span class="hl-str">"Hydrogen Fuel Cells"</span>,
+  <span class="hl-key">description</span>: <span class="hl-str">"Emerging hydrogen technology"</span>,
+  <span class="hl-key">countries</span>: [<span class="hl-str">"Kenya"</span>, <span class="hl-str">"Nigeria"</span>],  <span class="hl-comment">// must match exactly</span>
+  <span class="hl-key">color</span>: <span class="hl-str">"#FF6B35"</span>
+},</code></pre></div>
+        <div class="tip info">
+          <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><circle cx="12" cy="8" r="0.5" fill="currentColor"/></svg>
+          <span>Country names in the <code>countries</code> array must <strong>exactly match</strong> the <code>country</code> field in the countries data for flag lookup to work.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. PHOTOS -->
+    <div class="guide-section" data-section="photos">
+      <span class="section-anchor" id="photos"></span>
+      <div class="section-card">
+        <span class="section-num">Section 7</span>
+        <h2>Change Photos</h2>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Filename</th><th>Used In</th><th>Referenced By</th></tr>
+            <tr><td><code>hero-engineers.jpg</code></td><td>Hero background</td><td><code>styles.css</code> (CSS background-image)</td></tr>
+            <tr><td><code>challenge-smoke.jpg</code></td><td>Photo banner 1</td><td><code>index.html</code> &lt;img&gt; tag</td></tr>
+            <tr><td><code>solution-cooking.jpg</code></td><td>Photo banner 2</td><td><code>index.html</code> &lt;img&gt; tag</td></tr>
+            <tr><td><code>woman-engineer.jpg</code></td><td>Photo banner 3</td><td><code>index.html</code> &lt;img&gt; tag</td></tr>
+            <tr><td><code>school-girls.jpg</code></td><td>CTA section</td><td><code>index.html</code> &lt;img&gt; tag</td></tr>
+          </table>
+        </div>
+        <p>To replace: either name the new file the same as the old one, or update the reference in the corresponding file.</p>
+        <div class="tip warn">
+          <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+          <span><strong>SEforALL guideline:</strong> Prioritize optimistic photos showing progress and empowerment. Avoid overly staged or AI-generated images. Do NOT use images showing fossil fuels unless illustrating solutions being phased out.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. BRANDING -->
+    <div class="guide-section" data-section="branding">
+      <span class="section-anchor" id="branding"></span>
+      <div class="section-card">
+        <span class="section-num">Section 8</span>
+        <h2>Change Branding</h2>
+        <h3>Colors</h3>
+        <p>All colors are CSS custom properties in <code>styles.css</code> under <code>:root</code>. Change the hex value to update everywhere:</p>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">styles.css</span><button class="code-copy">Copy</button></div><pre><code><span class="hl-key">--yellow</span>: <span class="hl-str">#FFB800</span>;       <span class="hl-comment">/* Primary accent */</span>
+<span class="hl-key">--navy</span>: <span class="hl-str">#065A89</span>;         <span class="hl-comment">/* Secondary brand */</span>
+<span class="hl-key">--dark-navy</span>: <span class="hl-str">#022437</span>;    <span class="hl-comment">/* Text & backgrounds */</span>
+<span class="hl-key">--green</span>: <span class="hl-str">#9BBE1D</span>;        <span class="hl-comment">/* Positive data */</span>
+<span class="hl-key">--red</span>: <span class="hl-str">#DD2E2B</span>;          <span class="hl-comment">/* Negative data */</span></code></pre></div>
+        <div class="tip warn">
+          <svg class="tip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+          <span>Some colors are also hardcoded in <code>index.html</code> SVG elements (hero ring strokes and logo). Update those too.</span>
+        </div>
+        <h3>Fonts</h3>
+        <ol>
+          <li>Pick new fonts at <a href="https://fonts.google.com" style="color:var(--navy)">fonts.google.com</a></li>
+          <li>Replace the <code>&lt;link&gt;</code> tag in <code>index.html</code></li>
+          <li>Update <code>--font-sans</code> and <code>--font-display</code> in <code>styles.css</code></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- 9. ADD A FILTER -->
+    <div class="guide-section" data-section="new-filter">
+      <span class="section-anchor" id="new-filter"></span>
+      <div class="section-card">
+        <span class="section-num">Section 9</span>
+        <h2>Add a New Filter</h2>
+        <p>Example: adding an "Investment Range" filter.</p>
+        <h4>Step 1 — Add data attribute in app.js</h4>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">app.js — renderCountryCards()</span><button class="code-copy">Copy</button></div><pre><code><span class="hl-key">data-investment-range</span>=<span class="hl-str">"${c.totalInvestment > 500 ? 'high' : 'low'}"</span></code></pre></div>
+        <h4>Step 2 — Add filter buttons in index.html</h4>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">index.html</span><button class="code-copy">Copy</button></div><pre><code>&lt;<span class="hl-key">div</span> class=<span class="hl-str">"filter-group"</span>&gt;
+  &lt;<span class="hl-key">span</span> class=<span class="hl-str">"filter-group-label"</span>&gt;Investment&lt;/<span class="hl-key">span</span>&gt;
+  &lt;<span class="hl-key">div</span> class=<span class="hl-str">"filter-bar"</span>&gt;
+    &lt;<span class="hl-key">button</span> class=<span class="hl-str">"filter-btn active"</span>
+      data-filter=<span class="hl-str">"all"</span> data-type=<span class="hl-str">"investmentRange"</span>&gt;All&lt;/<span class="hl-key">button</span>&gt;
+    &lt;<span class="hl-key">button</span> class=<span class="hl-str">"filter-btn"</span>
+      data-filter=<span class="hl-str">"high"</span> data-type=<span class="hl-str">"investmentRange"</span>&gt;High&lt;/<span class="hl-key">button</span>&gt;
+  &lt;/<span class="hl-key">div</span>&gt;
+&lt;/<span class="hl-key">div</span>&gt;</code></pre></div>
+        <h4>Step 3 — Update filter state in app.js</h4>
+        <div class="code-block"><div class="code-block-header"><span class="code-block-lang">app.js</span><button class="code-copy">Copy</button></div><pre><code><span class="hl-comment">// Add to activeFilters object:</span>
+<span class="hl-key">investmentRange</span>: <span class="hl-str">'all'</span>
+
+<span class="hl-comment">// Add to applyFilters():</span>
+const matchesInvestment = activeFilters.investmentRange === <span class="hl-str">'all'</span> ||
+  card.dataset.investmentRange === activeFilters.investmentRange;</code></pre></div>
+      </div>
+    </div>
+
+    <!-- 10. DEPLOY -->
+    <div class="guide-section" data-section="deploy">
+      <span class="section-anchor" id="deploy"></span>
+      <div class="section-card">
+        <span class="section-num">Section 10</span>
+        <h2>Deploy Updates</h2>
+        <p>The site is on <strong>GitHub Pages</strong> from the <code>master</code> branch. Push to deploy.</p>
+        <div class="checklist" data-key="deploy">
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Make your changes to the files</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Run <code>git status</code> to review changes</span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Stage files: <code>git add data.js index.html styles.css app.js</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Commit: <code>git commit -m "your message"</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Push: <code>git push origin master</code></span></label>
+          <label class="check-item"><input type="checkbox"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span><span class="check-label">Wait 1-2 minutes, then hard refresh the live site</span></label>
+          <div class="check-progress"><div class="check-progress-bar"><div class="check-progress-fill" style="width:0%"></div></div><span class="check-pct">0 / 6</span></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Resource</th><th>URL</th></tr>
+            <tr><td>Live Site</td><td><code>https://ottakring1160.github.io/mission300-clean-cooking/</code></td></tr>
+            <tr><td>Repository</td><td><code>https://github.com/Ottakring1160/mission300-clean-cooking</code></td></tr>
+            <tr><td>Deploy Status</td><td><code>github.com/Ottakring1160/mission300-clean-cooking/actions</code></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. DESIGN SYSTEM -->
+    <div class="guide-section" data-section="design-system">
+      <span class="section-anchor" id="design-system"></span>
+      <div class="section-card">
+        <span class="section-num">Section 11</span>
+        <h2>Design System</h2>
+        <p>Click any swatch to copy its hex code.</p>
+        <h3>Brand Colors</h3>
+        <div class="swatch-grid" id="swatchGrid">
+          <div class="swatch" data-hex="#FFB800"><div class="swatch-color" style="background:#FFB800"></div><div class="swatch-info"><div class="swatch-name">Yellow (Primary)</div><div class="swatch-hex">#FFB800</div></div></div>
+          <div class="swatch" data-hex="#065A89"><div class="swatch-color" style="background:#065A89"></div><div class="swatch-info"><div class="swatch-name">Navy</div><div class="swatch-hex">#065A89</div></div></div>
+          <div class="swatch" data-hex="#022437"><div class="swatch-color" style="background:#022437"></div><div class="swatch-info"><div class="swatch-name">Dark Navy</div><div class="swatch-hex">#022437</div></div></div>
+          <div class="swatch" data-hex="#9BBE1D"><div class="swatch-color" style="background:#9BBE1D"></div><div class="swatch-info"><div class="swatch-name">Green (Positive)</div><div class="swatch-hex">#9BBE1D</div></div></div>
+          <div class="swatch" data-hex="#DD2E2B"><div class="swatch-color" style="background:#DD2E2B"></div><div class="swatch-info"><div class="swatch-name">Red (Negative)</div><div class="swatch-hex">#DD2E2B</div></div></div>
+          <div class="swatch" data-hex="#5A3A8E"><div class="swatch-color" style="background:#5A3A8E"></div><div class="swatch-info"><div class="swatch-name">Purple</div><div class="swatch-hex">#5A3A8E</div></div></div>
+          <div class="swatch" data-hex="#F0F7FA"><div class="swatch-color" style="background:#F0F7FA;border-bottom:1px solid #E4E7EB"></div><div class="swatch-info"><div class="swatch-name">Light Blue (BG)</div><div class="swatch-hex">#F0F7FA</div></div></div>
+          <div class="swatch" data-hex="#E0A200"><div class="swatch-color" style="background:#E0A200"></div><div class="swatch-info"><div class="swatch-name">Yellow Dark</div><div class="swatch-hex">#E0A200</div></div></div>
+        </div>
+        <h3>Typography</h3>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Usage</th><th>Font</th><th>Weight</th><th>Style</th></tr>
+            <tr><td>Section titles</td><td>Barlow Condensed</td><td>700</td><td>Uppercase</td></tr>
+            <tr><td>Large numbers</td><td>Barlow Condensed</td><td>700</td><td>Normal</td></tr>
+            <tr><td>Body text</td><td>Mulish</td><td>400</td><td>Normal</td></tr>
+            <tr><td>Labels</td><td>Mulish</td><td>600-700</td><td>Uppercase, spaced</td></tr>
+            <tr><td>Buttons</td><td>Mulish</td><td>700</td><td>Normal</td></tr>
+          </table>
+        </div>
+        <h3>Responsive Breakpoints</h3>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Breakpoint</th><th>Target</th><th>Changes</th></tr>
+            <tr><td>1024px</td><td>Tablets</td><td>2-column grids</td></tr>
+            <tr><td>768px</td><td>Mobile</td><td>Single column, hamburger nav</td></tr>
+            <tr><td>480px</td><td>Small mobile</td><td>Tighter spacing</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12. TROUBLESHOOTING -->
+    <div class="guide-section" data-section="troubleshooting">
+      <span class="section-anchor" id="troubleshooting"></span>
+      <div class="section-card">
+        <span class="section-num">Section 12</span>
+        <h2>Troubleshooting</h2>
+        <p>Click any issue to expand the solution.</p>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-trigger">Flags not showing<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Hard refresh with <strong>Ctrl+Shift+R</strong> (Cmd+Shift+R on Mac). Verify the <code>iso</code> code in data.js is valid by visiting <code>https://flagcdn.com/w40/{iso}.png</code>.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">New country not appearing<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Check for: missing commas between objects, correct <code>region</code>/<code>language</code>/<code>cohort</code> values matching filter buttons exactly. Open browser DevTools (F12) &gt; Console for JS errors.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">Filter counts don't match<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Filter counts are <strong>hardcoded</strong> in <code>index.html</code>, not calculated. After adding/removing countries, update the <code>&lt;span class="filter-count"&gt;</code> values manually.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">Charts look wrong after data change<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Bar widths are relative to the max value. Adding a country with much higher investment will make other bars smaller (expected). The access chart filters out countries with <code>target2030: null</code>.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">Photos not loading on GitHub Pages<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Filenames are case-sensitive on Linux. Make sure names match exactly. Run <code>git add photos/ && git commit -m "add photos" && git push</code>. GitHub Pages has a ~1GB soft limit; compress large images.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">Site not updating after push<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>GitHub Pages takes 1-2 minutes to rebuild. Check deployment status at the repo's Actions tab. Hard refresh your browser to bypass cache.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-trigger">How to test locally<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <div class="accordion-body"><p>Install Node.js, then run:<br><code>npm install -g http-server</code><br><code>cd C:\Users\jeehy\Documents\M300</code><br><code>http-server -p 3000</code><br>Open <code>http://localhost:3000</code>.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main-content -->
+</div><!-- /main -->
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function(){
+  /* ===== PROGRESS BAR ===== */
+  const progressBar = document.getElementById('progressBar');
+  function updateProgress() {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress);
+
+  /* ===== SIDEBAR ACTIVE LINK ===== */
+  const sections = document.querySelectorAll('.guide-section');
+  const navLinks = document.querySelectorAll('.sidebar-nav a');
+  function updateActive() {
+    let current = '';
+    sections.forEach(s => {
+      const anchor = s.querySelector('.section-anchor');
+      if (anchor && anchor.getBoundingClientRect().top < 120) current = anchor.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  /* ===== SEARCH ===== */
+  const searchInput = document.getElementById('sidebarSearch');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.toLowerCase();
+    sections.forEach(s => {
+      const text = s.textContent.toLowerCase();
+      s.classList.toggle('hidden', q !== '' && !text.includes(q));
+    });
+    navLinks.forEach(a => {
+      const href = a.getAttribute('href').slice(1);
+      const section = document.querySelector(`[data-section="${href}"]`) || document.querySelector(`#${href}`)?.closest('.guide-section');
+      if (section) a.classList.toggle('hidden', section.classList.contains('hidden'));
+    });
+  });
+
+  /* ===== TABS ===== */
+  document.querySelectorAll('.tabs').forEach(tabs => {
+    const btns = tabs.querySelectorAll('.tab-btn');
+    const panels = tabs.querySelectorAll('.tab-panel');
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      tabs.querySelector(`.tab-panel[data-tab="${btn.dataset.tab}"]`).classList.add('active');
+    }));
+  });
+
+  /* ===== ACCORDION ===== */
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const body = trigger.nextElementSibling;
+      const isOpen = trigger.classList.contains('open');
+      trigger.classList.toggle('open', !isOpen);
+      body.classList.toggle('open', !isOpen);
+    });
+  });
+
+  /* ===== COPY CODE ===== */
+  document.querySelectorAll('.code-copy').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const code = btn.closest('.code-block').querySelector('code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+
+  /* ===== CHECKLISTS (localStorage) ===== */
+  document.querySelectorAll('.checklist').forEach(list => {
+    const key = 'guide-check-' + list.dataset.key;
+    const items = list.querySelectorAll('.check-item');
+    const saved = JSON.parse(localStorage.getItem(key) || '[]');
+
+    function updateProgress() {
+      const total = items.length;
+      const checked = list.querySelectorAll('.check-item.checked').length;
+      const bar = list.querySelector('.check-progress-fill');
+      const label = list.querySelector('.check-pct');
+      if (bar) bar.style.width = (checked / total * 100) + '%';
+      if (label) label.textContent = checked + ' / ' + total;
+    }
+
+    items.forEach((item, i) => {
+      if (saved.includes(i)) item.classList.add('checked');
+      item.addEventListener('click', () => {
+        item.classList.toggle('checked');
+        const current = [];
+        items.forEach((it, idx) => { if (it.classList.contains('checked')) current.push(idx); });
+        localStorage.setItem(key, JSON.stringify(current));
+        updateProgress();
+      });
+    });
+    updateProgress();
+  });
+
+  /* ===== COLOR SWATCHES ===== */
+  document.querySelectorAll('.swatch').forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      const hex = swatch.dataset.hex;
+      navigator.clipboard.writeText(hex).then(() => {
+        const hexEl = swatch.querySelector('.swatch-hex');
+        const orig = hexEl.textContent;
+        hexEl.textContent = 'Copied!';
+        swatch.classList.add('copied');
+        setTimeout(() => { hexEl.textContent = orig; swatch.classList.remove('copied'); }, 1500);
+      });
+    });
+  });
+
+  /* ===== BACK TO TOP ===== */
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ===== MOBILE SIDEBAR ===== */
+  const sidebar = document.getElementById('sidebar');
+  const mobileToggle = document.getElementById('mobileToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  mobileToggle.addEventListener('click', () => { sidebar.classList.add('open'); mobileOverlay.classList.add('open'); });
+  mobileOverlay.addEventListener('click', () => { sidebar.classList.remove('open'); mobileOverlay.classList.remove('open'); });
+  navLinks.forEach(a => a.addEventListener('click', () => { sidebar.classList.remove('open'); mobileOverlay.classList.remove('open'); }));
+})();
+</script>
+</body>
+</html>
