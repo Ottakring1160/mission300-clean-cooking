@@ -1610,6 +1610,457 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--gray-500);
 }
 
+/* ========== COMPACT MODAL ========== */
+.modal.compact-modal {
+  max-width: 900px;
+}
+
+.compact-header {
+  background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 100%);
+  padding: 32px 40px 24px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.compact-header h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.compact-header-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.compact-header-sub {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.compact-header .modal-meta {
+  margin-top: 4px;
+}
+
+.compact-header .modal-tag {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.compact-tag-source {
+  background: var(--yellow-bg) !important;
+  color: var(--yellow) !important;
+  border-color: rgba(255,184,0,0.3) !important;
+}
+
+/* Compact Sections */
+.compact-section {
+  padding: 24px 40px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.compact-section:last-of-type {
+  border-bottom: none;
+}
+
+.compact-section-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--yellow);
+  display: inline-block;
+}
+
+.compact-sub-text {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Compact Stats — uses existing modal-stats grid but 3 cols */
+.compact-section .modal-stats {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Targets & Timeline */
+.compact-current-bar {
+  margin-bottom: 16px;
+}
+
+.compact-current-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--yellow-dark);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.compact-current-track {
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.compact-current-fill {
+  height: 100%;
+  background: var(--yellow);
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.compact-target {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px 80px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-50);
+}
+
+.compact-target:last-child {
+  border-bottom: none;
+}
+
+.compact-target-year {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  text-transform: uppercase;
+}
+
+.compact-target-bar-wrap {
+  height: 10px;
+  background: var(--gray-100);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.compact-target-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--green-dark));
+  border-radius: 5px;
+  transition: width 1s ease;
+}
+
+.compact-target-pct {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--green-dark);
+  text-align: right;
+}
+
+.compact-target-gap {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-align: right;
+}
+
+/* Biomass Dependency */
+.compact-biomass-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 50px;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.compact-biomass-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+
+.compact-biomass-bar-wrap {
+  height: 12px;
+  background: var(--gray-100);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.compact-biomass-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--red), #E85D5A);
+  border-radius: 6px;
+  transition: width 1s ease;
+}
+
+.compact-biomass-pct {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--red);
+  text-align: right;
+}
+
+/* Investment */
+.compact-invest-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.compact-invest-total {
+  background: var(--light-blue);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  text-align: center;
+}
+
+.compact-invest-total-label {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-400);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.compact-invest-total-value {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+}
+
+.compact-invest-bar {
+  display: flex;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.compact-invest-pub {
+  background: var(--navy);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 1s ease;
+}
+
+.compact-invest-pub span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.compact-invest-priv {
+  background: var(--green);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 1s ease;
+}
+
+.compact-invest-priv span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.compact-invest-amounts {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+/* Deployment */
+.compact-deploy-stat {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.compact-deploy-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.compact-deploy-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-top: 4px;
+}
+
+.compact-deploy-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.compact-deploy-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  background: var(--light-blue);
+  border-radius: var(--radius-pill);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-100);
+}
+
+.compact-deploy-tag strong {
+  color: var(--navy);
+}
+
+/* Technology Pathways */
+.compact-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.compact-tech-item {
+  background: var(--light-blue);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  border-left: 3px solid var(--green);
+  transition: all var(--transition);
+}
+
+.compact-tech-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.compact-tech-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 4px;
+}
+
+.compact-tech-desc {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* Strategy & Policy */
+.compact-strategy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.compact-strategy-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-50);
+}
+
+.compact-strategy-row:last-child {
+  border-bottom: none;
+}
+
+.compact-strategy-item {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark-navy);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.compact-strategy-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: var(--navy-bg);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Barriers */
+.compact-barriers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.compact-barrier-item {
+  background: var(--red-bg);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  border-left: 3px solid var(--red);
+}
+
+.compact-barrier-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 4px;
+}
+
+.compact-barrier-desc {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* Source Footer */
+.compact-source {
+  padding: 16px 40px;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  text-align: center;
+  border-top: 1px solid var(--gray-100);
+  background: var(--off-white);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+/* Compact modal needs no inner padding since sections handle it */
+.compact-modal .modal-content {
+  padding: 0;
+}
+
+/* Compact modal close button needs higher contrast on dark header */
+.compact-modal .modal-close {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.7);
+}
+
+.compact-modal .modal-close:hover {
+  background: rgba(255,255,255,0.25);
+  color: var(--white);
+}
+
 /* ========== SCROLL ANIMATIONS ========== */
 [data-aos] {
   opacity: 0;
@@ -1689,6 +2140,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .bar-label { font-size: 0.7rem; }
   .modal-content { padding: 24px; }
   .modal-stats { grid-template-columns: 1fr; }
+  .compact-section .modal-stats { grid-template-columns: repeat(2, 1fr); }
+  .compact-section { padding: 20px 20px; }
+  .compact-header { padding: 24px 20px 20px; }
+  .compact-target { grid-template-columns: 50px 1fr 44px 64px; gap: 8px; }
+  .compact-biomass-row { grid-template-columns: 100px 1fr 44px; }
+  .compact-invest-header { grid-template-columns: 1fr; }
+  .compact-tech-grid { grid-template-columns: 1fr; }
+  .compact-barriers-grid { grid-template-columns: 1fr; }
+  .compact-strategy-row { flex-direction: column; gap: 6px; }
+  .compact-source { padding: 12px 20px; }
 
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 

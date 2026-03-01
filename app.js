@@ -289,6 +289,8 @@ function initModal() {
   const closeBtn = document.getElementById('modalClose');
   const content = document.getElementById('modalContent');
 
+  const modal = document.getElementById('countryModal');
+
   document.getElementById('countryGrid').addEventListener('click', (e) => {
     const card = e.target.closest('.country-card');
     if (!card) return;
@@ -296,6 +298,7 @@ function initModal() {
     const data = countries.find(c => c.country === card.dataset.country);
     if (!data) return;
 
+    modal.classList.toggle('compact-modal', !!data.compact);
     renderModal(data, content);
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -316,6 +319,10 @@ function initModal() {
 }
 
 function renderModal(data, container) {
+  if (data.compact) {
+    renderCompactModal(data, container);
+    return;
+  }
   const val = (v, suffix) => v != null ? `${v}${suffix || ''}` : 'N/A';
   const money = (v) => v != null ? `$${v}M` : 'N/A';
 
@@ -381,6 +388,181 @@ function renderModal(data, container) {
     <div class="modal-section">
       <h3>Key Barriers</h3>
       <p>${data.barriers}</p>
+    </div>
+  `;
+}
+
+/* ========== Compact (Rich) Modal ========== */
+function renderCompactModal(data, container) {
+  const c = data.compact;
+  const val = (v, suffix) => v != null ? `${v}${suffix || ''}` : 'N/A';
+  const money = (v) => v != null ? `$${v}M` : 'N/A';
+
+  const targetsHTML = c.targets.map(t =>
+    `<div class="compact-target">
+      <div class="compact-target-year">${t.year}</div>
+      <div class="compact-target-bar-wrap">
+        <div class="compact-target-bar" style="width:${t.access}%"></div>
+      </div>
+      <div class="compact-target-pct">${t.access}%</div>
+      <div class="compact-target-gap">${t.gap}pp gap</div>
+    </div>`
+  ).join('');
+
+  const biomassHTML = c.biomassByRegion.map(b =>
+    `<div class="compact-biomass-row">
+      <span class="compact-biomass-label">${b.region}</span>
+      <div class="compact-biomass-bar-wrap"><div class="compact-biomass-bar" style="width:${b.pct}%"></div></div>
+      <span class="compact-biomass-pct">${b.pct}%</span>
+    </div>`
+  ).join('');
+
+  const techHTML = c.technologies.map(t =>
+    `<div class="compact-tech-item">
+      <div class="compact-tech-name">${t.name}</div>
+      <div class="compact-tech-desc">${t.desc}</div>
+    </div>`
+  ).join('');
+
+  const strategyHTML = c.strategy.map(s =>
+    `<div class="compact-strategy-row">
+      <span class="compact-strategy-item">${s.item}</span>
+      <span class="compact-strategy-status">${s.status}</span>
+    </div>`
+  ).join('');
+
+  const barriersHTML = c.barriers.map(b =>
+    `<div class="compact-barrier-item">
+      <div class="compact-barrier-title">${b.title}</div>
+      <div class="compact-barrier-desc">${b.desc}</div>
+    </div>`
+  ).join('');
+
+  const deployInst = c.deployment.institutions.map(i =>
+    `<span class="compact-deploy-tag">${i.type}: <strong>${i.count.toLocaleString()}</strong></span>`
+  ).join('');
+
+  const pubPct = Math.round(data.publicFinance / data.totalInvestment * 100);
+  const privPct = 100 - pubPct;
+
+  container.innerHTML = `
+    <div class="compact-header">
+      <div class="compact-header-top">
+        <img class="flag-img-lg" src="${flagUrl(data.iso)}" alt="${data.country} flag">
+        <div>
+          <h2>${data.country}</h2>
+          <div class="compact-header-sub">${c.population} &middot; ${c.income}</div>
+        </div>
+      </div>
+      <div class="modal-meta">
+        <span class="modal-tag">${data.cohort}</span>
+        <span class="modal-tag">${data.region}</span>
+        <span class="modal-tag">${data.language}</span>
+        <span class="modal-tag compact-tag-source">${c.sourceType}</span>
+      </div>
+    </div>
+
+    <!-- Key Stats -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Key Clean Cooking Statistics</h3>
+      <div class="modal-stats">
+        <div class="modal-stat">
+          <div class="modal-stat-label">Current Access</div>
+          <div class="modal-stat-value" style="color:var(--yellow-dark)">${val(data.currentAccess, '%')}</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">2030 Target</div>
+          <div class="modal-stat-value" style="color:var(--green)">${val(data.target2030, '%')}</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Gap to Close</div>
+          <div class="modal-stat-value" style="color:var(--red)">${val(data.gap, 'pp')}</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Current Growth</div>
+          <div class="modal-stat-value">${val(data.currentGrowth, '%/yr')}</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Target Growth</div>
+          <div class="modal-stat-value" style="color:var(--green)">${val(data.targetGrowth, '%/yr')}</div>
+        </div>
+        <div class="modal-stat">
+          <div class="modal-stat-label">Acceleration</div>
+          <div class="modal-stat-value">${val(data.accelFactor, 'x')}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Targets & Timeline -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Targets & Timeline</h3>
+      <div class="compact-current-bar">
+        <span class="compact-current-label">Current: ${data.currentAccess}%</span>
+        <div class="compact-current-track"><div class="compact-current-fill" style="width:${data.currentAccess}%"></div></div>
+      </div>
+      ${targetsHTML}
+    </div>
+
+    <!-- Biomass Dependency -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Biomass Dependency by Region</h3>
+      <p class="compact-sub-text">Primary cooking fuels: ${c.primaryFuels}. ${c.gasUsage}</p>
+      ${biomassHTML}
+    </div>
+
+    <!-- Investment -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Clean Cooking Investment</h3>
+      <div class="compact-invest-header">
+        <div class="compact-invest-total">
+          <span class="compact-invest-total-label">Compact Investment</span>
+          <span class="compact-invest-total-value">${money(data.totalInvestment)}</span>
+        </div>
+        <div class="compact-invest-total">
+          <span class="compact-invest-total-label">Full NCCS Cost (2024-2034)</span>
+          <span class="compact-invest-total-value">$${(c.nccsCost / 1000).toFixed(1)}B</span>
+        </div>
+      </div>
+      <div class="compact-invest-bar">
+        <div class="compact-invest-pub" style="width:${pubPct}%"><span>Public ${pubPct}%</span></div>
+        <div class="compact-invest-priv" style="width:${privPct}%"><span>Private ${privPct}%</span></div>
+      </div>
+      <div class="compact-invest-amounts">
+        <span>Public: ${money(data.publicFinance)}</span>
+        <span>Private: ${money(data.privateFinance)}</span>
+      </div>
+    </div>
+
+    <!-- Deployment -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Clean Cooking Deployment</h3>
+      <div class="compact-deploy-stat">
+        <span class="compact-deploy-num">${c.deployment.households.toLocaleString()}</span>
+        <span class="compact-deploy-label">Households with clean cooking connections</span>
+      </div>
+      <div class="compact-deploy-tags">${deployInst}</div>
+    </div>
+
+    <!-- Technology Pathways -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Technology Pathways</h3>
+      <div class="compact-tech-grid">${techHTML}</div>
+    </div>
+
+    <!-- Strategy & Policy -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Strategy & Policy Milestones</h3>
+      <div class="compact-strategy-list">${strategyHTML}</div>
+    </div>
+
+    <!-- Barriers -->
+    <div class="compact-section">
+      <h3 class="compact-section-title">Key Barriers</h3>
+      <div class="compact-barriers-grid">${barriersHTML}</div>
+    </div>
+
+    <div class="compact-source">
+      Source: ${c.sourceName} &middot; ${c.sourceType}
     </div>
   `;
 }

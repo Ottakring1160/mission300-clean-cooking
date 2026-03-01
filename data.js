@@ -73,12 +73,70 @@ const countries = [
   },
   {
     country: "Tanzania", iso: "tz", cohort: "Cohort 1", language: "English", region: "East Africa",
-    currentAccess: 6.9, target2030: 80, targetYear: 2034, gap: 73.1,
+    currentAccess: 6.9, target2030: 75, targetYear: 2030, gap: 68.1,
     biomassDep: 89, currentGrowth: 11.9, targetGrowth: 21, accelFactor: 1.76,
     totalInvestment: 800, publicFinance: 400, privateFinance: 400, privateShare: 50,
-    strategyStatus: "Strategy in place (2024-2034); standards by June 2027; tax/duty reductions by June 2026",
-    techFocus: "Multi-technology: LPG/natural gas urban; improved cookstoves rural; e-cooking emerging",
-    barriers: "Low market adoption; fragmented market; financing barriers; utility financial sustainability; regulatory gaps; demographic pressures"
+    strategyStatus: "National Clean Cooking Strategy (NCCS) 2024-2034 launched May 2024; Zanzibar strategy to be developed by 2027",
+    techFocus: "Multi-technology: LPG/natural gas urban; improved cookstoves rural; e-cooking emerging; bioethanol; biogas; briquettes",
+    barriers: "Nascent and fragmented clean cooking market; financing barriers for small projects; limited private sector participation; regulatory and policy gaps; affordability constraints; demographic pressures (3% population growth)",
+    compact: {
+      population: "61.7 million (including 1.9 million in Zanzibar)",
+      income: "Lower-middle-income (GNI US$1,210 per capita, 2023)",
+      gdpGrowth: "5.2% in 2023, expected 5.6% in 2024",
+      targets: [
+        { year: 2030, access: 75, gap: 68.1 },
+        { year: 2034, access: 80, gap: 73.1 }
+      ],
+      nccsCost: 1700,
+      biomassByRegion: [
+        { region: "Mainland Tanzania", pct: 89 },
+        { region: "Zanzibar", pct: 84 }
+      ],
+      primaryFuels: "Firewood and charcoal",
+      gasUsage: "Only 3.2% mainland; 7.7% Zanzibar (mostly urban)",
+      deployment: {
+        households: 609983,
+        institutions: [
+          { type: "Prison premises", count: 211 },
+          { type: "National Service Camps", count: 22 },
+          { type: "Schools", count: 53 }
+        ]
+      },
+      technologies: [
+        { name: "LPG", desc: "Government-supported distribution expansion, focus on urban areas" },
+        { name: "Natural Gas", desc: "Leveraging domestic natural gas reserves for cooking fuel" },
+        { name: "Improved Cookstoves (ICS)", desc: "Primary solution for rural areas, reducing biomass consumption" },
+        { name: "Electric Cooking (e-cooking)", desc: "Emerging technology leveraging grid expansion" },
+        { name: "Bioethanol", desc: "Clean liquid fuel alternative to charcoal and firewood" },
+        { name: "Biogas", desc: "Household-scale digesters using agricultural and animal waste" },
+        { name: "Briquettes", desc: "Compressed biomass fuel as cleaner charcoal alternative" }
+      ],
+      strategy: [
+        { item: "National Clean Cooking Strategy (NCCS) 2024-2034", status: "Launched May 2024" },
+        { item: "Clean cooking standards", status: "Due by June 2027" },
+        { item: "Tax and duty reductions on clean cooking", status: "Due by June 2026" },
+        { item: "Zanzibar Clean Cooking Strategy", status: "To be developed by 2027" },
+        { item: "National Energy Policy 2015 review", status: "Due by June 2027" }
+      ],
+      barriers: [
+        { title: "Market Fragmentation", desc: "Clean cooking market is nascent and fragmented with low adoption rates" },
+        { title: "Financing Gaps", desc: "Insufficient equity/collateral for loans; local banks lack understanding of clean cooking project financing" },
+        { title: "Limited Private Sector", desc: "Bankability issues, unpredictable strategic investment areas, lengthy negotiations, risk allocation challenges" },
+        { title: "Affordability", desc: "Households cannot afford upfront costs of clean cooking technologies; non-cost-reflective pricing" },
+        { title: "Regulatory Gaps", desc: "No competitive procurement framework; SPP tariffs not cost-reflective; no Zanzibar Energy Act" },
+        { title: "Data Limitations", desc: "Government tracking lags by 4 years (last published figures from 2020); limited MTF surveys" },
+        { title: "Demographic Pressure", desc: "Population growing at 3% per year, requiring accelerated deployment to maintain progress" }
+      ],
+      investmentBreakdown: {
+        cleanCookingTotal: 800,
+        publicFinance: 400,
+        privateFinance: 400,
+        nccsTotalCost: 1700,
+        nccsAnnualCost: 170
+      },
+      sourceName: "M300-AES-Compact-Tanzania",
+      sourceType: "National Energy Compact — Africa Energy Summit"
+    }
   },
   {
     country: "Zambia", iso: "zm", cohort: "Cohort 1", language: "English", region: "Southern Africa",
