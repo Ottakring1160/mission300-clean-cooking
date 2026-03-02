@@ -3,396 +3,396 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mission 300 — Clean Cooking for Africa | SEforALL</title>
-  <meta name="description" content="Accelerating clean cooking access for 300 million people across Africa by 2030. Explore data, investment, and progress across 30 nations.">
+  <title>Mission 300 — National Energy Compact Platform | SEforALL</title>
+  <meta name="description" content="Mission 300 National Energy Compact Platform — tracking progress across 30 African nations toward universal energy access by 2030.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles-pages.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" width="36" height="36">
-          <circle cx="20" cy="20" r="19" fill="none" stroke="#FFB800" stroke-width="2.5"/>
-          <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#FFB800" font-family="Barlow Condensed, sans-serif">M</text>
-        </svg>
-        <div>
-          <span class="logo-text">Mission <strong>300</strong></span>
-          <span class="logo-org">Sustainable Energy for All</span>
-        </div>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#map">Countries</a></li>
-        <li><a href="#data">Data</a></li>
-        <li><a href="#investment">Investment</a></li>
-        <li><a href="#barriers">Challenges</a></li>
-        <li><a href="#technology">Technology</a></li>
-        <li><a href="guide.html" style="color:var(--yellow)">Guide</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <div id="site-header"></div>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-photo"></div>
-      <div class="hero-gradient"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">Africa Energy Summit Initiative</div>
-      <h1 class="hero-title">
-        <span class="hero-title-line">Clean Cooking</span>
-        <span class="hero-title-line">for <em>300 Million</em></span>
-      </h1>
-      <p class="hero-subtitle">Connecting Africa to clean, safe, and sustainable cooking solutions by 2030 through coordinated action across 30 nations.</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-ring">
-            <svg viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#FFB800" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="0"/>
-            </svg>
-            <span class="hero-stat-number" data-count="30">0</span>
-          </div>
-          <span class="hero-stat-label">Countries</span>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-ring">
-            <svg viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#9BBE1D" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="75"/>
-            </svg>
-            <span class="hero-stat-number">$<span data-count="6.6">0</span>B</span>
-          </div>
-          <span class="hero-stat-label">Total Investment</span>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-ring">
-            <svg viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
-              <circle cx="40" cy="40" r="36" fill="none" stroke="#065A89" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="93"/>
-            </svg>
-            <span class="hero-stat-number"><span data-count="59">0</span>%</span>
-          </div>
-          <span class="hero-stat-label">Avg. 2030 Target</span>
-        </div>
+  <main id="page-content">
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="hero-bg">
+        <div class="hero-photo"></div>
+        <div class="hero-gradient"></div>
       </div>
-      <div class="hero-actions">
-        <a href="#overview" class="btn btn-primary">Explore the Data</a>
-        <a href="#map" class="btn btn-outline">View Countries</a>
-      </div>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll to explore</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- Overview Section -->
-  <section id="overview" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">The Challenge</span>
-        <h2 class="section-title">Why Clean Cooking Matters</h2>
-        <p class="section-intro">Across 30 African nations, nearly <strong>79% of households</strong> depend on biomass fuels for cooking — causing devastating health, environmental, and economic impacts. Mission 300 aims to transform this through coordinated investment, policy reform, and technology deployment.</p>
-      </div>
-
-      <div class="overview-grid">
-        <div class="overview-card" data-aos>
-          <div class="overview-card-number">22%</div>
-          <h3>Average Access</h3>
-          <p>Current clean cooking access across participating countries, with some as low as 0.1%</p>
-          <div class="overview-card-bar">
-            <div class="overview-card-bar-fill" data-width="22"></div>
-          </div>
-        </div>
-        <div class="overview-card" data-aos>
-          <div class="overview-card-number">79%</div>
-          <h3>Biomass Dependency</h3>
-          <p>Average reliance on traditional fuels — firewood, charcoal, and agricultural waste</p>
-          <div class="overview-card-bar danger">
-            <div class="overview-card-bar-fill" data-width="79"></div>
-          </div>
-        </div>
-        <div class="overview-card" data-aos>
-          <div class="overview-card-number">2030</div>
-          <h3>Target Deadline</h3>
-          <p>Most countries targeting 40–100% clean cooking access within 5 years</p>
-          <div class="overview-card-bar warning">
-            <div class="overview-card-bar-fill" data-width="60"></div>
-          </div>
-        </div>
-        <div class="overview-card" data-aos>
-          <div class="overview-card-number">$6.6B</div>
-          <h3>Investment Needed</h3>
-          <p>Combined investment required — $4.3B public, $2.2B private financing</p>
-          <div class="overview-card-bar info">
-            <div class="overview-card-bar-fill" data-width="45"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Banner — The Challenge -->
-  <div class="photo-banner">
-    <img src="photos/challenge-smoke.jpg" alt="Traditional cooking with biomass fuels causing household air pollution" loading="lazy">
-    <div class="photo-banner-overlay">
-      <div class="photo-banner-text">
-        <h2>The Reality on the Ground</h2>
-        <p>Nearly 4 million premature deaths occur annually from household air pollution caused by traditional cooking methods across sub-Saharan Africa.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Country Profiles Section -->
-  <section id="map" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Country Profiles</span>
-        <h2 class="section-title">30 Nations, One Mission</h2>
-        <p class="section-intro">Filter and explore each country's clean cooking compact — from current access rates to 2030 targets and investment commitments.</p>
-      </div>
-
-      <div class="filters-section">
-        <div class="filter-group">
-          <span class="filter-group-label">Cohort</span>
-          <div class="filter-bar" id="cohortFilters">
-            <button class="filter-btn active" data-filter="all" data-type="cohort">All <span class="filter-count">30</span></button>
-            <button class="filter-btn" data-filter="Cohort 1" data-type="cohort">Cohort 1 <span class="filter-count">12</span></button>
-            <button class="filter-btn" data-filter="Cohort 2" data-type="cohort">Cohort 2 <span class="filter-count">18</span></button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <span class="filter-group-label">Region</span>
-          <div class="filter-bar" id="regionFilters">
-            <button class="filter-btn active" data-filter="all" data-type="region">All Regions</button>
-            <button class="filter-btn" data-filter="West Africa" data-type="region">West Africa <span class="filter-count">11</span></button>
-            <button class="filter-btn" data-filter="East Africa" data-type="region">East Africa <span class="filter-count">8</span></button>
-            <button class="filter-btn" data-filter="Central Africa" data-type="region">Central Africa <span class="filter-count">6</span></button>
-            <button class="filter-btn" data-filter="Southern Africa" data-type="region">Southern Africa <span class="filter-count">5</span></button>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <span class="filter-group-label">Language</span>
-          <div class="filter-bar" id="languageFilters">
-            <button class="filter-btn active" data-filter="all" data-type="language">All</button>
-            <button class="filter-btn" data-filter="French" data-type="language">French <span class="filter-count">15</span></button>
-            <button class="filter-btn" data-filter="English" data-type="language">English <span class="filter-count">15</span></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="search-bar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="countrySearch" placeholder="Search countries...">
-      </div>
-
-      <div class="active-filters-summary" id="filterSummary"></div>
-
-      <div class="country-grid" id="countryGrid"></div>
-    </div>
-  </section>
-
-  <!-- Data Visualization Section -->
-  <section id="data" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Gap Analysis</span>
-        <h2 class="section-title">The Scale of Transformation</h2>
-        <p class="section-intro">Current access vs. 2030 targets — visualizing the distance each country must travel.</p>
-      </div>
-
-      <div class="chart-container">
-        <div class="chart-header">
-          <h3>Clean Cooking Access: Current vs. 2030 Target</h3>
-          <div class="chart-legend">
-            <span class="legend-item"><span class="legend-dot current"></span> Current Access</span>
-            <span class="legend-item"><span class="legend-dot target"></span> 2030 Target</span>
-            <span class="legend-item"><span class="legend-dot gap"></span> Gap</span>
-          </div>
-        </div>
-        <div class="bar-chart" id="accessChart"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Photo Banner — Clean Cooking Solution -->
-  <div class="photo-banner">
-    <img src="photos/solution-cooking.jpg" alt="Woman using clean cooking solution in Togo" loading="lazy">
-    <div class="photo-banner-overlay">
-      <div class="photo-banner-text">
-        <h2>Clean Solutions, Better Lives</h2>
-        <p>Modern clean cooking technologies are transforming households — improving health, saving time, and reducing environmental damage.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Investment Section -->
-  <section id="investment" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Financing</span>
-        <h2 class="section-title">Investment Landscape</h2>
-        <p class="section-intro">$6.6 billion in total investment committed across public and private financing channels.</p>
-      </div>
-
-      <div class="investment-overview">
-        <div class="invest-card invest-total">
-          <div class="invest-card-inner">
-            <span class="invest-label">Total Investment</span>
-            <span class="invest-value">$6.64B</span>
-            <span class="invest-sub">Across 30 countries</span>
-          </div>
-        </div>
-        <div class="invest-card invest-public">
-          <div class="invest-card-inner">
-            <span class="invest-label">Public Finance</span>
-            <span class="invest-value">$4.33B</span>
-            <div class="invest-pct-bar"><div class="invest-pct-fill" data-width="65"></div></div>
-            <span class="invest-pct">65% of total</span>
-          </div>
-        </div>
-        <div class="invest-card invest-private">
-          <div class="invest-card-inner">
-            <span class="invest-label">Private Finance</span>
-            <span class="invest-value">$2.18B</span>
-            <div class="invest-pct-bar"><div class="invest-pct-fill" data-width="35"></div></div>
-            <span class="invest-pct">35% of total</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chart-container">
-        <div class="chart-header">
-          <h3>Investment by Country (USD Millions)</h3>
-          <div class="chart-legend">
-            <span class="legend-item"><span class="legend-dot public"></span> Public</span>
-            <span class="legend-item"><span class="legend-dot private"></span> Private</span>
-          </div>
-        </div>
-        <div class="investment-chart" id="investmentChart"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Barriers Section -->
-  <section id="barriers" class="section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Obstacles</span>
-        <h2 class="section-title">Key Challenges</h2>
-        <p class="section-intro">Common barriers across the 30 countries that must be overcome to achieve clean cooking targets.</p>
-      </div>
-
-      <div class="barriers-grid" id="barriersGrid"></div>
-    </div>
-  </section>
-
-  <!-- Photo Banner — Technology & Empowerment -->
-  <div class="photo-banner">
-    <img src="photos/woman-engineer.jpg" alt="African woman engineer working on energy systems" loading="lazy">
-    <div class="photo-banner-overlay">
-      <div class="photo-banner-text">
-        <h2>Powering Progress Through Innovation</h2>
-        <p>Local expertise and technology are driving the clean cooking transition across the continent.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Technology Section -->
-  <section id="technology" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Solutions</span>
-        <h2 class="section-title">Technology Pathways</h2>
-        <p class="section-intro">Countries are pursuing diverse technology strategies tailored to local contexts and resources.</p>
-      </div>
-
-      <div class="tech-grid" id="techGrid"></div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-bg">
-      <img src="photos/school-girls.jpg" alt="African school girls smiling" loading="lazy">
-      <div class="cta-bg-overlay"></div>
-    </div>
-    <div class="container">
-      <div class="cta-content">
-        <h2>Building a Cleaner Future Together</h2>
-        <p>The transition to clean cooking will improve health outcomes, reduce emissions, and create economic opportunity for millions across Africa.</p>
-        <a href="#overview" class="btn btn-primary">Explore the Data</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Country Detail Modal -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" id="countryModal">
-      <button class="modal-close" id="modalClose">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <div class="modal-content" id="modalContent"></div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <a href="#hero" class="footer-logo">
-              <svg viewBox="0 0 40 40" width="32" height="32">
-                <circle cx="20" cy="20" r="19" fill="none" stroke="#FFB800" stroke-width="2"/>
-                <text x="20" y="26" text-anchor="middle" font-size="18" font-weight="800" fill="#FFB800" font-family="Barlow Condensed, sans-serif">M</text>
+      <div class="hero-content">
+        <div class="hero-badge">Africa Energy Summit Initiative</div>
+        <h1 class="hero-title">
+          <span class="hero-title-line">National Energy</span>
+          <span class="hero-title-line">Compact <em>Platform</em></span>
+        </h1>
+        <p class="hero-subtitle">Tracking progress across 30 African nations toward universal energy access — electricity, clean cooking, renewable energy, and infrastructure — by 2030.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-ring">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                <circle cx="40" cy="40" r="36" fill="none" stroke="#FFB800" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="0"/>
               </svg>
-              <span>Mission <strong>300</strong></span>
-            </a>
-            <p>Accelerating clean cooking access for 300 million people across Africa by 2030. An initiative by Sustainable Energy for All (SEforALL).</p>
+              <span class="hero-stat-number" data-count="30">0</span>
+            </div>
+            <span class="hero-stat-label">Countries</span>
           </div>
-          <div class="footer-nav">
-            <h4>Explore</h4>
-            <ul>
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#map">Countries</a></li>
-              <li><a href="#data">Data</a></li>
-              <li><a href="#investment">Investment</a></li>
-            </ul>
+          <div class="hero-stat">
+            <div class="hero-stat-ring">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                <circle cx="40" cy="40" r="36" fill="none" stroke="#9BBE1D" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="75"/>
+              </svg>
+              <span class="hero-stat-number"><span data-count="5">0</span></span>
+            </div>
+            <span class="hero-stat-label">Pillars</span>
           </div>
-          <div class="footer-nav">
-            <h4>Analysis</h4>
-            <ul>
-              <li><a href="#barriers">Challenges</a></li>
-              <li><a href="#technology">Technology</a></li>
-            </ul>
+          <div class="hero-stat">
+            <div class="hero-stat-ring">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="4"/>
+                <circle cx="40" cy="40" r="36" fill="none" stroke="#065A89" stroke-width="4" stroke-dasharray="226" stroke-dashoffset="226" class="ring-fill" data-offset="50"/>
+              </svg>
+              <span class="hero-stat-number"><span data-count="2">0</span></span>
+            </div>
+            <span class="hero-stat-label">Cohorts</span>
           </div>
-          <div class="footer-source">
-            <h4>Data Source</h4>
-            <p>Analysis based on National Energy Compact documents submitted to the Africa Energy Summit by 30 participating countries across 2 cohorts.</p>
-          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="countries/" class="btn btn-primary">Explore Countries</a>
+          <a href="#pillars" class="btn btn-outline">View Pillars</a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- 5 Pillars Overview -->
+    <section id="pillars" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Mission 300 Framework</span>
+          <h2 class="section-title">Five Commitment Pillars</h2>
+          <p class="section-intro">Each National Energy Compact addresses five key areas for achieving universal energy access across Africa.</p>
+        </div>
+
+        <div class="pillar-grid" id="pillarGrid">
+          <a href="countries/" class="pillar-card" style="border-top: 3px solid #FFB800">
+            <div class="pillar-card-icon">&#x26A1;</div>
+            <h3>Infrastructure</h3>
+            <div class="pillar-card-stat" style="color:#FFB800">I</div>
+            <div class="pillar-card-label">Generation, Transmission, Distribution</div>
+          </a>
+          <a href="countries/" class="pillar-card" style="border-top: 3px solid #065A89">
+            <div class="pillar-card-icon">&#x1F310;</div>
+            <h3>Regional Integration</h3>
+            <div class="pillar-card-stat" style="color:#065A89">II</div>
+            <div class="pillar-card-label">Interconnectors & Power Trade</div>
+          </a>
+          <a href="countries/" class="pillar-card" style="border-top: 3px solid #9BBE1D">
+            <div class="pillar-card-icon">&#x1F3E0;</div>
+            <h3>Last-Mile Access</h3>
+            <div class="pillar-card-stat" style="color:#9BBE1D">III</div>
+            <div class="pillar-card-label">Electricity + Clean Cooking</div>
+          </a>
+          <a href="countries/" class="pillar-card" style="border-top: 3px solid #5A3A8E">
+            <div class="pillar-card-icon">&#x1F4BC;</div>
+            <h3>Private Sector</h3>
+            <div class="pillar-card-stat" style="color:#5A3A8E">IV</div>
+            <div class="pillar-card-label">Investment & PPPs</div>
+          </a>
+          <a href="countries/" class="pillar-card" style="border-top: 3px solid #DD2E2B">
+            <div class="pillar-card-icon">&#x2699;&#xFE0F;</div>
+            <h3>Utility Reform</h3>
+            <div class="pillar-card-stat" style="color:#DD2E2B">V</div>
+            <div class="pillar-card-label">Financial Viability & Governance</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Country Data Completeness -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Data Extraction Progress</span>
+          <h2 class="section-title">Country Compact Profiles</h2>
+          <p class="section-intro">Each country's National Energy Compact is being extracted into structured data across all 5 pillars. Click any country to view its profile.</p>
+        </div>
+
+        <div class="data-status-bar" id="dataStatusBar"></div>
+        <div class="progress-tracker" id="progressTracker"></div>
+      </div>
+    </section>
+
+    <!-- Photo Banner -->
+    <div class="photo-banner">
+      <img src="photos/challenge-smoke.jpg" alt="Energy access challenges across Africa" loading="lazy">
+      <div class="photo-banner-overlay">
+        <div class="photo-banner-text">
+          <h2>Accelerating Universal Energy Access</h2>
+          <p>Mission 300 brings together 30 nations in a coordinated push for electricity, clean cooking, and sustainable energy for all.</p>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
+
+    <!-- Clean Cooking Analytics (Pillar III data — the data we have) -->
+    <section id="data" class="section">
       <div class="container">
-        <p>Mission 300 Clean Cooking Analysis — Sustainable Energy for All (SEforALL)</p>
+        <div class="section-header">
+          <span class="section-tag">Pillar III: Last-Mile Access</span>
+          <h2 class="section-title">Clean Cooking Access Gap</h2>
+          <p class="section-intro">Current clean cooking access vs. 2030 targets across all 30 countries. This is one component of Pillar III (Last-Mile Access).</p>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Clean Cooking Access: Current vs. 2030 Target</h3>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+              <span class="legend-item"><span class="legend-dot target"></span> Target</span>
+            </div>
+          </div>
+          <div class="bar-chart" id="accessChart"></div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- Investment Section -->
+    <section id="investment" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Pillar IV: Private Sector</span>
+          <h2 class="section-title">Clean Cooking Investment Commitments</h2>
+          <p class="section-intro">Public and private financing committed to clean cooking across 30 nations. Full multi-pillar investment data is being extracted.</p>
+        </div>
+
+        <div class="investment-overview">
+          <div class="invest-card invest-total">
+            <div class="invest-card-inner">
+              <span class="invest-label">Total Clean Cooking Investment</span>
+              <span class="invest-value" id="totalInvestValue">$6.64B</span>
+              <span class="invest-sub">Across 30 countries</span>
+            </div>
+          </div>
+          <div class="invest-card invest-public">
+            <div class="invest-card-inner">
+              <span class="invest-label">Public Finance</span>
+              <span class="invest-value" id="publicInvestValue">$4.33B</span>
+              <div class="invest-pct-bar"><div class="invest-pct-fill" data-width="65"></div></div>
+              <span class="invest-pct">65% of total</span>
+            </div>
+          </div>
+          <div class="invest-card invest-private">
+            <div class="invest-card-inner">
+              <span class="invest-label">Private Finance</span>
+              <span class="invest-value" id="privateInvestValue">$2.18B</span>
+              <div class="invest-pct-bar"><div class="invest-pct-fill" data-width="35"></div></div>
+              <span class="invest-pct">35% of total</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-header">
+            <h3>Clean Cooking Investment by Country (USD Millions)</h3>
+            <div class="chart-legend">
+              <span class="legend-item"><span class="legend-dot public"></span> Public</span>
+              <span class="legend-item"><span class="legend-dot private"></span> Private</span>
+            </div>
+          </div>
+          <div class="investment-chart" id="investmentChart"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Navigate</span>
+          <h2 class="section-title">Explore the Platform</h2>
+        </div>
+
+        <div class="quick-links">
+          <a href="countries/" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div>
+              <h3>Country Profiles</h3>
+              <p>Browse all 30 countries with filters and search</p>
+            </div>
+          </a>
+          <a href="country/?id=tz" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h3>Tanzania (Full Profile)</h3>
+              <p>View the first fully extracted 5-pillar compact</p>
+            </div>
+          </a>
+          <a href="guide/" class="quick-link">
+            <div class="quick-link-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <h3>User Guide</h3>
+              <p>Documentation and platform walkthrough</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="cta-bg">
+        <img src="photos/school-girls.jpg" alt="African school girls smiling" loading="lazy">
+        <div class="cta-bg-overlay"></div>
+      </div>
+      <div class="container">
+        <div class="cta-content">
+          <h2>Building Africa's Energy Future</h2>
+          <p>Mission 300 brings together governments, development partners, and the private sector to achieve universal energy access across Africa by 2030.</p>
+          <a href="countries/" class="btn btn-primary">Explore All Countries</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
 
   <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="utils.js"></script>
+  <script src="charts.js"></script>
+  <script src="components.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initComponents();
+      initHeroAnimations();
+      renderAccessChart('accessChart');
+      renderInvestmentChart('investmentChart');
+      renderProgressTracker();
+      renderDataStatus();
+      computeAndDisplayInvestment();
+      initScrollAnimations();
+    });
+
+    function initHeroAnimations() {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+
+      const navbar = document.getElementById('navbar');
+      if (navbar) navbar.classList.remove('scrolled');
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            animateRings();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(hero);
+    }
+
+    function animateCounters() {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseFloat(el.dataset.count);
+        const isDecimal = target % 1 !== 0;
+        const duration = 2000;
+        const start = performance.now();
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = eased * target;
+          el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    function animateRings() {
+      document.querySelectorAll('.ring-fill').forEach(ring => {
+        const offset = parseFloat(ring.dataset.offset);
+        const circumference = 226;
+        const target = circumference - (circumference * offset / 100);
+        setTimeout(() => {
+          ring.style.strokeDashoffset = target;
+        }, 300);
+      });
+    }
+
+    function renderProgressTracker() {
+      const container = document.getElementById('progressTracker');
+      if (!container) return;
+
+      container.innerHTML = countries.map(c => {
+        const status = c.compact ? 'full' : 'legacy';
+        return `
+          <a href="country/?id=${c.iso}" class="progress-dot" data-status="${status}" title="${c.country}${c.compact ? ' — Full Profile' : ''}">
+            <img class="progress-dot-circle" src="${flagUrl(c.iso)}" alt="${c.country}" loading="lazy">
+            <span class="progress-dot-label">${c.iso.toUpperCase()}</span>
+          </a>
+        `;
+      }).join('');
+    }
+
+    function renderDataStatus() {
+      const bar = document.getElementById('dataStatusBar');
+      if (!bar) return;
+
+      const full = countries.filter(c => c.compact).length;
+      const total = countries.length;
+      const pct = Math.round((full / total) * 100);
+
+      bar.innerHTML = `
+        <div class="data-status-info">
+          <span><strong>${full}</strong> of ${total} countries fully extracted</span>
+          <span class="data-status-pct">${pct}%</span>
+        </div>
+        <div class="data-status-track">
+          <div class="data-status-fill" style="width:${pct}%"></div>
+        </div>
+        <div class="data-status-legend">
+          <span class="data-status-legend-item"><span class="data-status-dot full"></span> Full 5-pillar profile</span>
+          <span class="data-status-legend-item"><span class="data-status-dot legacy"></span> Clean cooking data only</span>
+        </div>
+      `;
+    }
+
+    function computeAndDisplayInvestment() {
+      const agg = computeAggregates();
+      const total = agg.totalInvestment;
+      const totalB = (total / 1000).toFixed(2);
+
+      // Compute public/private totals
+      let pub = 0, priv = 0;
+      countries.forEach(c => {
+        if (c.publicFinance) pub += c.publicFinance;
+        if (c.privateFinance) priv += c.privateFinance;
+      });
+
+      const pubPct = total > 0 ? Math.round(pub / total * 100) : 0;
+      const privPct = 100 - pubPct;
+
+      const el = (id, text) => { const e = document.getElementById(id); if (e) e.textContent = text; };
+      el('totalInvestValue', `$${totalB}B`);
+      el('publicInvestValue', moneyB(pub));
+      el('privateInvestValue', moneyB(priv));
+    }
+  </script>
 </body>
 </html>

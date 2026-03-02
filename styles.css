@@ -884,6 +884,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   letter-spacing: 0.02em;
 }
 
+.country-card-pillars {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 8px 0;
+  border-top: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.pillar-dots-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-300);
+}
+
+.pillar-dots {
+  display: flex;
+  gap: 4px;
+}
+
+.pillar-dot {
+  width: 14px;
+  height: 6px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 .country-card-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,0 +1,436 @@
+/* ============================================
+   Mission 300 — Page-Specific Styles
+   ============================================ */
+
+/* ========== PAGE HERO (Sub-pages) ========== */
+.page-hero {
+  background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 100%);
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.page-hero-sm {
+  padding: 100px 0 48px;
+}
+
+.page-hero-content {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.page-hero .section-tag {
+  background: rgba(255,255,255,0.1);
+  color: var(--yellow);
+  border: 1px solid rgba(255,184,0,0.2);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin: 16px 0;
+  line-height: 1.1;
+}
+
+.page-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ========== BREADCRUMBS ========== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 16px 0;
+  margin-top: 72px;
+  font-size: 0.82rem;
+}
+
+.breadcrumb-link {
+  color: var(--navy);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.breadcrumb-link:hover {
+  color: var(--yellow-dark);
+}
+
+.breadcrumb-sep {
+  color: var(--gray-300);
+  margin: 0 8px;
+  font-weight: 400;
+}
+
+.breadcrumb-current {
+  color: var(--gray-400);
+  font-weight: 600;
+}
+
+/* ========== PROFILE PAGE ========== */
+.profile-page {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.profile-page .compact-header {
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.profile-page .compact-source {
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+/* ========== COMING SOON ========== */
+.coming-soon {
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.coming-soon-icon {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-bg);
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  color: var(--navy);
+}
+
+.coming-soon h2 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.coming-soon p {
+  font-size: 1rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* ========== NAV ACTIVE STATE ========== */
+.nav-links a.active {
+  color: var(--yellow) !important;
+  font-weight: 700;
+}
+
+/* ========== DASHBOARD PILLAR CARDS ========== */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-xs);
+  position: relative;
+  overflow: hidden;
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pillar-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.pillar-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--dark-navy);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.pillar-card-stat {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.pillar-card-label {
+  font-size: 0.7rem;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+/* ========== PILLAR CARD AS LINK ========== */
+a.pillar-card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* ========== DATA STATUS BAR ========== */
+.data-status-bar {
+  margin-bottom: 20px;
+  padding: 16px 24px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+}
+
+.data-status-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.88rem;
+  color: var(--gray-500);
+}
+
+.data-status-pct {
+  font-weight: 700;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.data-status-track {
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.data-status-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), #7fa818);
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+.data-status-legend {
+  display: flex;
+  gap: 20px;
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+.data-status-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.data-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.data-status-dot.full {
+  background: var(--green);
+}
+
+.data-status-dot.legacy {
+  background: var(--gray-200);
+}
+
+/* ========== DASHBOARD PROGRESS TRACKER ========== */
+.progress-tracker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-lg);
+  margin-bottom: 48px;
+}
+
+.progress-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.progress-dot-circle {
+  width: 36px;
+  height: 26px;
+  border-radius: 4px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  transition: transform var(--transition);
+  border: 2px solid transparent;
+}
+
+.progress-dot:hover .progress-dot-circle {
+  transform: scale(1.15);
+}
+
+.progress-dot[data-status="full"] .progress-dot-circle {
+  border-color: var(--green);
+}
+
+.progress-dot[data-status="partial"] .progress-dot-circle {
+  border-color: var(--yellow);
+}
+
+.progress-dot[data-status="legacy"] .progress-dot-circle {
+  border-color: var(--gray-200);
+  opacity: 0.6;
+}
+
+.progress-dot-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  max-width: 48px;
+  text-align: center;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ========== DASHBOARD QUICK LINKS ========== */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.quick-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+  box-shadow: var(--shadow-xs);
+  text-decoration: none;
+  color: inherit;
+}
+
+.quick-link:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--navy);
+}
+
+.quick-link-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-bg);
+  border-radius: var(--radius-sm);
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.quick-link-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.quick-link h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 4px;
+}
+
+.quick-link p {
+  font-size: 0.82rem;
+  color: var(--gray-400);
+  line-height: 1.5;
+}
+
+/* ========== PAGE LOAD ANIMATION ========== */
+#page-content {
+  animation: pageIn 0.4s ease-out;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .pillar-grid { grid-template-columns: repeat(3, 1fr); }
+  .quick-links { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  .quick-links { grid-template-columns: 1fr; }
+  .page-hero { padding: 88px 0 40px; }
+  .page-hero-sm { padding: 80px 0 32px; }
+  .breadcrumb { margin-top: 60px; }
+  .profile-page {
+    margin-left: -12px;
+    margin-right: -12px;
+    border-radius: var(--radius-md);
+  }
+  .profile-page .compact-header {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .profile-page .compact-source {
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .pillar-grid { grid-template-columns: 1fr; }
+}
