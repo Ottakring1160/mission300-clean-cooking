@@ -30,10 +30,295 @@ const countries = [
     country: "Liberia", iso: "lr", cohort: "Cohort 1", language: "English", region: "West Africa",
     currentAccess: 0.8, target2030: null, targetYear: null, gap: null,
     biomassDep: null, currentGrowth: null, targetGrowth: null, accelFactor: null,
-    totalInvestment: 15, publicFinance: 10, privateFinance: 5, privateShare: 33.3,
-    strategyStatus: "Strategy due December 2025; policy framework due 2026; MTF survey Q4 2025",
-    techFocus: "Not yet determined; deferred to December 2025 strategy",
-    barriers: "Negligible baseline (0.8%); no established data; severe affordability gap; 14,000 dispersed settlements; weak private sector"
+    totalInvestment: 1290, publicFinance: 1150, privateFinance: 140, privateShare: 10.9,
+    strategyStatus: "National clean cooking strategy to be developed by 2026; MTF survey planned 2025",
+    techFocus: "Not yet determined; deferred to national clean cooking strategy development by 2026",
+    barriers: "Negligible baseline (0.8%); no established data; severe affordability gap; 14,000 dispersed settlements; weak private sector; seasonal hydro variability; high HFO generation costs",
+    compact: {
+      /* ───── Overview ───── */
+      overview: {
+        population: "5.56 million",
+        income: "Low-income",
+        gniPerCapita: null,
+        gdpGrowth: "4.71% in 2023, expected 5.6% average 2024-2026",
+        compactDate: "2024",
+        electricityAccess: 32.7,
+        installedCapacity: 126,
+        renewableShare: 67
+      },
+
+      /* ───── Pillar I: Infrastructure ───── */
+      infrastructure: {
+        generation: {
+          totalCapacityMW: 126,
+          availableCapacityMW: 93,
+          peakDemandMW: 108,
+          mix: [
+            { source: "Hydropower (MCHPP)", mw: 88, pct: 70 },
+            { source: "Heavy Fuel Oil (HFO)", mw: 38, pct: 30 }
+          ],
+          annualProductionGWh: 937,
+          productionMix: [
+            { source: "Hydro", pct: 67 },
+            { source: "Thermal", pct: 33 }
+          ],
+          growthRate: 14.64,
+          costPerKwh: { thermal: 0.25, renewable: 0.06 },
+          projects: [
+            { name: "20 MW Solar PV (near Mount Coffee HPP)", type: "Solar PV", mw: 20, status: "under_construction", timeline: "Commission Q2 2027", cost: null },
+            { name: "70 MW Solar PV + BESS (Private Sector)", type: "Solar PV + BESS", mw: 70, status: "planned", timeline: "Phased deployment", cost: null },
+            { name: "SCATEC Containerized Solar + BESS (IFC)", type: "Solar PV + BESS", mw: 16.5, status: "planned", timeline: "Negotiations ongoing", cost: null },
+            { name: "Mount Coffee HPP Extension", type: "Hydropower", mw: 60, status: "planned", timeline: "Bidding next fiscal year", cost: null },
+            { name: "Saint Paul 2 HPP", type: "Hydropower", mw: 150, status: "planned", timeline: "Feasibility & bidding by Nov 2026", cost: null },
+            { name: "Mini-Hydro Greenville (Sinoe County)", type: "Hydropower", mw: 2, status: "under_construction", timeline: "2024-2027", cost: 10.8 },
+            { name: "Solar PV Greenville", type: "Solar PV", mw: 0.85, status: "under_construction", timeline: "2024-2028", cost: 2.6 },
+            { name: "Solar PV Greenville (Phase 2)", type: "Solar PV", mw: 0.2, status: "planned", timeline: "2024-2027", cost: 2 },
+            { name: "REEL Hydropower (Bong & Nimba counties)", type: "Hydropower", mw: 9.8, status: "planned", timeline: "2027", cost: null }
+          ],
+          targetCapacityMW: 266,
+          targetRenewableMW: 238,
+          targetRenewablePct: 75
+        },
+        transmission: {
+          networkKm: {
+            hv66kv: 386,
+            mv33kv: 345,
+            mv22kv: 667,
+            lv: 1889
+          },
+          transferCapacity: { hv66kv: 66, mv33kv: 15, mv22kv: 11.1, lv: 0.19 },
+          projects: [
+            { name: "LEEAP Transmission & Substations (AfDB/EU)", status: "under_construction", timeline: "2019-2024", cost: 31.4 },
+            { name: "CLSG-RE Distribution Network (Nimba, Bong, Rivercess, Grand Bassa)", status: "under_construction", timeline: "2022-2025", cost: 17.9 },
+            { name: "Buchanan/Greenville/Barclayville Distribution (EU)", status: "under_construction", timeline: "2024-2027", cost: 6.5 }
+          ],
+          investmentM: 390
+        },
+        distribution: {
+          totalCustomers: 312622,
+          customerBreakdown: {
+            households: 304166,
+            commercial: 8439,
+            industrial: 17
+          },
+          metersPrepaid: 312002,
+          commercialLosses: 27.5,
+          lossTrend: "47.7% (2021) → 31.4% (2023) → 27.5% (Oct 2024)",
+          technicalAndCommercialLosses: 45.4,
+          loadSheddingHours: 5,
+          loadSheddingLossMWh: 132330
+        },
+        investmentM: 720
+      },
+
+      /* ───── Pillar II: Regional Integration ───── */
+      regionalIntegration: {
+        powerPools: [
+          { name: "WAPP (West Africa Power Pool)", role: "Member / Importer", status: "operational" }
+        ],
+        interconnectors: [
+          { name: "CLSG (Côte d'Ivoire-Liberia-Sierra Leone-Guinea)", voltagekV: 225, lengthKm: 530, capacityMW: 243, allocatedMW: 27, availableMW: 13.5, status: "operational", notes: "Only half of 27 MW available due to Côte d'Ivoire supply constraints" }
+        ],
+        tradeGWh: {
+          imported: 139.8,
+          exported: 15.3,
+          importCostPerKwh: 0.16,
+          wheelingChargePerKwh: 0.02,
+          payableArrearsM: 74.3,
+          receivableArrearsM: 52
+        },
+        gridReadiness: {
+          description: "Exploring option of importing from Ghana through CLSG network; connecting new solar generation assets to CLSG for export capability",
+          investmentM: null
+        },
+        investmentM: null,
+        keyActions: [
+          "Ensure timely payment of import obligations through CLSG network",
+          "Engage with WAPP on harmonized transmission pricing (from March 2025)",
+          "Explore electricity imports from Ghana through CLSG network",
+          "Connect solar generation to CLSG for potential exports"
+        ]
+      },
+
+      /* ───── Pillar III: Last-Mile Access ───── */
+      lastMileAccess: {
+        electricity: {
+          currentAccessPct: 32.7,
+          urbanAccessPct: 50,
+          ruralAccessPct: 10,
+          targetAccessPct: 75,
+          targetYear: 2030,
+          currentPace: 70000,
+          targetPace: 100000,
+          connectionPlan: {
+            gridPerYear: 60000,
+            miniGridPerYear: 15000,
+            offGridPerYear: 25000
+          },
+          miniGridConnections: 2344,
+          solarHomeSystems: 49441,
+          shsBeneficiaries: 192412,
+          gridExpansionPct: 70,
+          offGridPct: 30,
+          projects: [
+            { name: "LESSAP (World Bank)", type: "Grid + Solar PV + RBF", timeline: "2021-2030", connections: 250000, beneficiaries: 1250000, cost: 200, notes: "10-year multiphase program; includes 70 MW solar IPP mobilization" },
+            { name: "LIRENAP (World Bank)", type: "Off-grid / Solar", timeline: "2016-2025", connections: 30000, beneficiaries: 150000, cost: 27, notes: "Decentralized electrification in Lofa County" },
+            { name: "REEL Project (AfDB)", type: "Hydro + Distribution", timeline: "2027", connections: 37880, beneficiaries: 60000, cost: null, notes: "9.8 MW hydro plant; Bong & Nimba counties" },
+            { name: "Beyond the Grid Fund Africa (Sweden)", type: "Off-grid / DRE RBF", timeline: "2019-2030", connections: null, beneficiaries: 400000, cost: 10, notes: "Results-based financing for DRE solutions" },
+            { name: "REACT SSA (Sweden)", type: "Off-grid / Clean Cooking", timeline: "2017-2026", connections: 30000, beneficiaries: null, cost: 5, notes: "Grants to RE businesses; 0.3 MW installed" },
+            { name: "EnDev (GIZ)", type: "Solar + Clean Cooking", timeline: "2023-2025", connections: 40000, beneficiaries: null, cost: 6.9, notes: "SHS, clean cooking for HHs and schools; 303 health facilities; 24,000 cooking connections" },
+            { name: "USAID Empower West Africa", type: "Smart meters / E-mobility / Capacity", timeline: "2024-2029", connections: null, beneficiaries: null, cost: null, notes: "Regional program covering 18 West African countries" },
+            { name: "Rockefeller/GEAPP M300 Technical Assistance", type: "Network planning", timeline: "2025-2026", connections: 112273, beneficiaries: null, cost: 0.8, notes: "LEC Network Planning Manual development" }
+          ]
+        },
+        cleanCooking: {
+          currentAccessPct: 0.8,
+          currentConnections: 9545,
+          targetAccessPct: null,
+          strategyStatus: "National clean cooking strategy to be developed by MME/RREA by 2026",
+          focusAreas: "Female-headed households prioritized; baseline and targets to be established",
+          investmentM: 15,
+          publicFinanceM: 10,
+          privateFinanceM: 5,
+          projects: [
+            { name: "EnDev Clean Cooking (GIZ)", connections: 24000, type: "Improved cookstoves / schools", timeline: "2023-2025" },
+            { name: "REACT SSA Clean Cooking (Sweden)", connections: null, type: "Grants to clean cooking businesses", timeline: "2017-2026" }
+          ]
+        }
+      },
+
+      /* ───── Pillar IV: Private Sector ───── */
+      privateSector: {
+        totalInvestmentM: 1290,
+        publicFinanceM: 1150,
+        privateFinanceM: 140,
+        investmentGapM: 1250,
+        availableInvestmentM: 250,
+        sectorBreakdown: [
+          { sector: "Generation", totalM: 720, publicM: 660, privateM: 60 },
+          { sector: "Transmission & Distribution", totalM: 390, publicM: 390, privateM: 0 },
+          { sector: "Off-Grid", totalM: 140, publicM: 70, privateM: 70 },
+          { sector: "Clean Cooking", totalM: 15, publicM: 10, privateM: 5 },
+          { sector: "Capacity Building", totalM: 25, publicM: 20, privateM: 5 }
+        ],
+        privateTargets: {
+          miniGridAndOffGrid: 80,
+          utilitySolarPV: 70,
+          totalPrivateCapital: 150,
+          notes: "T&D private financing options to be explored during Compact implementation"
+        },
+        distributionLicensees: [
+          { name: "LIBENERGY", type: "Private", area: "Various" },
+          { name: "Jungle Energy Power (JEP)", type: "Private", area: "Nimba County" },
+          { name: "Energicity Liberia", type: "Private", area: "Various" },
+          { name: "Totota Electric", type: "Private", area: "Various" }
+        ],
+        creditEnhancement: "World Bank Group-backed guarantees; concessional financing through local banks; transaction advisory under LESSAP Phase 2",
+        carbonMarkets: null,
+        developmentPartners: [
+          { name: "World Bank", contribution: "LESSAP ($200M, 10-year multiphase); RESPITE ($96M, solar + hydro); LIRENAP ($27M, off-grid Lofa); ESMAP grants" },
+          { name: "African Development Bank (AfDB)", contribution: "REEL Project (9.8 MW hydro, distribution); LEEAP (transmission & substations)" },
+          { name: "European Union (EU)", contribution: "Mini-hydro Greenville; Solar PV plants; Distribution networks in Buchanan/Greenville/Barclayville; RREA technical assistance" },
+          { name: "Sweden (Sida)", contribution: "Beyond the Grid Fund Africa ($10M, RBF for DRE); REACT SSA ($5M, RE grants)" },
+          { name: "GIZ (Germany)", contribution: "EnDev ($6.9M, energy access for vulnerable communities; clean cooking)" },
+          { name: "USAID", contribution: "MCHPP retrofit ($850K); Empower West Africa ($73M regional, smart meters/e-mobility/capacity)" },
+          { name: "International Finance Corporation (IFC)", contribution: "Supporting SCATEC 16.5 MW solar + BESS leasing; solar IPP transaction advisory" },
+          { name: "Rockefeller Foundation / GEAPP", contribution: "M300 technical assistance ($800K, LEC network planning)" }
+        ]
+      },
+
+      /* ───── Pillar V: Utility Reform ───── */
+      utilityReform: {
+        utilities: [
+          {
+            name: "Liberia Electricity Corporation (LEC)",
+            type: "Vertically integrated utility",
+            customers: 312622,
+            customerBreakdown: { households: 304166, commercial: 8439, industrial: 17 },
+            costRecoveryPct: 63,
+            operatingLoss: "US$18M (~37% of revenue, FY 2023)",
+            commercialLosses: 27.5,
+            technicalAndCommercialLosses: 45.4,
+            prepaidMeters: 312002,
+            avgTariff: 0.23,
+            subsidyM: 0,
+            debtPayableGovtM: 31.4,
+            debtOtherVendorsM: 42.9,
+            receivableFromGovtM: 17,
+            loadSheddingHours: 5,
+            costRecoveryTarget: "Revenue to exceed operating costs by FY 2028",
+            serviceArea: "Primarily Monrovia and surrounding area"
+          }
+        ],
+        tariffReform: [
+          { milestone: "File multi-year tariff with targets for loss reduction and cost-reflective pricing", timeline: "Regulatory approval by June 2025" },
+          { milestone: "Convert all public-sector consumers (excl. essential services) to pre-paid meters", timeline: "Within one year" },
+          { milestone: "Ensure all public-sector electricity bills allocated and paid starting January 2025", timeline: "January 2025" },
+          { milestone: "Reduce generation costs through large-scale hydro and solar displacing HFO", timeline: "Ongoing to 2030" },
+          { milestone: "Diversify customer base with mining and industrial consumers", timeline: "As new generation comes online" }
+        ],
+        performanceBenchmarks: [
+          { metric: "Commercial Losses", current: "27.5%", target: "Continued reduction through metering and Anti-Power Task Force" },
+          { metric: "Cost of Supply", current: "Highest in region (HFO at $0.25/kWh)", target: "Reduce via renewable energy (hydro $0.06/kWh, solar)" },
+          { metric: "Public Sector Payment", current: "Arrears of $31.4M payable, $17M receivable", target: "Outstanding dues settled within 18 months; current bills fully paid from Jan 2025" },
+          { metric: "Financial Viability", current: "Operating loss of 37% (FY 2023)", target: "Revenue exceeds costs by FY 2028" }
+        ],
+        reformMilestones: [
+          { action: "Publish audited financial statements for FY 2024", timeline: "June 2025", pillar: "utilityReform" },
+          { action: "Complete regulatory approval of multi-year tariff", timeline: "June 2025", pillar: "utilityReform" },
+          { action: "Adopt corporate governance framework and recruit full-time LEC leadership", timeline: "2025", pillar: "utilityReform" },
+          { action: "Achieve operational cost recovery (revenue > costs)", timeline: "FY 2028", pillar: "utilityReform" }
+        ],
+        regulator: "Liberia Electricity Regulatory Commission (LERC)",
+        regulatorRole: "Electricity licensing, micro-utility licensing, tariffs, complaints & disputes, mini-grid codes, distribution codes"
+      },
+
+      /* ───── Strategy / Implementation Roadmap ───── */
+      strategy: [
+        { item: "Finalize revised National Energy Policy (NEP)", timeline: "Q1 2025 (March 2025)", status: "committed", pillar: "infrastructure" },
+        { item: "Complete land acquisition for solar park", timeline: "Q2 2025 (Feb-Jun 2025)", status: "committed", pillar: "infrastructure" },
+        { item: "Initiate first utility-scale solar IPP procurement", timeline: "Q2 2025", status: "committed", pillar: "privateSector" },
+        { item: "Publish LEC financial statements for FY 2024", timeline: "Q3 2025", status: "committed", pillar: "utilityReform" },
+        { item: "Initiate cost-reflective tariff adjustments", timeline: "Q3 2025 (June 2025)", status: "committed", pillar: "utilityReform" },
+        { item: "Launch national MTF survey for energy access", timeline: "Q4 2025", status: "committed", pillar: "lastMileAccess" },
+        { item: "Establish clean cooking baseline via MTF", timeline: "Q4 2025", status: "committed", pillar: "lastMileAccess" },
+        { item: "Award first solar IPP contract", timeline: "December 2025", status: "committed", pillar: "privateSector" },
+        { item: "Streamline mini-grid regulatory approval process (LERC)", timeline: "September 2025", status: "committed", pillar: "privateSector" },
+        { item: "Develop PPP law (National Investment Commission)", timeline: "November 2025", status: "committed", pillar: "privateSector" },
+        { item: "Finalize comprehensive Power System Master Plan", timeline: "Q1 2026 (June 2026)", status: "committed", pillar: "infrastructure" },
+        { item: "Update National Electrification Strategy and five-year plan", timeline: "2026", status: "committed", pillar: "lastMileAccess" },
+        { item: "Adopt national clean cooking strategy (MME/RREA)", timeline: "2026", status: "committed", pillar: "lastMileAccess" },
+        { item: "Develop clean cooking policy framework", timeline: "2026", status: "committed", pillar: "lastMileAccess" },
+        { item: "Complete Saint Paul 2 HPP feasibility study and initiate bidding", timeline: "Q4 2026 (November 2026)", status: "committed", pillar: "infrastructure" },
+        { item: "Commission first 20 MW utility-scale solar project", timeline: "Q2 2027", status: "committed", pillar: "infrastructure" },
+        { item: "Achieve LEC operational cost recovery", timeline: "Q1 2028", status: "committed", pillar: "utilityReform" },
+        { item: "Commission additional RE projects; achieve 75% renewable mix", timeline: "Q4 2028", status: "committed", pillar: "infrastructure" },
+        { item: "Complete rollout of clean cooking solutions for female-headed HHs", timeline: "Q1 2029", status: "committed", pillar: "lastMileAccess" },
+        { item: "Achieve 75% national electricity access rate (100K connections/yr)", timeline: "Q2 2030", status: "committed", pillar: "lastMileAccess" },
+        { item: "Conclude Compact implementation: all targets achieved", timeline: "Q4 2030", status: "committed", pillar: "infrastructure" }
+      ],
+
+      /* ───── Barriers / Risk Register ───── */
+      barriers: [
+        { title: "Insufficient investment mobilization ($1.25B gap)", desc: "Risk of failing to mobilize the required financing, especially $150M from private sector.", pillar: ["privateSector"] },
+        { title: "LEC financial viability", desc: "Persistent technical and commercial losses (45.4%) undermine LEC's ability to achieve cost recovery and attract IPP investment.", pillar: ["utilityReform"] },
+        { title: "Renewable energy project delays", desc: "Procurement and land acquisition challenges may delay Saint Paul 2 HPP and solar IPP projects.", pillar: ["infrastructure"] },
+        { title: "Seasonal hydropower variability", desc: "MCHPP capacity drops by 75%+ in dry season (Jan-May), forcing reliance on costly HFO and imports.", pillar: ["infrastructure", "regionalIntegration"] },
+        { title: "Inter-agency coordination challenges", desc: "Coordination among MME, LEC, RREA, LERC, and private sector in project implementation.", pillar: ["infrastructure", "privateSector"] },
+        { title: "Regulatory framework delays", desc: "Delays in developing policies and frameworks for renewable energy and distributed solutions through LERC.", pillar: ["privateSector", "lastMileAccess"] },
+        { title: "Environmental and social impact assessment delays", desc: "Delays in completing ESIAs for major generation projects.", pillar: ["infrastructure"] },
+        { title: "Community resistance to land acquisition", desc: "Local community resistance during land acquisition for solar parks and energy projects.", pillar: ["infrastructure"] },
+        { title: "Weak macroeconomic conditions", desc: "Low-income economy with high vulnerability to external shocks deters private investment.", pillar: ["privateSector"] },
+        { title: "LEC creditworthiness as off-taker", desc: "Poor credit standing makes it difficult to attract private capital for IPP projects without credit enhancement instruments.", pillar: ["privateSector", "utilityReform"] },
+        { title: "Urban-rural access disparity", desc: "Over 50% urban access vs. less than 10% rural; 14,000 dispersed settlements across 111,000 sq km.", pillar: ["lastMileAccess"] },
+        { title: "Negligible clean cooking baseline", desc: "Only 0.8% population with clean cooking access; no established baseline or national strategy yet.", pillar: ["lastMileAccess"] },
+        { title: "High cost of electricity supply", desc: "Highest cost of supply in the region due to HFO dependence ($0.25/kWh thermal vs $0.06/kWh hydro).", pillar: ["infrastructure", "utilityReform"] },
+        { title: "Limited private sector scale in off-grid", desc: "Several private off-grid companies active but none at significant scale; lack of working capital and limited rural incomes.", pillar: ["privateSector", "lastMileAccess"] }
+      ],
+
+      sourceName: "National Energy Compact for Liberia",
+      sourceType: "National Energy Compact"
+    }
   },
   {
     country: "Madagascar", iso: "mg", cohort: "Cohort 1", language: "French", region: "East Africa",
@@ -80,60 +365,301 @@ const countries = [
     techFocus: "Multi-technology: LPG/natural gas urban; improved cookstoves rural; e-cooking emerging; bioethanol; biogas; briquettes",
     barriers: "Nascent and fragmented clean cooking market; financing barriers for small projects; limited private sector participation; regulatory and policy gaps; affordability constraints; demographic pressures (3% population growth)",
     compact: {
-      population: "61.7 million (including 1.9 million in Zanzibar)",
-      income: "Lower-middle-income (GNI US$1,210 per capita, 2023)",
-      gdpGrowth: "5.2% in 2023, expected 5.6% in 2024",
-      targets: [
-        { year: 2030, access: 75, gap: 68.1 },
-        { year: 2034, access: 80, gap: 73.1 }
-      ],
-      nccsCost: 1700,
-      biomassByRegion: [
-        { region: "Mainland Tanzania", pct: 89 },
-        { region: "Zanzibar", pct: 84 }
-      ],
-      primaryFuels: "Firewood and charcoal",
-      gasUsage: "Only 3.2% mainland; 7.7% Zanzibar (mostly urban)",
-      deployment: {
-        households: 609983,
-        institutions: [
-          { type: "Prison premises", count: 211 },
-          { type: "National Service Camps", count: 22 },
-          { type: "Schools", count: 53 }
+      overview: {
+        population: "61.7 million (including 1.9 million in Zanzibar)",
+        income: "Lower-middle-income",
+        gniPerCapita: 1210,
+        gdpGrowth: "5.2% in 2023, expected 5.6% in 2024",
+        compactDate: "January 2025",
+        electricityAccess: 46,
+        cleanCookingAccess: 6.9,
+        installedCapacity: 3404.20,
+        renewableShare: 61.8,
+        renewableTarget: 75,
+        peakDemand: 1888.72
+      },
+      infrastructure: {
+        generation: {
+          installedCapacity: 3404.20,
+          availablePct: 56.05,
+          mix: [
+            { source: "Hydro", mw: 2011.27, pct: 59.1 },
+            { source: "Natural Gas", mw: 1198.82, pct: 35.2 },
+            { source: "HFO & Diesel", mw: 101.12, pct: 3.0 },
+            { source: "Biomass/Co-gen", mw: 87.99, pct: 2.6 },
+            { source: "Solar PV", mw: 5, pct: 0.1 }
+          ],
+          targetCapacity2030: 1973,
+          targetBreakdown: "880 MW hydro, 463 MW solar, 500 MW wind, 130 MW geothermal",
+          totalInvestment: 4124.80,
+          projects: [
+            { name: "Kikonge Multipurpose Dam (300 MW)", type: "generation", capacity: "300 MW hydro", cost: 870, timeline: "By 2030", status: "planned" },
+            { name: "Ruhudji Hydropower (358 MW)", type: "generation", capacity: "358 MW hydro", cost: 968.37, timeline: "By 2030", status: "planned" },
+            { name: "Rumakali Hydropower (222 MW)", type: "generation", capacity: "222 MW hydro", cost: 634.5, timeline: "By 2030", status: "planned" },
+            { name: "Kakono Hydropower (87.8 MW)", type: "generation", capacity: "87.8 MW hydro", cost: 308.85, timeline: "2022-2029", status: "under_construction" },
+            { name: "Malagarasi Hydropower (49.5 MW)", type: "generation", capacity: "49.5 MW hydro", cost: 140, timeline: "2020-2028", status: "under_construction" },
+            { name: "Geothermal Power (120 MW)", type: "generation", capacity: "120 MW geothermal", cost: 623.8, timeline: "By 2030", status: "planned" },
+            { name: "Singida Wind (100 MW)", type: "generation", capacity: "100 MW wind", cost: 152.46, timeline: "By 2030", status: "planned" },
+            { name: "Makambako Wind (100 MW)", type: "generation", capacity: "100 MW wind", cost: 125, timeline: "By 2030", status: "planned" },
+            { name: "Dodoma Solar (100 MW)", type: "generation", capacity: "100 MW solar", cost: 84, timeline: "By 2030", status: "planned" },
+            { name: "Manyoni Solar (100 MW)", type: "generation", capacity: "100 MW solar", cost: 79.62, timeline: "By 2030", status: "planned" },
+            { name: "Same Solar (100 MW)", type: "generation", capacity: "100 MW solar", cost: 81, timeline: "By 2030", status: "planned" }
+          ]
+        },
+        transmission: {
+          networkKm: 8025.75,
+          voltageBreakdown: [
+            { voltage: "400 kV", km: 1085, capacityMW: 2000 },
+            { voltage: "220 kV", km: 4136.62, capacityMW: 250 },
+            { voltage: "132 kV", km: 1827, capacityMW: 80 },
+            { voltage: "66 kV", km: 580, capacityMW: 50 }
+          ],
+          totalInvestment: 1167.62,
+          projects: [
+            { name: "Chalinze-Segera (400 kV, 181 km)", cost: 124.3, timeline: "By 2027", status: "under_construction" },
+            { name: "Segera-Tanga (220 kV, 64 km)", cost: 58.27, timeline: "By 2026", status: "under_construction" },
+            { name: "Segera-Same-Kisongo (400 kV, 330 km)", cost: 184.2, timeline: "By 2028", status: "planned" },
+            { name: "Submarine Cable to Zanzibar", cost: 224, timeline: "By 2030", status: "planned" }
+          ]
+        },
+        distribution: {
+          customers: 5219722,
+          losses: 14.2,
+          lossReductionTarget: 0.05,
+          prepaidMeters: 5271125,
+          networkKm: { kv33: 66992.10, kv11: 12737.36, lv: 117867.88 },
+          totalInvestment: 1100
+        },
+        gridStabilization: {
+          totalCost: 472.54,
+          projectCount: 23
+        },
+        rehabilitation: {
+          totalCost: 1398.25,
+          projectCount: 21,
+          keyProjects: [
+            { name: "Grid substation automation & digital transformation", cost: 381.5 },
+            { name: "Distribution network rehabilitation (Dar, Pwani, Dodoma, Mbeya, Mwanza)", cost: 98.1 },
+            { name: "Dar es Salaam & Pwani distribution rehabilitation", cost: 157.44 },
+            { name: "Fiber telecom infrastructure reinforcement", cost: 99.7 },
+            { name: "Kidatu, Mtera, Nyumba ya Mungu hydro rehabilitation", cost: 93.89 },
+            { name: "Ubungo II CCGT conversion (51.83 MW)", cost: 95.05 },
+            { name: "Zanzibar solar + battery (30 MW + 10 MWh)", cost: 70 },
+            { name: "Zanzibar energy storage (60 MWh)", cost: 90 }
+          ]
+        },
+        totalInvestment: 5292.59
+      },
+      regionalIntegration: {
+        powerPools: [
+          { name: "EAPP", status: "Operational member since November 2024 (Kenya interconnector commissioned)" },
+          { name: "SAPP", status: "Pending completion of Tanzania-Zambia interconnector by 2028" }
+        ],
+        interconnectors: [
+          { name: "Kenya-Tanzania", capacity: "400 kV, 60 km, 100 MW", cost: 258.83, status: "commissioned", timeline: "November 2024" },
+          { name: "Burundi-Rwanda-Tanzania", capacity: "220 kV, 80 km (Rusumo Falls)", cost: null, status: "commissioned", timeline: "March 2023" },
+          { name: "Tanzania-Zambia", capacity: "400 kV", cost: 605, status: "under_construction", timeline: "Tanzania side by 2027; Zambia side by 2028" },
+          { name: "Uganda-Tanzania", capacity: "400 kV, 605 km double circuit", cost: 590, status: "planned", timeline: "2026+" },
+          { name: "Tanzania-Malawi", capacity: "400 kV, 82.3 km", cost: 54.3, status: "planned", timeline: "By 2028" },
+          { name: "Tanzania-DRC", capacity: "400 kV, 100 km (Tanzania side)", cost: 50, status: "planned", timeline: "By 2030" }
+        ],
+        tradeCapacity: "1.5 GW of interconnections by 2028",
+        gridReadinessInvestment: 80,
+        tradingUnit: "TANESCO trading unit to be established by December 2025",
+        regulatoryHarmonization: "Transmission pricing harmonization with EAPP/SAPP by June 2026",
+        totalInvestment: 1638.13
+      },
+      lastMileAccess: {
+        electricity: {
+          currentAccess: 46,
+          target2030: 75,
+          connectionsNeeded: 8300000,
+          currentPace: 500000,
+          requiredPace: 1600000,
+          onGridShare: 70,
+          offGridShare: 30,
+          miniGrids: { current: 68, customers: 22885 },
+          investmentNeeded: 4751.22,
+          projects: [
+            { name: "Hamlet Electrification (HEP-IIC)", cost: 1100, timeline: "2024-2029" },
+            { name: "Last-Mile Customer Densification", cost: 3521.61, timeline: "By 2030" },
+            { name: "143 Islands Electrification (DRE)", cost: 129.48, timeline: "By 2030" }
+          ]
+        },
+        cleanCooking: {
+          currentAccess: 6.9,
+          target2030: 75,
+          target2034: 80,
+          strategy: "National Clean Cooking Strategy (NCCS) 2024-2034",
+          nccsCost: 1700,
+          annualCost: 170,
+          deployment: {
+            households: 609983,
+            institutions: [
+              { type: "Prison premises", count: 211 },
+              { type: "National Service Camps", count: 22 },
+              { type: "Schools", count: 53 }
+            ]
+          },
+          technologies: [
+            { name: "LPG", desc: "Government-supported distribution expansion, focus on urban areas" },
+            { name: "Natural Gas", desc: "Leveraging domestic natural gas reserves for cooking fuel" },
+            { name: "Improved Cookstoves (ICS)", desc: "Primary solution for rural areas, reducing biomass consumption" },
+            { name: "Electric Cooking", desc: "Emerging technology leveraging grid expansion" },
+            { name: "Bioethanol", desc: "Clean liquid fuel alternative to charcoal and firewood" },
+            { name: "Biogas", desc: "Household-scale digesters using agricultural and animal waste" },
+            { name: "Briquettes", desc: "Compressed biomass fuel as cleaner charcoal alternative" }
+          ],
+          biomassDependency: [
+            { region: "Mainland Tanzania", pct: 89 },
+            { region: "Zanzibar", pct: 84 }
+          ],
+          primaryFuels: "Firewood and charcoal",
+          gasUsage: "Only 3.2% mainland; 7.7% Zanzibar (mostly urban)",
+          projects: [
+            { name: "Distribution of 200,000 ICS (World Bank TREEP)", cost: 6, timeline: "2024-2026" },
+            { name: "LPG Starter Packs (452,445 cylinders)", cost: null, timeline: "2024-2025" },
+            { name: "Natural Gas Pipeline (Lindi & Pwani, 44.4 km)", cost: null, timeline: "2023-2025" },
+            { name: "Clean Cooking for 52 Secondary Schools", cost: null, timeline: "2024-2026" },
+            { name: "Clean Cooking for National Service Camps", cost: null, timeline: "2024-2026" },
+            { name: "Tanzania Prison Services (126 biogas plants, 64 LPG)", cost: null, timeline: "2024-2026" }
+          ]
+        }
+      },
+      privateSector: {
+        totalCompactInvestment: 12889.26,
+        publicFinance: 8850.25,
+        privateFinance: 4039.01,
+        privateSharePct: 31.3,
+        annualPublicNeed: 1800,
+        annualPrivateNeed: 800,
+        sectorBreakdown: [
+          { sector: "Generation", amount: 4124.80, public: 2062.40, private: 2062.40 },
+          { sector: "Transmission", amount: 1167.62, public: 583.81, private: 583.81 },
+          { sector: "Distribution", amount: 1100, public: 550, private: 550 },
+          { sector: "Rehabilitation", amount: 1398.25, public: 1398.25, private: 0 },
+          { sector: "Last-Mile", amount: 3521.61, public: 3169.45, private: 352.16 },
+          { sector: "Off-Grid", amount: 129.48, public: 38.84, private: 90.64 },
+          { sector: "Clean Cooking", amount: 800, public: 400, private: 400 },
+          { sector: "Capacity-Building", amount: 647.50, public: 647.50, private: 0 }
+        ],
+        ipps: [
+          { name: "Zanzibar Solar 45 MW IPP", capacity: "45 MW solar PV", status: "Planned by 2027" },
+          { name: "Total Eren Solar (100 MW)", capacity: "100 MW solar PV", status: "Planned by 2030" },
+          { name: "Sinotan Wind (100 MW)", capacity: "100 MW wind", status: "Planned by 2030" },
+          { name: "Upepo Energy Wind (200 MW)", capacity: "200 MW wind", status: "Planned by 2030" },
+          { name: "Existing private natural gas", capacity: "220 MW", status: "Operational" },
+          { name: "Existing private small hydro", capacity: "12.8 MW", status: "Operational" },
+          { name: "Existing biomass/bagasse", capacity: "87.99 MW", status: "Operational" }
+        ],
+        carbonMarkets: "Government leveraging carbon finance to close clean cooking funding gap",
+        developmentPartners: [
+          { name: "World Bank", contribution: "TREEP ($550M), ASCENT ($300M), TZ-Zambia Interconnector ($465M), Zanzibar Energy ($142M), UG-TZ Interconnector ($515M)" },
+          { name: "African Development Bank", contribution: "Submarine Cable ($224M), Kenya-TZ Interconnector ($259M), Kakono Hydro ($309M), Malagarasi Hydro ($140M), Northwest Grid ($168M), T&D Expansion ($427M), Segera-Kisongo ($184M)" },
+          { name: "European Union", contribution: "Rural electrification (EUR 65M), Energy Sector Reform (EUR 31.6M), Cook Fund (EUR 19.4M), TZ-Zambia cofinancing (EUR 30M), UG-TZ cofinancing (EUR 44M)" },
+          { name: "AFD (France)", contribution: "TZ-Zambia (EUR 100M), Grid Rehabilitation (EUR 53M), Rural Electrification (EUR 100M), Solar Programme (EUR 206M), Kakono Hydro (EUR 110M), UG-TZ (EUR 70M)" },
+          { name: "Sweden", contribution: "Hale Hydro rehabilitation ($20M), Clean Cooking via AECF ($5.8M), MCFA via NEFCO ($5M), Rural Electrification ($60M)" },
+          { name: "USAID / Power Africa", contribution: "Technical assistance unlocking $613M in IPP investment (Iringa, Dodoma, Singida Solar; Makambako, Singida Wind); 1.35M connections, 445 MW" },
+          { name: "British International Investment", contribution: "Rift Valley Energy ($15-25M) for 7.6 MW renewables" },
+          { name: "UK Aid", contribution: "MECS eCooking (GBP 3.3M), Modern Energy Cooking (GBP 3.5M), Transforming Energy Access (GBP 2M)" },
+          { name: "Norway", contribution: "REA support (NOK 700M) for 113,797 connections & 725 biogas plants, ZECO capacity building (NOK 82M)" },
+          { name: "JICA", contribution: "T&D maintenance (JPY 480M), Natural Gas utilization (JPY 195M), Rural Electrification (JPY 300M)" },
+          { name: "UNIDO", contribution: "Waste-to-Energy ($5.27M + $15M private, 16 MW), Bioethanol for cooking ($2.46M + $3.5M private, 45,000 HH)" },
+          { name: "Korea EXIM Bank", contribution: "Kigoma-Nyakanazi substations construction" }
         ]
       },
-      technologies: [
-        { name: "LPG", desc: "Government-supported distribution expansion, focus on urban areas" },
-        { name: "Natural Gas", desc: "Leveraging domestic natural gas reserves for cooking fuel" },
-        { name: "Improved Cookstoves (ICS)", desc: "Primary solution for rural areas, reducing biomass consumption" },
-        { name: "Electric Cooking (e-cooking)", desc: "Emerging technology leveraging grid expansion" },
-        { name: "Bioethanol", desc: "Clean liquid fuel alternative to charcoal and firewood" },
-        { name: "Biogas", desc: "Household-scale digesters using agricultural and animal waste" },
-        { name: "Briquettes", desc: "Compressed biomass fuel as cleaner charcoal alternative" }
-      ],
+      utilityReform: {
+        utilities: [
+          {
+            name: "TANESCO",
+            type: "Vertically integrated (generation, transmission, distribution)",
+            customers: 5219722,
+            costRecovery: 80,
+            losses: 14.2,
+            lossReductionTarget: 0.05,
+            subsidy: 56.8,
+            billCollection: 96,
+            prepaidMeters: 5271125,
+            avgCost: 0.085,
+            netIncome: 20.3,
+            challenges: "Low revenue from new low-consumption customers; non-cost-reflective tariffs; high operating costs; over-dependence on government"
+          },
+          {
+            name: "ZECO",
+            type: "Vertically integrated (Zanzibar)",
+            customers: 338578,
+            costRecovery: 81,
+            losses: null,
+            subsidy: null,
+            billCollection: 98,
+            govtBillCollection: 29,
+            challenges: "High technical losses; overloaded transformers; distribution feeders longer than industry practice; reliability issues"
+          }
+        ],
+        tariffReform: [
+          { milestone: "Cost-of-service study completed", timeline: "By June 2026" },
+          { milestone: "Methodology for cost-recovery tariffs established", timeline: "By June 2026" },
+          { milestone: "Multi-year incentive-based tariff regime applied (mainland + Zanzibar)", timeline: "By June 2026" },
+          { milestone: "Retail tariff structures reviewed and improved", timeline: "By June 2026" },
+          { milestone: "Annual tariff adjustments published", timeline: "2027, 2028, 2029, 2030" }
+        ],
+        performanceBenchmarks: [
+          { metric: "T&D Losses", current: "14.2%", target: "0.05% reduction per year" },
+          { metric: "Cost Recovery", current: "80% (TANESCO), 81% (ZECO)", target: "100%" },
+          { metric: "Annual Subsidy", current: "$56.8M", target: "Phase out via tariff reform" },
+          { metric: "Prepaid Meters", current: "5.27M of 5.28M total (99.9%)", target: "Maintain" }
+        ],
+        reformMilestones: [
+          { item: "Performance improvement plans approved by regulator", timeline: "By June 2026" },
+          { item: "EWURA publishes annual performance progress reports", timeline: "Starting 2027" },
+          { item: "ZECO annual financial statements published", timeline: "Starting March 2025" },
+          { item: "SPP framework revised with cost-reflective tariffs", timeline: "By June 2026" },
+          { item: "Net metering rules updated for renewables", timeline: "By June 2027" },
+          { item: "Zanzibar Energy Act enacted", timeline: "By 2026" }
+        ]
+      },
       strategy: [
-        { item: "National Clean Cooking Strategy (NCCS) 2024-2034", status: "Launched May 2024" },
-        { item: "Clean cooking standards", status: "Due by June 2027" },
-        { item: "Tax and duty reductions on clean cooking", status: "Due by June 2026" },
-        { item: "Zanzibar Clean Cooking Strategy", status: "To be developed by 2027" },
-        { item: "National Energy Policy 2015 review", status: "Due by June 2027" }
+        { item: "Prepare comprehensive Power System Master Plan (PSMP/IRP)", timeline: "By 2025", pillar: "infrastructure" },
+        { item: "Competitive procurement framework operationalized", timeline: "By June 2027", pillar: "infrastructure" },
+        { item: "Renewable Energy IPP Procurement Programme (REI4P)", timeline: "By June 2026", pillar: "infrastructure" },
+        { item: "Pilot independent power transmission (IPT) project", timeline: "By 2027", pillar: "infrastructure" },
+        { item: "TANESCO trading unit established", timeline: "By December 2025", pillar: "regionalIntegration" },
+        { item: "Grid investments for EAPP/SAPP compliance identified", timeline: "By June 2025", pillar: "regionalIntegration" },
+        { item: "Critical interconnection equipment procured and installed", timeline: "By June 2027", pillar: "regionalIntegration" },
+        { item: "Regulatory framework harmonization for power trade", timeline: "By June 2026", pillar: "regionalIntegration" },
+        { item: "M&E plan revised to include multi-tier framework", timeline: "By June 2026", pillar: "lastMileAccess" },
+        { item: "Rural Energy Master Plan revised with private sector role", timeline: "By June 2027", pillar: "lastMileAccess" },
+        { item: "National Clean Cooking Action Plan adopted", timeline: "By June 2026", pillar: "lastMileAccess" },
+        { item: "Connection subsidy policy defined and adopted", timeline: "By June 2026", pillar: "lastMileAccess" },
+        { item: "Clean cooking standards and testing infrastructure", timeline: "By June 2027", pillar: "lastMileAccess" },
+        { item: "Taxes and duties reduced for clean cooking", timeline: "By June 2026", pillar: "lastMileAccess" },
+        { item: "RBF facility for improved cookstoves scaled up", timeline: "By June 2025", pillar: "lastMileAccess" },
+        { item: "National Clean Cooking Fund established", timeline: "By June 2025", pillar: "lastMileAccess" },
+        { item: "SPP framework revised for cost-reflective tariffs", timeline: "By June 2026", pillar: "privateSector" },
+        { item: "PPP legal and regulatory frameworks strengthened", timeline: "By December 2025", pillar: "privateSector" },
+        { item: "Transaction advisors retained for priority PPP projects", timeline: "By 2027", pillar: "privateSector" },
+        { item: "Zanzibar Energy Act developed and enacted", timeline: "By 2026", pillar: "privateSector" },
+        { item: "Cost-of-service study completed", timeline: "By June 2026", pillar: "utilityReform" },
+        { item: "Multi-year incentive-based tariff regime applied", timeline: "By June 2026", pillar: "utilityReform" },
+        { item: "Performance improvement plans for TANESCO and ZECO", timeline: "By June 2026", pillar: "utilityReform" },
+        { item: "Annual tariff adjustments published", timeline: "2027-2030", pillar: "utilityReform" }
       ],
       barriers: [
-        { title: "Market Fragmentation", desc: "Clean cooking market is nascent and fragmented with low adoption rates" },
-        { title: "Financing Gaps", desc: "Insufficient equity/collateral for loans; local banks lack understanding of clean cooking project financing" },
-        { title: "Limited Private Sector", desc: "Bankability issues, unpredictable strategic investment areas, lengthy negotiations, risk allocation challenges" },
-        { title: "Affordability", desc: "Households cannot afford upfront costs of clean cooking technologies; non-cost-reflective pricing" },
-        { title: "Regulatory Gaps", desc: "No competitive procurement framework; SPP tariffs not cost-reflective; no Zanzibar Energy Act" },
-        { title: "Data Limitations", desc: "Government tracking lags by 4 years (last published figures from 2020); limited MTF surveys" },
-        { title: "Demographic Pressure", desc: "Population growing at 3% per year, requiring accelerated deployment to maintain progress" }
+        { title: "Non-competitive procurement", desc: "Lengthy negotiations, tender cancellations, costly unsolicited proposals; bankability issues deter investors", pillar: "infrastructure" },
+        { title: "Limited planning capacity", desc: "PSMP lacks regional integration; no fixed update schedule; insufficient planning tools and staff", pillar: "infrastructure" },
+        { title: "Grid readiness for trade", desc: "Lack of automatic generation control, operating reserves, and backup control center for interconnected operations", pillar: "regionalIntegration" },
+        { title: "Regulatory misalignment", desc: "National frameworks not harmonized with EAPP/SAPP grid codes and transmission pricing", pillar: "regionalIntegration" },
+        { title: "Connection affordability", desc: "Households cannot afford wiring costs; 30,702 of 64,359 hamlets lack electricity", pillar: "lastMileAccess" },
+        { title: "Clean cooking market nascent", desc: "Fragmented market with low adoption; 89% biomass dependency on mainland", pillar: "lastMileAccess" },
+        { title: "Data tracking gap", desc: "Government figures lag 4 years; last published data from 2020; limited MTF surveys", pillar: "lastMileAccess" },
+        { title: "Financing for small projects", desc: "Developers lack equity/collateral; local banks cannot structure renewable energy loans", pillar: "privateSector" },
+        { title: "Non-cost-reflective tariffs", desc: "SPP tariffs not reflective of costs; unpredictable investment environment", pillar: "privateSector" },
+        { title: "PPP framework gaps", desc: "Past controversies with risk allocation, lengthy negotiations, bankability issues", pillar: "privateSector" },
+        { title: "TANESCO financial strain", desc: "80% cost recovery; $56.8M annual subsidy; low-consumption new customers reduce revenue", pillar: "utilityReform" },
+        { title: "ZECO reliability issues", desc: "Overloaded transformers; feeders exceed industry standards; high technical losses; 29% govt bill collection", pillar: "utilityReform" },
+        { title: "Deteriorating network", desc: "Quality indicators exceed regulatory allowances; inadequate O&M due to non-cost-recovery tariffs", pillar: "utilityReform" },
+        { title: "Demographic pressure", desc: "3% annual population growth requires accelerated deployment across all pillars", pillar: "cross-cutting" }
       ],
-      investmentBreakdown: {
-        cleanCookingTotal: 800,
-        publicFinance: 400,
-        privateFinance: 400,
-        nccsTotalCost: 1700,
-        nccsAnnualCost: 170
-      },
       sourceName: "M300-AES-Compact-Tanzania",
       sourceType: "National Energy Compact — Africa Energy Summit"
     }

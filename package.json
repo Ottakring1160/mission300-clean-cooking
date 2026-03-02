@@ -12,9 +12,11 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "pdf2json": "^4.0.2",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "pdf-parse": "^1.1.4"
   }
 }
