@@ -426,7 +426,7 @@ a.pillar-card {
   background: linear-gradient(135deg, #022437 0%, #065A89 100%);
   border-radius: 12px;
   padding: 28px 32px;
-  margin-bottom: 20px;
+  margin: 20px 24px 0;
   color: #fff;
 }
 .executive-summary-header {
@@ -559,6 +559,10 @@ a.pillar-card {
 /* Pillar sections */
 .pillar-section {
   border-top: 1px solid var(--gray-100);
+  display: none;
+}
+.pillar-section.panel-active {
+  display: block;
 }
 
 .pillar-section-header {

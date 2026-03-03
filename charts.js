@@ -233,7 +233,13 @@ function renderCompactProfile(data, containerId) {
       <div class="profile-pillar-badges">${pillarBadges}</div>
     </div>`;
 
-  // EXECUTIVE SUMMARY — Compact Targets
+  // TAB BAR
+  html += `<div class="profile-tabs" id="profileTabs"><div class="profile-tabs-inner">${tabs}</div></div>`;
+
+  // OVERVIEW PANEL — Executive Summary + Snapshot KPIs
+  html += `<div class="pillar-section" id="section-overview">`;
+
+  // Executive Summary — Compact Targets
   if (c.targets && c.targets.length) {
     const targetRows = c.targets.map(t => `
       <div class="target-row">
@@ -250,22 +256,20 @@ function renderCompactProfile(data, containerId) {
     ).join('');
 
     html += `
-    <div class="executive-summary" id="section-overview">
+    <div class="executive-summary">
       <div class="executive-summary-header">
         <h3>National Compact Targets</h3>
         <p>Declaration of commitment — key targets and ambitions for ${data.country}</p>
       </div>
       <div class="executive-summary-grid">${targetRows}</div>
-      ${ov.compactDate ? `<p class="compact-sub-text" style="margin-top:12px;text-align:right">Compact signed: ${ov.compactDate}</p>` : ''}
+      ${ov.compactDate ? `<p class="compact-sub-text" style="margin-top:12px;text-align:right;color:rgba(255,255,255,0.5)">Compact signed: ${ov.compactDate}</p>` : ''}
     </div>`;
   }
 
-  // TAB BAR
-  html += `<div class="profile-tabs" id="profileTabs"><div class="profile-tabs-inner">${tabs}</div></div>`;
-
-  // COUNTRY SNAPSHOT KPIs
-  html += `<div class="pillar-section" id="section-snapshot">
+  // Country Snapshot KPIs
+  html += `
     <div class="pillar-section-body">
+      <h4 class="subsection-title">Country Snapshot</h4>
       <div class="pillar-kpis">${[
         kpi(num(ov.installedCapacity) + ' MW', 'Installed Capacity', PILLARS.infrastructure.color),
         kpi(pct(ov.electricityAccess), 'Electricity Connectivity', PILLARS.lastMileAccess.color),
@@ -664,34 +668,29 @@ function initProfileTabs() {
   if (!tabsContainer) return;
 
   const tabs = tabsContainer.querySelectorAll('.profile-tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const targetId = tab.dataset.target;
-      const section = document.getElementById(targetId);
-      if (section) {
-        const offset = document.querySelector('.profile-tabs')?.offsetHeight || 50;
-        const y = section.getBoundingClientRect().top + window.scrollY - offset - 16;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  const panels = document.querySelectorAll('.pillar-section');
+
+  function showPanel(targetId) {
+    panels.forEach(p => {
+      p.classList.toggle('panel-active', p.id === targetId);
     });
+    tabs.forEach(t => {
+      t.classList.toggle('active', t.dataset.target === targetId);
+    });
+    // Scroll to top of tabs bar
+    const tabBar = document.getElementById('profileTabs');
+    if (tabBar) {
+      const y = tabBar.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => showPanel(tab.dataset.target));
   });
 
-  // Highlight active tab on scroll
-  const sections = document.querySelectorAll('.pillar-section');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        tabs.forEach(t => {
-          t.classList.toggle('active', t.dataset.target === id);
-        });
-      }
-    });
-  }, { rootMargin: '-20% 0px -60% 0px' });
-
-  sections.forEach(s => observer.observe(s));
+  // Show first panel by default
+  if (tabs.length) showPanel(tabs[0].dataset.target);
 }
 
 /* ========== Profile Helpers ========== */
