@@ -204,12 +204,14 @@ function renderCompactProfile(data, containerId) {
     `<span class="profile-pillar-badge" style="--pc:${p.color};opacity:${c[p.key] ? 1 : 0.35}">${p.icon} ${p.label}</span>`
   ).join('');
 
-  // Tab bar
+  // Tab bar — add dedicated Clean Cooking tab
+  const hasCleanCooking = c.lastMileAccess?.cleanCooking;
   const tabs = [
     `<button class="profile-tab active" data-target="section-overview">Overview</button>`,
     ...pillarSections.filter(p => c[p.key]).map((p, i) =>
       `<button class="profile-tab" data-target="section-${p.id}">${p.icon} ${p.label}</button>`
     ),
+    ...(hasCleanCooking ? [`<button class="profile-tab" data-target="section-clean-cooking">🍳 Clean Cooking</button>`] : []),
     ...(c.strategy ? [`<button class="profile-tab" data-target="section-strategy">Strategy</button>`] : [])
   ].join('');
 
@@ -390,40 +392,19 @@ function renderCompactProfile(data, containerId) {
     </div>`;
   }
 
-  // PILLAR III: LAST-MILE ACCESS
+  // PILLAR III: LAST-MILE ACCESS (Electricity only)
   if (c.lastMileAccess) {
     const lm = c.lastMileAccess;
     const elec = lm.electricity || {};
-    const cc = lm.cleanCooking || {};
-
-    const ccTechHTML = (cc.technologies || []).map(t =>
-      `<div class="compact-tech-item"><div class="compact-tech-name">${t.name}</div><div class="compact-tech-desc">${t.desc}</div></div>`
-    ).join('');
-
-    const biomassHTML = (cc.biomassDependency || []).map(b =>
-      `<div class="compact-biomass-row">
-        <span class="compact-biomass-label">${b.region}</span>
-        <div class="compact-biomass-bar-wrap"><div class="compact-biomass-bar" style="width:${b.pct}%"></div></div>
-        <span class="compact-biomass-pct">${b.pct}%</span>
-      </div>`
-    ).join('');
-
-    const deployInst = (cc.deployment?.institutions || []).map(i =>
-      `<span class="compact-deploy-tag">${i.type}: <strong>${i.count.toLocaleString()}</strong></span>`
-    ).join('');
 
     const elecProjects = (elec.projects || []).map(p =>
-      `<tr><td>${p.name}</td><td>${p.cost ? moneyB(p.cost) : 'TBD'}</td><td>${p.timeline || ''}</td></tr>`
-    ).join('');
-
-    const ccProjects = (cc.projects || []).map(p =>
       `<tr><td>${p.name}</td><td>${p.cost ? moneyB(p.cost) : 'TBD'}</td><td>${p.timeline || ''}</td></tr>`
     ).join('');
 
     html += `<div class="pillar-section" id="section-pillar-lastmile">
       <div class="pillar-section-header" style="--accent:${PILLARS.lastMileAccess.color}">
         <span class="pillar-section-icon">${PILLARS.lastMileAccess.icon}</span>
-        <div><h3>Pillar III: Last-Mile Access</h3><p>Electricity connectivity and clean cooking</p></div>
+        <div><h3>Pillar III: Last-Mile Access</h3><p>Electricity connectivity — grid, mini-grid, and off-grid</p></div>
       </div>
       <div class="pillar-section-body">
         <h4 class="subsection-title">Electricity Access</h4>
@@ -446,25 +427,113 @@ function renderCompactProfile(data, containerId) {
           <thead><tr><th>Project</th><th>Cost</th><th>Timeline</th></tr></thead>
           <tbody>${elecProjects}</tbody>
         </table></div>` : ''}
+      </div>
+    </div>`;
+  }
 
-        <h4 class="subsection-title" style="margin-top:32px">Clean Cooking</h4>
+  // DEDICATED CLEAN COOKING SECTION
+  if (c.lastMileAccess?.cleanCooking) {
+    const cc = c.lastMileAccess.cleanCooking;
+
+    const ccTechHTML = (cc.technologies || []).map(t =>
+      `<div class="cc-tech-card">
+        <div class="cc-tech-name">${t.name}</div>
+        <div class="cc-tech-desc">${t.desc}</div>
+      </div>`
+    ).join('');
+
+    const biomassHTML = (cc.biomassDependency || []).map(b =>
+      `<div class="compact-biomass-row">
+        <span class="compact-biomass-label">${b.region}</span>
+        <div class="compact-biomass-bar-wrap"><div class="compact-biomass-bar" style="width:${b.pct}%"></div></div>
+        <span class="compact-biomass-pct">${b.pct}%</span>
+      </div>`
+    ).join('');
+
+    const deployInst = (cc.deployment?.institutions || []).map(i =>
+      `<span class="compact-deploy-tag">${i.type}: <strong>${i.count.toLocaleString()}</strong></span>`
+    ).join('');
+
+    const ccProjects = (cc.projects || []).map(p =>
+      `<tr><td>${p.name}</td><td>${p.connections ? num(p.connections) : '—'}</td><td>${p.cost ? moneyB(p.cost) : 'TBD'}</td><td>${p.timeline || ''}</td></tr>`
+    ).join('');
+
+    // Extract clean-cooking-related strategy milestones
+    const ccMilestones = (c.strategy || []).filter(s =>
+      s.pillar === 'lastMileAccess' && (
+        s.item.toLowerCase().includes('cook') ||
+        s.item.toLowerCase().includes('nccs') ||
+        s.item.toLowerCase().includes('biomass') ||
+        s.item.toLowerCase().includes('stove') ||
+        s.item.toLowerCase().includes('rbf') ||
+        s.item.toLowerCase().includes('clean cooking')
+      )
+    );
+    const ccReformHTML = ccMilestones.map((m, i) =>
+      `<div class="reform-card" style="border-left-color:#DD2E2B">
+        <span class="reform-number" style="background:#DD2E2B">${i + 1}</span>
+        <div class="reform-card-body">
+          <div class="reform-card-text">${m.item}</div>
+          <span class="reform-card-timeline" style="color:#DD2E2B;background:color-mix(in srgb, #DD2E2B 10%, transparent)">${m.timeline}</span>
+        </div>
+      </div>`
+    ).join('');
+
+    // Extract clean-cooking-related barriers
+    const ccBarriers = (c.barriers || []).filter(b => {
+      const pillars = Array.isArray(b.pillar) ? b.pillar : [b.pillar];
+      return pillars.includes('lastMileAccess') && (
+        b.title.toLowerCase().includes('cook') ||
+        b.desc.toLowerCase().includes('cook') ||
+        b.desc.toLowerCase().includes('biomass') ||
+        b.title.toLowerCase().includes('biomass')
+      );
+    });
+    const ccBarrierHTML = ccBarriers.map(b =>
+      `<div class="cc-barrier"><strong>${b.title}</strong><p>${b.desc}</p></div>`
+    ).join('');
+
+    html += `<div class="pillar-section" id="section-clean-cooking">
+      <div class="pillar-section-header cc-header">
+        <span class="pillar-section-icon">🍳</span>
+        <div><h3>Clean Cooking</h3><p>Access to clean fuels and technologies for cooking</p></div>
+      </div>
+      <div class="pillar-section-body">
+
+        ${cc.strategyStatus ? `<div class="cc-strategy-banner">
+          <span class="cc-strategy-label">Strategy Status</span>
+          <p>${cc.strategyStatus || cc.strategy || ''}</p>
+          ${cc.focusAreas ? `<p class="cc-focus">${cc.focusAreas}</p>` : ''}
+        </div>` : (cc.strategy ? `<div class="cc-strategy-banner">
+          <span class="cc-strategy-label">National Strategy</span>
+          <p>${cc.strategy}</p>
+        </div>` : '')}
+
+        <h4 class="subsection-title">Targets</h4>
         <div class="pillar-kpis">
-          ${kpi(pct(cc.currentAccess), 'Current Access')}
-          ${kpi(pct(cc.target2030), '2030 Target')}
-          ${cc.target2034 ? kpi(pct(cc.target2034), '2034 Target') : ''}
-          ${kpi(moneyB(cc.nccsCost), 'NCCS Total Cost')}
+          ${kpi(pct(cc.currentAccess || cc.currentAccessPct), 'Current Access', '#DD2E2B')}
+          ${kpi(cc.target2030 ? pct(cc.target2030) : (cc.targetAccessPct ? pct(cc.targetAccessPct) : 'TBD'), '2030 Target', '#DD2E2B')}
+          ${cc.target2034 ? kpi(pct(cc.target2034), '2034 Target', '#DD2E2B') : ''}
+          ${kpi(moneyB(cc.nccsCost || cc.investmentM), 'Total Investment', '#DD2E2B')}
+          ${cc.annualCost ? kpi(moneyB(cc.annualCost), 'Annual Cost') : ''}
+          ${cc.currentConnections ? kpi(num(cc.currentConnections), 'Current Connections') : ''}
         </div>
+        ${(cc.currentAccess || cc.currentAccessPct) && (cc.target2030 || cc.targetAccessPct) ? `
         <div class="access-progress-bar">
-          <div class="access-progress-current" style="width:${cc.currentAccess || 0}%;background:var(--red)"><span>${cc.currentAccess}%</span></div>
-          <div class="access-progress-target" style="left:${cc.target2030 || 0}%"><span>${cc.target2030}%</span></div>
+          <div class="access-progress-current" style="width:${cc.currentAccess || cc.currentAccessPct || 0}%;background:#DD2E2B"><span>${cc.currentAccess || cc.currentAccessPct}%</span></div>
+          <div class="access-progress-target" style="left:${cc.target2030 || cc.targetAccessPct || 0}%"><span>${cc.target2030 || cc.targetAccessPct}%</span></div>
         </div>
-        <div class="access-progress-labels"><span>Current access</span><span>2030 target</span></div>
-
-        ${cc.strategy ? `<p class="compact-sub-text">${cc.strategy}. Annual cost: ${moneyB(cc.annualCost)}.</p>` : ''}
+        <div class="access-progress-labels"><span>Current access</span><span>2030 target</span></div>` : ''}
 
         ${biomassHTML ? `<h4 class="subsection-title">Biomass Dependency</h4>
         <p class="compact-sub-text">Primary fuels: ${cc.primaryFuels || 'N/A'}. ${cc.gasUsage || ''}</p>
         ${biomassHTML}` : ''}
+
+        ${ccReformHTML ? `<h4 class="subsection-title">Clean Cooking Reforms & Milestones</h4>
+        <div class="reform-list">${ccReformHTML}</div>` : ''}
+
+        ${ccBarrierHTML ? `<h4 class="subsection-title">Key Barriers</h4>
+        <div class="cc-barriers-list">${ccBarrierHTML}</div>` : ''}
 
         ${cc.deployment ? `<h4 class="subsection-title">Current Deployment</h4>
         <div class="compact-deploy-stat">
@@ -474,11 +543,11 @@ function renderCompactProfile(data, containerId) {
         <div class="compact-deploy-tags">${deployInst}</div>` : ''}
 
         ${ccTechHTML ? `<h4 class="subsection-title">Technology Pathways</h4>
-        <div class="compact-tech-grid">${ccTechHTML}</div>` : ''}
+        <div class="cc-tech-grid">${ccTechHTML}</div>` : ''}
 
         ${ccProjects ? `<h4 class="subsection-title">Clean Cooking Projects</h4>
         <div class="profile-table-wrap"><table class="profile-table">
-          <thead><tr><th>Project</th><th>Cost</th><th>Timeline</th></tr></thead>
+          <thead><tr><th>Project</th><th>Connections</th><th>Cost</th><th>Timeline</th></tr></thead>
           <tbody>${ccProjects}</tbody>
         </table></div>` : ''}
       </div>
@@ -570,16 +639,28 @@ function renderCompactProfile(data, containerId) {
       </div>`
     ).join('');
 
-    const tariffHTML = (ur.tariffReform || []).map(t =>
-      `<div class="compact-strategy-row"><span class="compact-strategy-item">${t.milestone}</span><span class="compact-strategy-status">${t.timeline}</span></div>`
+    const tariffHTML = (ur.tariffReform || []).map((t, i) =>
+      `<div class="reform-card">
+        <span class="reform-number">${i + 1}</span>
+        <div class="reform-card-body">
+          <div class="reform-card-text">${t.milestone || t.item}</div>
+          <span class="reform-card-timeline">${t.timeline}</span>
+        </div>
+      </div>`
     ).join('');
 
     const benchHTML = (ur.performanceBenchmarks || []).map(b =>
-      `<tr><td>${b.metric}</td><td>${b.current}</td><td>${b.target}</td></tr>`
+      `<tr><td><strong>${b.metric}</strong></td><td>${b.current}</td><td class="bench-target">${b.target}</td></tr>`
     ).join('');
 
-    const reformHTML = (ur.reformMilestones || []).map(m =>
-      `<div class="compact-strategy-row"><span class="compact-strategy-item">${m.item}</span><span class="compact-strategy-status">${m.timeline}</span></div>`
+    const reformHTML = (ur.reformMilestones || []).map((m, i) =>
+      `<div class="reform-card">
+        <span class="reform-number">${i + 1}</span>
+        <div class="reform-card-body">
+          <div class="reform-card-text">${m.action || m.item}</div>
+          <span class="reform-card-timeline">${m.timeline}</span>
+        </div>
+      </div>`
     ).join('');
 
     html += `<div class="pillar-section" id="section-pillar-reform">
@@ -591,16 +672,21 @@ function renderCompactProfile(data, containerId) {
         <div class="utility-cards">${utilityCards}</div>
 
         ${tariffHTML ? `<h4 class="subsection-title">Tariff Reform Roadmap</h4>
-        <div class="compact-strategy-list">${tariffHTML}</div>` : ''}
+        <div class="reform-list">${tariffHTML}</div>` : ''}
 
         ${benchHTML ? `<h4 class="subsection-title">Performance Benchmarks</h4>
-        <div class="profile-table-wrap"><table class="profile-table">
+        <div class="profile-table-wrap"><table class="profile-table bench-table">
           <thead><tr><th>Metric</th><th>Current</th><th>Target</th></tr></thead>
           <tbody>${benchHTML}</tbody>
         </table></div>` : ''}
 
         ${reformHTML ? `<h4 class="subsection-title">Reform Milestones</h4>
-        <div class="compact-strategy-list">${reformHTML}</div>` : ''}
+        <div class="reform-list">${reformHTML}</div>` : ''}
+
+        ${ur.regulator ? `<div class="regulator-box">
+          <strong>${ur.regulator}</strong>
+          ${ur.regulatorRole ? `<p>${ur.regulatorRole}</p>` : ''}
+        </div>` : ''}
       </div>
     </div>`;
   }

@@ -950,6 +950,190 @@ a.pillar-card {
   border-top: 1px solid var(--gray-100);
 }
 
+/* Reform cards */
+.reform-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reform-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--off-white);
+  border-radius: 10px;
+  border-left: 4px solid #5A3A8E;
+  transition: box-shadow 0.15s;
+}
+.reform-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.reform-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: #5A3A8E;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+.reform-card-body {
+  flex: 1;
+  min-width: 0;
+}
+.reform-card-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dark-navy);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.reform-card-timeline {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #5A3A8E;
+  background: color-mix(in srgb, #5A3A8E 10%, transparent);
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* Benchmark table enhancements */
+.bench-table td:first-child {
+  width: 30%;
+}
+.bench-target {
+  color: #065A89;
+  font-weight: 600;
+}
+
+/* Regulator box */
+.regulator-box {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: color-mix(in srgb, #5A3A8E 6%, transparent);
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, #5A3A8E 15%, transparent);
+}
+.regulator-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #5A3A8E;
+}
+.regulator-box p {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* ========== CLEAN COOKING DEDICATED SECTION ========== */
+.cc-header {
+  --accent: #DD2E2B !important;
+  background: linear-gradient(135deg, #fdf2f1 0%, #fff 100%);
+  border-left-color: #DD2E2B;
+}
+
+.cc-strategy-banner {
+  background: linear-gradient(135deg, #DD2E2B 0%, #b82420 100%);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.cc-strategy-label {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(255,255,255,0.2);
+  padding: 3px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.cc-strategy-banner p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255,255,255,0.95);
+}
+.cc-focus {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+}
+
+/* Clean cooking tech pathway cards */
+.cc-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.cc-tech-card {
+  padding: 16px;
+  background: #fdf2f1;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, #DD2E2B 15%, transparent);
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+.cc-tech-card:hover {
+  box-shadow: 0 4px 12px rgba(221, 46, 43, 0.1);
+  transform: translateY(-2px);
+}
+.cc-tech-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #DD2E2B;
+  margin-bottom: 6px;
+}
+.cc-tech-desc {
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+/* Clean cooking barriers */
+.cc-barriers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cc-barrier {
+  padding: 14px 18px;
+  background: #fdf2f1;
+  border-radius: 8px;
+  border-left: 4px solid #DD2E2B;
+}
+.cc-barrier strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--dark-navy);
+  margin-bottom: 4px;
+}
+.cc-barrier p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
 /* Partner grid */
 .partner-grid {
   display: grid;
@@ -1048,6 +1232,9 @@ a.pillar-card {
   .executive-summary-grid { grid-template-columns: 1fr; gap: 10px; }
   .target-row { padding: 12px 14px; }
   .target-goal { font-size: 1rem; }
+  .cc-strategy-banner { padding: 16px 18px; }
+  .cc-tech-grid { grid-template-columns: 1fr; }
+  .cc-barrier { padding: 12px 14px; }
 }
 
 @media (max-width: 480px) {
