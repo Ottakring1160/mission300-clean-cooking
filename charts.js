@@ -233,11 +233,38 @@ function renderCompactProfile(data, containerId) {
       <div class="profile-pillar-badges">${pillarBadges}</div>
     </div>`;
 
+  // EXECUTIVE SUMMARY — Compact Targets
+  if (c.targets && c.targets.length) {
+    const targetRows = c.targets.map(t => `
+      <div class="target-row">
+        <span class="target-icon">${t.icon}</span>
+        <div class="target-body">
+          <div class="target-metric">${t.metric}</div>
+          <div class="target-values">
+            ${t.baseline ? `<span class="target-baseline">${t.baseline}</span><span class="target-arrow">→</span>` : ''}
+            <span class="target-goal">${t.target}</span>
+          </div>
+          <div class="target-detail">${t.detail}</div>
+        </div>
+      </div>`
+    ).join('');
+
+    html += `
+    <div class="executive-summary" id="section-overview">
+      <div class="executive-summary-header">
+        <h3>National Compact Targets</h3>
+        <p>Declaration of commitment — key targets and ambitions for ${data.country}</p>
+      </div>
+      <div class="executive-summary-grid">${targetRows}</div>
+      ${ov.compactDate ? `<p class="compact-sub-text" style="margin-top:12px;text-align:right">Compact signed: ${ov.compactDate}</p>` : ''}
+    </div>`;
+  }
+
   // TAB BAR
   html += `<div class="profile-tabs" id="profileTabs"><div class="profile-tabs-inner">${tabs}</div></div>`;
 
-  // OVERVIEW SECTION
-  html += `<div class="pillar-section" id="section-overview">
+  // COUNTRY SNAPSHOT KPIs
+  html += `<div class="pillar-section" id="section-snapshot">
     <div class="pillar-section-body">
       <div class="pillar-kpis">${[
         kpi(num(ov.installedCapacity) + ' MW', 'Installed Capacity', PILLARS.infrastructure.color),
@@ -247,7 +274,6 @@ function renderCompactProfile(data, containerId) {
         kpi(moneyB(c.privateSector?.totalCompactInvestment), 'Total Compact Investment', PILLARS.privateSector.color),
         kpi(ov.gdpGrowth || 'N/A', 'GDP Growth', PILLARS.regionalIntegration.color),
       ].join('')}</div>
-      ${ov.compactDate ? `<p class="compact-sub-text" style="margin-top:8px">Compact date: ${ov.compactDate}</p>` : ''}
     </div>
   </div>`;
 

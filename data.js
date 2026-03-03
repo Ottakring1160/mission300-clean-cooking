@@ -35,6 +35,14 @@ const countries = [
     techFocus: "Not yet determined; deferred to national clean cooking strategy development by 2026",
     barriers: "Negligible baseline (0.8%); no established data; severe affordability gap; 14,000 dispersed settlements; weak private sector; seasonal hydro variability; high HFO generation costs",
     compact: {
+      targets: [
+        { icon: "⚡", metric: "Electricity Access", baseline: "32.7%", target: "75% by 2030", detail: "Expand from 70,000 to 100,000 new household connections per year: 60,000 grid, 15,000 mini-grid, 25,000 off-grid/SHS" },
+        { icon: "🍳", metric: "Clean Cooking Access", baseline: "0.8% (9,545 people)", target: "Strategy by 2026", detail: "Develop national clean cooking strategy with baseline, targets, and investment priorities; focus on female-headed households" },
+        { icon: "🌱", metric: "Renewable Energy Share", baseline: "67% (on-grid)", target: "75% by 2030", detail: "Add 172 MW of renewable projects bringing total to 266 MW installed (238 MW renewable)" },
+        { icon: "💰", metric: "Total Investment Needed", baseline: "$250M available", target: "$1.29 billion", detail: "$1.15B public / $140M private across generation ($720M), T&D ($390M), off-grid ($140M), clean cooking ($15M), capacity ($25M)" },
+        { icon: "🏢", metric: "Private Capital Mobilized", baseline: "Negligible", target: "$150 million", detail: "$80M for mini-grid and off-grid solutions; $70M for utility-scale solar PV; T&D options to be explored" },
+        { icon: "⚙️", metric: "Utility Financial Viability", baseline: "37% operating loss (FY 2023)", target: "Cost recovery by FY 2028", detail: "Reduce LEC losses via pre-paid meters, cost-reflective tariffs, lower generation costs from renewables replacing HFO" }
+      ],
       /* ───── Overview ───── */
       overview: {
         population: "5.56 million",
@@ -365,6 +373,14 @@ const countries = [
     techFocus: "Multi-technology: LPG/natural gas urban; improved cookstoves rural; e-cooking emerging; bioethanol; biogas; briquettes",
     barriers: "Nascent and fragmented clean cooking market; financing barriers for small projects; limited private sector participation; regulatory and policy gaps; affordability constraints; demographic pressures (3% population growth)",
     compact: {
+      targets: [
+        { icon: "⚡", metric: "Electricity Access", baseline: "46%", target: "75% by 2030", detail: "Connect 8.3 million additional households via grid, mini-grids, and off-grid solutions" },
+        { icon: "🍳", metric: "Clean Cooking Access", baseline: "6.9%", target: "75% by 2030", detail: "National Clean Cooking Strategy (NCCS) 2024-2034; deploy LPG, improved cookstoves, e-cooking, biogas, and briquettes" },
+        { icon: "🌱", metric: "Renewable Energy Share", baseline: "61.8%", target: "75% by 2030", detail: "Add 1,973 MW of new capacity: 880 MW hydro, 463 MW solar, 500 MW wind, 130 MW geothermal" },
+        { icon: "💰", metric: "Total Investment", baseline: null, target: "$12.9 billion", detail: "$8.9B public / $4.0B private across generation, transmission, distribution, and access" },
+        { icon: "🏢", metric: "Private Capital Mobilized", baseline: "Limited", target: "$4.0 billion", detail: "7 IPPs, carbon markets, sector investments across generation, mini-grids, and clean cooking" },
+        { icon: "⚙️", metric: "Utility Financial Viability", baseline: "80% cost recovery (TANESCO)", target: "Full cost recovery", detail: "Tariff reform, loss reduction, public-sector payment discipline, and performance benchmarking" }
+      ],
       overview: {
         population: "61.7 million (including 1.9 million in Zanzibar)",
         income: "Lower-middle-income",

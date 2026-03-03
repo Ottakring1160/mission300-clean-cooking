@@ -421,6 +421,97 @@ a.pillar-card {
   border: 1px solid color-mix(in srgb, var(--pc) 20%, transparent);
 }
 
+/* Executive Summary — Compact Targets */
+.executive-summary {
+  background: linear-gradient(135deg, #022437 0%, #065A89 100%);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.executive-summary-header {
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.executive-summary-header h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #FFB800;
+  margin: 0 0 4px;
+}
+.executive-summary-header p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+.executive-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+.target-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 8px;
+  border-left: 3px solid #FFB800;
+  transition: background 0.15s;
+}
+.target-row:hover {
+  background: rgba(255,255,255,0.12);
+}
+.target-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.target-body {
+  flex: 1;
+  min-width: 0;
+}
+.target-metric {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 4px;
+}
+.target-values {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.target-baseline {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+}
+.target-arrow {
+  color: #FFB800;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.target-goal {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFB800;
+}
+.target-detail {
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255,255,255,0.6);
+}
+
 /* Tab bar */
 .profile-tabs {
   position: sticky;
@@ -949,6 +1040,10 @@ a.pillar-card {
   .partner-grid { grid-template-columns: 1fr; }
   .profile-pillar-badges { gap: 6px; }
   .profile-pillar-badge { font-size: 0.65rem; padding: 3px 8px; }
+  .executive-summary { padding: 20px 18px; }
+  .executive-summary-grid { grid-template-columns: 1fr; gap: 10px; }
+  .target-row { padding: 12px 14px; }
+  .target-goal { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
